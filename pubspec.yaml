@@ -1,0 +1,64 @@
+name : ershad
+description : A new Flutter project.
+
+publish_to : 'none'
+
+version : 1.0.0+1
+
+environment :
+  sdk : ">=2.16.2 <3.0.0"
+
+dependencies :
+#for Firebase
+# {
+
+  firebase_auth : ^3.4.1
+  firebase_core : ^1.19.1
+  firebase_messaging : ^11.4.4
+  firebase_storage : ^10.3.1
+  cloud_firestore : ^3.2.1
+  google_sign_in : ^5.3.3
+  provider : ^6.0.3
+  shared_preferences : ^2.0.15
+
+  awesome_dialog : ^2.2.1
+  http : ^0.13.4
+  image_picker : ^0.8.5+3
+  jiffy : ^5.0.0
+  dropdown_search : ^3.0.1
+
+
+# }
+
+
+  syncfusion_flutter_pdfviewer : ^20.1.56-beta
+  draggable_scrollbar : ^0.1.0
+
+
+  flutter :
+    sdk : flutter
+  cupertino_icons : ^1.0.5
+
+dev_dependencies :
+  flutter_test :
+      sdk : flutter
+
+  flutter_lints : ^1.0.0
+
+flutter_launcher_name :
+  name : "Ershad"
+
+
+flutter :
+  uses-material-design : true
+
+  assets :
+    - pic/pic1.png
+    - pic/pic2.jpg
+    - pic/pic3.png
+    - pic/engineering college.png
+    - pic/business  college.png
+    - pic/educational sciences college.png
+    - pic/arts college.png
+    - pic/it college.png
+    - pic/sciences college.png
