@@ -28,7 +28,7 @@ class _Signup extends State < Signup >
 {
 
   final Email_cont = TextEditingController ( ) ;
-  String Password_cont = "" ;
+  final Password_cont = TextEditingController ( ) ;
 
   bool pass = true ;
 
@@ -220,8 +220,7 @@ class _Signup extends State < Signup >
                         child : TextFormField
                         (
 
-                          onChanged : ( val ) => setState ( ( ) => this . Password_cont = val ),
-                          onFieldSubmitted : ( val ) => setState ( ( ) => this . Password_cont = val ),
+                          controller : Password_cont,
                           obscureText : pass,
                           style : TextStyle ( color : Colors . white , fontSize : 18 ),
 
@@ -283,7 +282,7 @@ class _Signup extends State < Signup >
                           validator : ( val )
                           {
 
-                            if ( Password_cont != "TTU_11298" )
+                            if ( Password_cont . text != "TTU_11298" )
                             {
 
                               return ( "Wrong Password" ) ;
@@ -382,7 +381,7 @@ class _Signup extends State < Signup >
       try
       {
 
-        UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email_cont . text , password : Password_cont ) ;
+        UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email_cont . text , password : Password_cont . text ) ;
         return userCredential ;
 
       }
