@@ -1,5 +1,7 @@
 //Done
 
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures
+
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Done_Colleges.dart';
@@ -29,7 +31,7 @@ List < sts > Items =
 
   ];
 
-// Start Of Item Widget
+// Start Of Item Widget ==> للمادة
 Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) => Container
 (
 
@@ -115,9 +117,9 @@ Widget Item ( { required String txt1 , required String txt2 , required  double t
   )
 
 );
-// End Of Item Widget
+// End Of Item Widget ==> للمادة
 
-// Start Of Arrows Widget
+// Start Of Arrows Widget ==> اسهم القوائم
 Widget Arrows ( { required double top , required double left , required IconData icon } ) => Padding
 (
 
@@ -125,9 +127,9 @@ Widget Arrows ( { required double top , required double left , required IconData
   child : Icon ( icon , color : Colors . black , size : 80 )
 
 );
-// End Of Arrows Widget
+// End Of Arrows Widget ==> اسهم القوائم
 
-// Start Of Pic Widget
+// Start Of Pic Widget ==> لقسم المدرسين
 Widget Pic ( { required BuildContext context , required String image , required String txt } ) => Expanded
 (
 
@@ -206,9 +208,9 @@ Widget Pic ( { required BuildContext context , required String image , required 
   )
 
 );
-// End Of Pic Widget
+// End Of Pic Widget ==> لقسم المدرسين
 
-// Start Of sdfa Widget
+// Start Of sdfa Widget ==> للصفحة الرئيسية
 Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) => text == "المدرسين" || text == "المفقودات" ?
 Opacity
 (
@@ -390,9 +392,9 @@ Opacity
   )
 
 );
-// End Of sdfa Widget
+// End Of sdfa Widget ==> للصفحة الرئيسية
 
-// Start Of sdfa Widget
+// Start Of Text Field Widget ==> لمعلومات المواد و المدرسين
 Widget Text_Field ( { required String label , required String hint } ) => label == "اسم المادة" || label == "رقم المادة" ?
 Container
 (
@@ -454,9 +456,9 @@ Container
   )
 
 );
-// End Of sdfa Widget
+// End Of Text Field Widget ==> لمعلومات المواد و المدرسين
 
-// Start Of TXT Function
+// Start Of TXT Function ==> للخارطه
 Widget TXT ( { required String txt , required double size , required double margin_top , required double margin_left , } ) => txt == "المجمع الرياضي" || txt == "كلية الاعمال" || txt == "القبول و التسحيل" || txt == "كلية\nالعلوم" || txt == "رئاسة\nالجامعة" || txt == "المالية" || txt == "عمادة شؤون\nالطلبة" ?
 Opacity
 (
@@ -559,7 +561,7 @@ Opacity
 
 );
 
-// End Of TXT Function
+// End Of TXT Function ==> للخارطه
 
 }
 

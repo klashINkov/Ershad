@@ -121,7 +121,7 @@ class _Signup extends State < Signup >
                   children :
                   [
 
-                     SizedBox ( height : 60 ),
+                     SizedBox ( height : 20 ),
 
                       // Start of Email TextField
                       Opacity
@@ -209,7 +209,7 @@ class _Signup extends State < Signup >
                       ),
                       // End of Email TextField
 
-                      SizedBox ( height : 260 ),
+                      SizedBox ( height : 20 ),
 
                       // Start of Password TextField
                       Opacity
