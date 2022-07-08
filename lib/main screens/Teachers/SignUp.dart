@@ -419,7 +419,6 @@ class _Signup extends State < Signup >
         autoHide : Duration ( seconds : 5 ),
         dialogBackgroundColor : Colors . black,
         borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-
         context : context,
 
         body : Text ( "المعلومات التي قمت بادخالها عير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
