@@ -264,9 +264,9 @@ class _Signin extends State < Signin >
                         child : Row
                         (
 
-                          mainAxisAlignment: MainAxisAlignment . center,
+                          mainAxisAlignment : MainAxisAlignment . center,
 
-                          children:
+                          children :
                           [
 
                             InkWell
