@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -264,26 +264,21 @@ class _Signin extends State < Signin >
                         child : Row
                         (
 
+                          mainAxisAlignment: MainAxisAlignment . center,
+
                           children:
                           [
-
-                            Padding
-                            (
-
-                              padding : EdgeInsets . only ( left : 40 ),
-
-                              child : Text ( "اذا كنت لا تمتلك حساب " , style : TextStyle ( color: Colors . white , fontSize : 20 )  )
-
-                            ),
 
                             InkWell
                             (
 
                               onTap : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signup ( ) ) ) ; },
 
-                              child : Text ( "اضغط هنا" , style : TextStyle ( color : Colors . blue , fontSize : 20 , decoration : TextDecoration . underline ) )
+                              child : Text ( "اضغط هنا " , style : TextStyle ( color : Colors . blue , fontSize : 20 , decoration : TextDecoration . underline ) )
 
-                            )
+                            ),
+
+                            Text ( "اذا كنت لا تمتلك حساب" , style : TextStyle ( color: Colors . white , fontSize : 20 )  )
 
                           ]
 

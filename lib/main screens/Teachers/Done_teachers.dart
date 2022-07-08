@@ -2,6 +2,8 @@
 
 // ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_case_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names
 
+import 'package:ershad/main%20screens/Teachers/Done_SignIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
@@ -11,10 +13,39 @@ import 'package:ershad/main screens/Teachers/Done_Colleges_Doctors.dart';
 import 'package:ershad/main screens/New/Done_temp.dart';
 
 // Start Of _Teachers class
-class Teachers extends StatelessWidget
+class Teachers extends StatefulWidget
+{
+
+  @override
+  State < Teachers > createState ( ) => _Teachers ( ) ;
+
+}
+
+class _Teachers extends State < Teachers >
 {
 
   var x = temp ( ) ;
+  bool  ? islog ;
+
+
+  @override
+  void initState ( )
+  {
+
+    super . initState ( ) ;
+    var user = FirebaseAuth . instance . currentUser ;
+
+    if ( user == null)
+    {
+      islog = false ;
+    }
+
+    else
+    {
+      islog = true ;
+    }
+
+  }
 
   // Start Of build Widget
   @override
@@ -39,9 +70,9 @@ class Teachers extends StatelessWidget
           children :
           [
 
-            x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "مُدرس" ),
+            x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "مُدرس" , flag : islog! ),
 
-            x . Pic ( context : context , image : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513" , txt : "طالب" ),
+            x . Pic ( context : context , image : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513" , txt : "طالب" , flag : islog! ),
 
           ]
 
@@ -52,8 +83,6 @@ class Teachers extends StatelessWidget
     );
 
   }
-  // End Of build Widget
-
 }
 // End Of _Teachers class
 
@@ -62,6 +91,7 @@ class Control extends StatelessWidget
 {
 
   var x = temp ( ) ;
+  bool bol = true ;
 
   // Start Of build Widget
   @override
@@ -81,6 +111,40 @@ class Control extends StatelessWidget
 
         actions :
         [
+
+          Container
+          (
+
+            margin : EdgeInsets . only ( right : 90 ),
+            padding : EdgeInsets . all ( 5.0 ),
+
+            decoration : BoxDecoration
+            (
+
+              border : Border . all ( width : 5  , color : Colors . blueAccent . shade700 ),
+              borderRadius : BorderRadius . circular ( 40 ),
+              color : Colors . black
+
+            ),
+
+
+            child : InkWell
+            (
+
+              onTap : ( ) async
+              {
+
+                await FirebaseAuth . instance . signOut ( ) ;
+                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
+
+              },
+
+              child : Text ( "تسجيل الخروج" , style : TextStyle ( color : Colors . white , fontSize : 20 , fontWeight : FontWeight . bold ) )
+
+            )
+
+          ),
+
 
           IconButton
           (
@@ -106,9 +170,9 @@ class Control extends StatelessWidget
           children :
           [
 
-            x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "إضافة أو تعديل بيانات المدرس" ),
+            x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "إضافة أو تعديل بيانات المدرس" , flag : bol ),
 
-            x . Pic ( context : context , image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU" , txt : "إضافة أو تعديل بيانات مادة" )
+            x . Pic ( context : context , image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU" , txt : "إضافة أو تعديل بيانات مادة" , flag : bol )
 
           ]
 

@@ -31,6 +31,8 @@ class temp
 
   ];
 
+
+
   // Start Of Item Widget ==> لعرض بيانات المادة
   Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) => Container
   (
@@ -94,7 +96,7 @@ class temp
   // End Of Arrows Widget ==> اسهم القوائم
 
   // Start Of Pic Widget ==> لقسم المدرسين
-  Widget Pic ( { required BuildContext context , required String image , required String txt } ) => Expanded
+  Widget Pic ( { required BuildContext context , required String image , required String txt , required bool flag } ) => Expanded
   (
 
     flex : 5,
@@ -106,7 +108,19 @@ class temp
       {
 
         if ( txt == "مُدرس")
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
+        {
+
+          if ( flag == false )
+              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
+
+          else
+              {
+
+                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Control ( ) ) ) ;
+
+              }
+
+        }
 
         else if ( txt == "إضافة أو تعديل بيانات مادة" )
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Colleges ( ) ) ) ;
@@ -253,15 +267,15 @@ class temp
                 }
 
                 else if ( label == " رقم المادة" )
-                  {
+                {
 
-                    if ( val! . length < 7 )
-                      return "لا يمكن ان تكون خانات رقم المادة اقل من 7 خانات" ;
+                  if ( val! . length < 7 )
+                    return "لا يمكن ان تكون خانات رقم المادة اقل من 7 خانات" ;
 
-                    if ( val . length > 7 )
-                      return "لا يمكن ان يكون رقم المادة اكثر من 7 خانات" ;
+                  if ( val . length > 7 )
+                    return "لا يمكن ان يكون رقم المادة اكثر من 7 خانات" ;
 
-                  }
+                }
 
                 else if ( val == "" )
                 {
