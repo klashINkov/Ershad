@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main%20screens/New/temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -51,7 +51,7 @@ class Colleges_Doctors extends StatelessWidget
 
         backgroundColor : Colors . transparent,
         elevation : 0,
-        centerTitle : true ,
+        centerTitle : true,
 
         actions :
         [

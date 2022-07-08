@@ -1,12 +1,13 @@
 //Done
 
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, prefer_const_constructors, body_might_complete_normally_nullable, empty_statements, non_constant_identifier_names, use_key_in_widget_constructors, camel_case_types, unnecessary_new
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main%20screens/New/temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
+
 
 // Start Of Add_Subjects Class
 class Add_Subjects extends StatefulWidget
@@ -24,6 +25,27 @@ class _Add_SubjectsState extends State < Add_Subjects >
 
   var x = temp ( ) ;
 
+  final Name = TextEditingController ( ) ;
+  final Id   = TextEditingController ( ) ;
+  final prev = TextEditingController ( ) ;
+  final coll = TextEditingController ( ) ;
+  final Desc = TextEditingController ( ) ;
+
+  GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
+
+  @override
+  void initState ( )
+  {
+
+    super . initState ( ) ;
+    Name . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Id   . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    prev . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    coll . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Desc . addListener ( ( ) => setState ( ( ) { } ) ) ;
+
+  }
+
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
@@ -32,25 +54,13 @@ class _Add_SubjectsState extends State < Add_Subjects >
     return Scaffold
     (
 
-      extendBodyBehindAppBar : true ,
+      extendBodyBehindAppBar : true,
 
       appBar :  AppBar
       (
 
-        title : Text
-        (
+        title : Text ( "إضافة مادة" , style : TextStyle ( fontSize : 35 , fontWeight : FontWeight . bold , color : Colors . white ) ),
 
-          "إضافة مادة",
-          style : TextStyle
-          (
-
-            fontSize : 35,
-            fontWeight : FontWeight . bold,
-            color : Colors . white
-
-          ),
-
-        ),
         centerTitle : true,
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -76,83 +86,118 @@ class _Add_SubjectsState extends State < Add_Subjects >
 
       ),
 
-      body : SingleChildScrollView
+      body : Container
       (
 
-        child : Container
+        decoration : BoxDecoration
         (
 
-          height : 690,
-          color : Colors . teal . shade700,
-
-          child : Column
+          image : DecorationImage
           (
 
-            mainAxisAlignment : MainAxisAlignment . center,
+            image : AssetImage ( "pic/pic1.png" ),
+            fit : BoxFit . fill,
+            repeat : ImageRepeat . noRepeat
 
-            children :
-            [
+          )
 
-              // Start of اسم المادة TextField
-              x . Text_Field ( label : "اسم المادة" , hint : "" ),
-              // End of اسم المادة TextField
+        ),
+        padding : EdgeInsets . symmetric ( horizontal : 20 ),
 
-              // Start of رقم المادة TextField
-              x . Text_Field ( label : "رقم المادة" , hint : "" ),
-              // End of رقم المادة TextField
+        child : ListView
+        (
 
-              // Start of المتطلب السابق للمادة TextField
-              x . Text_Field ( label : "المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" ),
-              // End of المتطلب السابق للمادة TextField
+          children :
+          [
 
-              // Start of كلية المادة TextField
-              x . Text_Field ( label : "كلية المادة" , hint : "اسم الكلية التي تتبع لها المادة" ),
-              // End of كلية المادة TextField
+            Form
+            (
 
-              // Start Of Add Button
-              Container
+              key : formstate,
+
+              child : Column
               (
 
-                height : 50,
-                width : 250,
-                margin : EdgeInsets . only ( top : 20 ),
+                children :
+                [
 
-                decoration : BoxDecoration
-                (
+                  // Start of اسم المادة TextField
+                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , maxLines : 1 ),
+                  // End of اسم المادة TextField
 
-                  color : Colors . blue,
-                  borderRadius : BorderRadius . circular ( 20 )
+                  SizedBox ( height : 30 ),
 
-                ),
+                  // Start of رقم المادة TextField
+                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , maxLines : 1 ),
+                  // End of رقم المادة TextField
 
-                child : FlatButton
-                (
+                  SizedBox ( height : 30 ),
 
-                    onPressed : ( ) { },
+                  // Start of المتطلب السابق للمادة TextField
+                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , maxLines : 1 ),
+                  // End of المتطلب السابق للمادة TextField
 
-                    child : Text
+                  SizedBox ( height : 30 ),
+
+                  // Start of نبذه عن المادة TextField
+                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , maxLines : 3 ),
+                  // End of نبذه عن المادة TextField
+
+                  // Start Of Add Button
+                  Opacity
+                  (
+
+                    opacity : 0.6,
+
+                    child : Container
                     (
 
-                      "إضافة",
+                      height : 65,
+                      width : 300,
+                      margin : EdgeInsets . only ( top : 40 ),
 
-                      style : TextStyle
+
+                      decoration : BoxDecoration
                       (
 
-                        color : Colors . white,
-                        fontSize : 25
+                        color : Colors . black,
+                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
+                        borderRadius : BorderRadius . circular ( 20 )
+
+                      ),
+
+                      child : FlatButton
+                      (
+
+                        onPressed : ( )
+                        {
+
+                          var formdata = formstate . currentState ;
+                          if ( formdata! . validate ( ) )
+                          {
+
+                            formdata . save ( ) ;
+
+                          }
+
+                        },
+
+                        child : Text ( "إضافة" , style : TextStyle ( color : Colors . white , fontSize : 25 ) )
 
                       )
 
                     )
 
                   )
+                  // End Of Add Button
+
+                ]
 
               )
-              // End Of Add Button
 
-            ]
+            )
 
-          )
+          ]
 
         )
 

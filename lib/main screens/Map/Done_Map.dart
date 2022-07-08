@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main%20screens/New/temp.dart';
 
 // Start Of Map Class
 class Map extends StatelessWidget
@@ -57,51 +57,51 @@ class Map extends StatelessWidget
           [
 
             // Start of مجمع القاعات
-             x . TXT ( txt : "مجمع\nالقاعات" , size : 25 , margin_top : 45 , margin_left : 25 ),
+             x . TXT ( txt : "مجمع\nالقاعات" , size : 25 , quarterTurns : 0 , bottom : 0 , top : 50 , left : 25 ),
             // Start of مجمع القاعات
 
             // Start of محمع الرياضي
-             x . TXT ( txt : "المجمع الرياضي" , size : 25 , margin_top : 215 , margin_left : 10 ),
+             x . TXT ( txt : "المجمع الرياضي" , size : 25 , quarterTurns : 1 , bottom : 215 , top : 0 , left : 10 ),
             // Start of محمع الرياضي
 
             // Start of عمادة شؤون الطلبة
-             x . TXT ( txt : "عمادة شؤون\nالطلبة" , size : 18 , margin_top : 130 , margin_left : 10 ),
+             x . TXT ( txt : "عمادة شؤون\nالطلبة" , size : 18 , quarterTurns : 1, bottom : 130 , top : 0 , left : 10 ),
             // Start of عمادة شؤون الطلبة
 
             // Start of المشاغل الهندسيه
-             x . TXT ( txt : "المشاغل\nالهندسيه" , size : 18 , margin_top : 30 , margin_left : 310 ),
+             x . TXT ( txt : "المشاغل\nالهندسيه" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 30 , left : 290 ),
             // Start of المشاغل الهندسيه
 
             // Start of مركز الحاسوب
-             x . TXT ( txt : "مركز\nالحاسوب" , size : 18 , margin_top : 150 , margin_left : 70 ),
+             x . TXT ( txt : "مركز\nالحاسوب" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 155 , left : 70 ),
             // Start of مركز الحاسوب
 
             // Start of كلية الاعمال
-             x . TXT ( txt : "كلية الاعمال" , size : 16 , margin_top : 210 , margin_left : 245 ),
+             x . TXT ( txt : "كلية الاعمال" , size : 16 , quarterTurns : 1 , bottom : 210 , top : 0 , left : 245 ),
             // Start of كلية الاعمال
 
             // Start of القبول و التسحيل
-             x . TXT ( txt : "القبول و التسحيل" , size : 16 , margin_top : 275 , margin_left : 200 ),
+             x . TXT ( txt : "القبول و التسحيل" , size : 16 , quarterTurns : 1 , bottom : 275 , top : 0 , left : 200 ),
             // Start of القبول و التسحيل
 
             // Start of عيادة الجامعة
-             x . TXT ( txt : "عيادة\nالجامعة" , size : 18 , margin_top : 400 , margin_left : 60 ),
+             x . TXT ( txt : "عيادة\nالجامعة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 400 , left : 50 ),
             // Start of عيادة الجامعة
 
             // Start of كلية الهندسة
-             x . TXT ( txt : "كلية الهندسة" , size : 18 , margin_top : 490 , margin_left : 80 ),
+             x . TXT ( txt : "كلية الهندسة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 480 , left : 120 ),
             // Start of كلية الهندسة
 
             // Start of رئاسة الجامعة
-             x . TXT ( txt : "رئاسة\nالجامعة" , size : 18 , margin_top : 270 , margin_left : 350 ),
+             x . TXT ( txt : "رئاسة\nالجامعة" , size : 18 , quarterTurns : 1 , bottom : 270 , top : 0 , left : 350 ),
             // Start of رئاسة الجامعة
 
             // Start of كلية العلوم
-             x . TXT ( txt : "كلية\nالعلوم" , size : 18 , margin_top : 95 , margin_left : 545 ),
+             x . TXT ( txt : "كلية\nالعلوم" , size : 18 , quarterTurns : 1 , bottom : 95 , top : 0 , left : 545 ),
             // Start of كلية العلوم
 
             // Start of المالية
-             x . TXT ( txt : "المالية" , size : 18 , margin_top : 220 , margin_left : 390)
+             x . TXT ( txt : "المالية" , size : 18 , quarterTurns : 1 , bottom : 220 , top : 0 , left : 390)
             // Start of المالية
 
           ]

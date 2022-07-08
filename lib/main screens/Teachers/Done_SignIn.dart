@@ -2,12 +2,15 @@
 
 // ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison
 
-import 'package:ershad/main%20screens/Teachers/Done_SignUp.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Done_teachers.dart';
+
+import 'package:ershad/main screens/Teachers/SignUp.dart';
+
+import 'package:ershad/main screens/New/temp.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
@@ -33,10 +36,11 @@ class Signin extends StatefulWidget
 class _Signin extends State < Signin >
 {
 
-  final Email_cont = TextEditingController ( ) ;
-  final Password_cont = TextEditingController ( ) ;
+  final Email = TextEditingController ( ) ;
+  final Password = TextEditingController ( ) ;
 
   bool pass = true ;
+  var x = temp ( ) ;
 
   GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
   @override
@@ -44,7 +48,8 @@ class _Signin extends State < Signin >
   {
 
     super . initState ( ) ;
-    Email_cont . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Email . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
   }
 
@@ -61,7 +66,7 @@ class _Signin extends State < Signin >
       appBar : AppBar
       (
 
-        title : Text ( "Teachers Sign In Page" ),
+        title : Text ( "صفحة تسجيل دخول المدرسين" ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -73,7 +78,7 @@ class _Signin extends State < Signin >
           IconButton
           (
 
-            onPressed : ( ) async
+            onPressed : ( )
             {
 
               Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
@@ -130,90 +135,7 @@ class _Signin extends State < Signin >
                      SizedBox ( height : 60 ),
 
                       // Start of Email TextField
-                      Opacity
-                      (
-
-                        opacity : 0.6,
-
-                        child : TextFormField
-                        (
-
-                          controller : Email_cont,
-                          keyboardType : TextInputType . emailAddress,
-                          style : TextStyle ( color : Colors . white , fontSize : 18 ),
-
-                          decoration : InputDecoration
-                          (
-
-                            filled : true,
-                            fillColor : Colors . black,
-
-                            suffixIcon : Email_cont . text . isEmpty ?
-                            Container ( width : 0 )
-                            :
-                            IconButton
-                            (
-
-                                icon : Icon ( Icons . close , color : Colors . white ),
-                                onPressed : ( ) => Email_cont . clear ( )
-
-
-                            ),
-
-                            enabledBorder : OutlineInputBorder
-                            (
-                              borderRadius : BorderRadius . circular ( 30 ),
-                              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-
-                            ),
-                            focusedBorder : OutlineInputBorder
-                            (
-
-                              borderRadius : BorderRadius . circular ( 30 ),
-                              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-
-                            ),
-
-                            errorBorder : OutlineInputBorder
-                            (
-
-                              borderRadius : BorderRadius . circular ( 30 ),
-                              borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
-                            ),
-                            focusedErrorBorder : OutlineInputBorder
-                            (
-
-                              borderRadius : BorderRadius . circular ( 30 ),
-                              borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
-                            ),
-                            errorStyle : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
-
-                            labelText : " Email",
-                            labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
-                            floatingLabelAlignment : FloatingLabelAlignment . center,
-
-                          ),
-
-                          validator : ( value )
-                          {
-
-                            if  ( !( value! . contains ( "@" , 0 ) ) || !( value . contains ( "." , 0 )  ) )
-                            {
-
-                              return "The Email Format Is Wrong" ;
-
-                            }
-
-                            return null ;
-
-                          },
-
-
-                        )
-
-                      ),
+                    x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , maxLines : 1 ),
                       // End of Email TextField
 
                       SizedBox ( height : 260 ),
@@ -227,8 +149,8 @@ class _Signin extends State < Signin >
                         child : TextFormField
                         (
 
-                          controller : Password_cont ,
-                          obscureText : pass ,
+                          controller : Password,
+                          obscureText : pass,
                           style : TextStyle ( color : Colors . white , fontSize : 18 ),
 
 
@@ -241,9 +163,13 @@ class _Signin extends State < Signin >
                             suffixIcon : IconButton
                             (
 
-                              icon : pass ?
+                              icon : Password . text . isEmpty ?
+                              SizedBox ( )
+                              :
+                              pass ?
+
                               Icon ( Icons . visibility_off , color : Colors . white )
-                                :
+                                  :
                               Icon ( Icons . visibility , color : Colors . white ),
 
                               onPressed : ( ) => setState( ( ) => pass = !pass )
@@ -271,7 +197,7 @@ class _Signin extends State < Signin >
                               borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
                             ),
-                            focusedErrorBorder: OutlineInputBorder
+                            focusedErrorBorder : OutlineInputBorder
                             (
 
                               borderRadius : BorderRadius . circular ( 30 ),
@@ -280,7 +206,7 @@ class _Signin extends State < Signin >
                             ),
                             errorStyle : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
 
-                            labelText : " Password",
+                            labelText : " كلمة المرور",
                             labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
                             floatingLabelAlignment : FloatingLabelAlignment . center
 
@@ -288,13 +214,6 @@ class _Signin extends State < Signin >
 
                           validator : ( val )
                           {
-
-                            if ( Password_cont . text != "TTU_11298" )
-                            {
-
-                              return ( "Wrong Password" ) ;
-
-                            }
 
                             return null ;
 
@@ -317,7 +236,7 @@ class _Signin extends State < Signin >
                         (
 
                           height : 50,
-                          width : 250,
+                          width : 300,
                           margin : EdgeInsets . only ( top : 20 ),
 
                           decoration : BoxDecoration
@@ -335,7 +254,7 @@ class _Signin extends State < Signin >
                             onPressed : ( ) async
                             {
 
-                              UserCredential user = await signIn();
+                              UserCredential user = await signIn ( ) ;
 
                               if (user != null)
                               {
@@ -346,7 +265,7 @@ class _Signin extends State < Signin >
 
                             },
 
-                            child : Text ( "Sign In" , style : TextStyle ( color : Colors . white , fontSize : 25 ) )
+                            child : Text ( "تسجيل الدخول" , style : TextStyle ( color : Colors . white , fontSize : 25 ) )
 
                           )
 
@@ -371,41 +290,16 @@ class _Signin extends State < Signin >
 
                               padding : EdgeInsets . only ( left : 40 ),
 
-                              child : Text
-                              (
+                              child : Text ( "if you haven't account " , style : TextStyle ( color: Colors . white , fontSize : 20 )  )
 
-                                "if you haven't account ",
-                                style : TextStyle
-                                (
-
-                                  color: Colors . white,
-                                  fontSize : 20
-
-                                ),
-
-
-                              ),
                             ),
 
                             InkWell
                             (
 
                               onTap : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signup ( ) ) ) ; },
-                              child : Text
-                                (
 
-                                  "Click Here",
-
-                                  style : TextStyle
-                                  (
-
-                                    color : Colors . blue,
-                                    fontSize : 20,
-                                    decoration : TextDecoration.underline
-
-                                  )
-
-                              )
+                              child : Text ( "Click Here" , style : TextStyle ( color : Colors . blue , fontSize : 20 , decoration : TextDecoration . underline ) )
 
                             )
 
@@ -447,7 +341,7 @@ class _Signin extends State < Signin >
       try
       {
 
-        UserCredential userCredential = await FirebaseAuth . instance . signInWithEmailAndPassword ( email : Email_cont . text , password : Password_cont . text ) ;
+        UserCredential userCredential = await FirebaseAuth . instance . signInWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
         return userCredential ;
 
       }
@@ -467,14 +361,7 @@ class _Signin extends State < Signin >
               borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
               context : context,
 
-              body : Text
-              (
-
-                "No user found for that email",
-                textAlign : TextAlign . center,
-                style : TextStyle ( fontSize : 20 , color : Colors . white )
-
-              )
+              body : Text ( "لا يوجد حساب مسجل بهذا البريد الالكتروني" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
           ) . show ( ) ;
 
@@ -486,20 +373,13 @@ class _Signin extends State < Signin >
           AwesomeDialog
           (
 
-              padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
-              autoHide : Duration ( seconds : 2 ),
-              dialogBackgroundColor : Colors . black,
-              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-              context : context,
+            padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
+            autoHide : Duration ( seconds : 2 ),
+            dialogBackgroundColor : Colors . black,
+            borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+            context : context,
 
-              body : Text
-              (
-
-                "Wrong password",
-                textAlign : TextAlign . center,
-                style : TextStyle ( fontSize : 20 , color : Colors . white )
-
-              )
+            body : Text ( "كلمة المرور خاطئة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
           ) . show ( ) ;
 
@@ -524,14 +404,7 @@ class _Signin extends State < Signin >
         borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
         context : context,
 
-        body : Text
-        (
-
-          "Not Valid",
-          textAlign : TextAlign . center,
-          style : TextStyle ( fontSize : 20 , color : Colors . white ),
-
-        )
+        body : Text ( "المعلومات التي قمت بادخالها غير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
       ) . show ( ) ;
 
