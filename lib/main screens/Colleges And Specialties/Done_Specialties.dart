@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -33,21 +33,7 @@ class Specialties extends StatelessWidget
       appBar : AppBar
       (
 
-        title : Text
-        (
-
-          title,
-
-          style : TextStyle
-          (
-
-            fontSize : 18,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
+        title : Text ( title , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -59,12 +45,7 @@ class Specialties extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -132,7 +113,7 @@ class Specialties extends StatelessWidget
               children :
               [
 
-                // Start Of تخصصات الكلية
+                // Start Of تخصصات الكلية Text
                 Padding
                 (
 
@@ -141,25 +122,12 @@ class Specialties extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text
-                    (
-
-                      "تخصصات الكلية",
-                      style : TextStyle
-                      (
-
-                        fontSize : 25,
-                        fontWeight : FontWeight . bold,
-                        color : Colors . white
-
-                      )
-
-                    )
+                    child : Text ( "تخصصات الكلية", style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
                 ),
-                // End Of تخصصات الكلية
+                // End Of تخصصات الكلية Text
 
                 // STart Of List View
                 Container
@@ -238,18 +206,7 @@ class Specialties extends StatelessWidget
 
       width : 165,
 
-      decoration : BoxDecoration
-      (
-
-        image : DecorationImage
-        (
-
-          image : AssetImage ( image ),
-          fit : BoxFit . fill
-
-        )
-
-      ),
+      decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill ) ),
 
       child : Center
       (
@@ -259,14 +216,7 @@ class Specialties extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 65 , left : 15 , right : 15 ),
 
-          child : Text
-          (
-
-            item,
-            style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ),
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 
@@ -313,23 +263,7 @@ class Specialties extends StatelessWidget
             margin : EdgeInsets . only ( bottom : 7 ),
             padding : EdgeInsets . only ( top : 5 , bottom : 5 ),
 
-            child : Text
-            (
-
-              item,
-
-              style : TextStyle
-              (
-
-                fontSize : 16,
-                color : Colors . white,
-                fontWeight : FontWeight . bold
-
-              ),
-
-              textAlign : TextAlign . center
-
-            )
+            child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           )
 

@@ -1,10 +1,10 @@
 // Done
 
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, file_names, use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 // Start Of Map Class
 class Map extends StatelessWidget
@@ -22,13 +22,7 @@ class Map extends StatelessWidget
 
       extendBodyBehindAppBar : true,
 
-      appBar : AppBar
-      (
-
-        backgroundColor : Colors . transparent,
-        elevation : 0,
-
-      ),
+      appBar : AppBar ( backgroundColor : Colors . transparent , elevation : 0 ),
 
       body : Container
       (
@@ -36,19 +30,7 @@ class Map extends StatelessWidget
         height : 684,
         width : 409,
 
-        decoration : BoxDecoration
-        (
-
-          image : DecorationImage
-          (
-
-            image : AssetImage ( "pic/pic3.png" ),
-            fit : BoxFit . fill,
-            repeat : ImageRepeat . noRepeat
-
-          )
-
-        ),
+        decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic3.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
         child : Stack
         (

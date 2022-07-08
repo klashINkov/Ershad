@@ -4,9 +4,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
-
 import 'package:ershad/main screens/Done_Home Page.dart';
+
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 
 // Start Of Add_Subjects Class
@@ -14,13 +14,13 @@ class Add_Subjects extends StatefulWidget
 {
 
   @override
-  State < Add_Subjects > createState ( ) => _Add_SubjectsState ( ) ;
+  State < Add_Subjects > createState ( ) => _Add_Subjects ( ) ;
 
 }
 // End Of Add_Subjects Class
 
 // Start Of _Add_SubjectsState Class
-class _Add_SubjectsState extends State < Add_Subjects >
+class _Add_Subjects extends State < Add_Subjects >
 {
 
   var x = temp ( ) ;
@@ -71,14 +71,9 @@ class _Add_SubjectsState extends State < Add_Subjects >
           IconButton
           (
 
-              onPressed : ( )
-              {
+            onPressed : ( )  { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
-                Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-              },
-
-              icon : Icon ( Icons . home , color : Colors . white , size : 40 )
+            icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
           )
 
@@ -92,17 +87,8 @@ class _Add_SubjectsState extends State < Add_Subjects >
         decoration : BoxDecoration
         (
 
-          image : DecorationImage
-          (
-
-            image : AssetImage ( "pic/pic1.png" ),
-            fit : BoxFit . fill,
-            repeat : ImageRepeat . noRepeat
-
-          )
-
-        ),
-        padding : EdgeInsets . symmetric ( horizontal : 20 ),
+          image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ), fit : BoxFit . fill, repeat : ImageRepeat . noRepeat ) ),
+          padding : EdgeInsets . symmetric ( horizontal : 20 ),
 
         child : ListView
         (

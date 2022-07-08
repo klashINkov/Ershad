@@ -8,9 +8,9 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Done_teachers.dart';
 
-import 'package:ershad/main screens/Teachers/SignUp.dart';
+import 'package:ershad/main screens/Teachers/Done_SignUp.dart';
 
-import 'package:ershad/main screens/New/temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
@@ -36,7 +36,7 @@ class Signin extends StatefulWidget
 class _Signin extends State < Signin >
 {
 
-  final Email = TextEditingController ( ) ;
+  final Email    = TextEditingController ( ) ;
   final Password = TextEditingController ( ) ;
 
   bool pass = true ;
@@ -48,7 +48,7 @@ class _Signin extends State < Signin >
   {
 
     super . initState ( ) ;
-    Email . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
   }
@@ -78,12 +78,7 @@ class _Signin extends State < Signin >
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -96,19 +91,7 @@ class _Signin extends State < Signin >
       body : Container
       (
 
-        decoration : BoxDecoration
-        (
-
-          image : DecorationImage
-          (
-
-            image : AssetImage ( "pic/pic1.png" ),
-            fit : BoxFit . fill,
-            repeat : ImageRepeat . noRepeat
-
-          )
-
-        ),
+        decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
         child : ListView
         (
@@ -135,7 +118,7 @@ class _Signin extends State < Signin >
                      SizedBox ( height : 60 ),
 
                       // Start of Email TextField
-                    x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , maxLines : 1 ),
+                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , maxLines : 1 ),
                       // End of Email TextField
 
                       SizedBox ( height : 260 ),
@@ -152,7 +135,6 @@ class _Signin extends State < Signin >
                           controller : Password,
                           obscureText : pass,
                           style : TextStyle ( color : Colors . white , fontSize : 18 ),
-
 
                           decoration : InputDecoration
                           (
@@ -290,7 +272,7 @@ class _Signin extends State < Signin >
 
                               padding : EdgeInsets . only ( left : 40 ),
 
-                              child : Text ( "if you haven't account " , style : TextStyle ( color: Colors . white , fontSize : 20 )  )
+                              child : Text ( "اذا كنت لا تمتلك حساب " , style : TextStyle ( color: Colors . white , fontSize : 20 )  )
 
                             ),
 
@@ -299,7 +281,7 @@ class _Signin extends State < Signin >
 
                               onTap : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signup ( ) ) ) ; },
 
-                              child : Text ( "Click Here" , style : TextStyle ( color : Colors . blue , fontSize : 20 , decoration : TextDecoration . underline ) )
+                              child : Text ( "اضغط هنا" , style : TextStyle ( color : Colors . blue , fontSize : 20 , decoration : TextDecoration . underline ) )
 
                             )
 

@@ -1,14 +1,12 @@
 //Done
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, camel_case_types, use_key_in_widget_constructors, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
-
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 // Start Of Doctors Class
 class Colleges_Doctors extends StatelessWidget
@@ -33,21 +31,7 @@ class Colleges_Doctors extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text
-        (
-
-          title,
-
-          style : TextStyle
-          (
-
-            fontSize : 18,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
+        title  : Text ( title , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -59,16 +43,11 @@ class Colleges_Doctors extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
-        )
+          )
 
         ]
 
@@ -142,21 +121,7 @@ class Colleges_Doctors extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text
-                    (
-
-                      "مدرسين الكلية",
-
-                      style : TextStyle
-                      (
-
-                        fontSize : 25,
-                        fontWeight : FontWeight . bold,
-                        color : Colors . white
-
-                      )
-
-                    )
+                    child : Text ( "مدرسين الكلية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
@@ -241,18 +206,7 @@ class Colleges_Doctors extends StatelessWidget
 
       width : 165,
 
-      decoration : BoxDecoration
-      (
-
-        image : DecorationImage
-        (
-
-          image : AssetImage ( image ),
-          fit : BoxFit . fill,
-
-        )
-
-      ),
+      decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill ) ),
 
       child : Center
       (
@@ -262,16 +216,7 @@ class Colleges_Doctors extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 80 , left : 15 , right : 15 ),
 
-          child : Text
-          (
-
-            item,
-
-            style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 
@@ -289,9 +234,9 @@ class Colleges_Doctors extends StatelessWidget
     child : ListView . builder
     (
 
-      shrinkWrap : true ,
+      shrinkWrap : true,
       padding : EdgeInsets . only ( top : 0 ),
-      itemCount : sp . length ,
+      itemCount : sp . length,
 
       itemBuilder : ( context , index )
       {
@@ -318,23 +263,7 @@ class Colleges_Doctors extends StatelessWidget
             margin : EdgeInsets . only ( bottom : 7 ),
             padding : EdgeInsets . only ( top : 5 , bottom : 5 ),
 
-            child : Text
-            (
-
-              item,
-
-              style : TextStyle
-              (
-
-                fontSize : 16,
-                color : Colors . white,
-                fontWeight : FontWeight . bold
-
-              ),
-
-              textAlign : TextAlign . center
-
-            )
+            child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           )
 
@@ -370,9 +299,9 @@ class Colleges_Doctors extends StatelessWidget
       case "كلية العلوم" :
       {
 
-          List < String > ss = [ ] ;
-          Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
-          break ;
+        List < String > ss = [ ] ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        break ;
 
       }
       // End Of كلية العلوم Case
@@ -381,9 +310,9 @@ class Colleges_Doctors extends StatelessWidget
       case "كلية تكنولوجيا المعلومات و الاتصالات" :
       {
 
-          List < String > ss = [ ] ;
-          Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
-          break ;
+        List < String > ss = [ ] ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        break ;
 
       }
       // End Of كلية تكنولوجيا المعلومات و الاتصالات Case
@@ -392,9 +321,9 @@ class Colleges_Doctors extends StatelessWidget
       case "كلية الاعمال" :
       {
 
-          List < String > ss = [ ] ;
-          Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
-          break ;
+        List < String > ss = [ ] ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        break ;
 
       }
       // End Of كلية الاعمال case
@@ -403,9 +332,9 @@ class Colleges_Doctors extends StatelessWidget
       case "كلية الاداب" :
       {
 
-          List < String > ss = [ ] ;
-          Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
-          break ;
+        List < String > ss = [ ] ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        break ;
 
       }
       // End Of كلية الاداب case
@@ -414,9 +343,9 @@ class Colleges_Doctors extends StatelessWidget
       case "كلية العلوم التربوية" :
       {
 
-          List < String > ss = [ ] ;
-          Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
-          break ;
+        List < String > ss = [ ] ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_Doctors ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        break ;
 
       }
       // End Of كلية العلوم التربوية Case

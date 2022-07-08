@@ -1,10 +1,10 @@
 // Done
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Done_Specialties.dart';
 
@@ -32,23 +32,7 @@ class Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 20 ),
 
-          child : Text
-          (
-
-            "الكليات",
-
-            style : TextStyle
-            (
-
-              fontSize : 25,
-              color : Colors . white,
-              fontWeight : FontWeight . bold
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( "الكليات" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 
@@ -76,20 +60,13 @@ class Colleges extends StatelessWidget
   Widget Grid_View ( ) => GridView . builder
   (
 
-    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount
-    (
-
-      crossAxisCount : 2,
-      crossAxisSpacing : 10,
-      mainAxisSpacing : 20
-
-    ),
+    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , crossAxisSpacing : 10 , mainAxisSpacing : 20 ),
 
     itemCount : x . Items . length,
     itemBuilder : ( context , index )
     {
 
-      var item = x . Items [ index ]  ;
+      var item = x . Items [ index ] ;
 
       return GridTile
       (
@@ -99,13 +76,7 @@ class Colleges extends StatelessWidget
 
           onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ) ; },
 
-          child : Image
-          (
-
-            image : AssetImage ( item . image ),
-            fit : BoxFit . fill
-
-          )
+          child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
         ),
 
@@ -114,23 +85,7 @@ class Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 25 ),
 
-          child : Text
-          (
-
-            item . str,
-
-            style : TextStyle
-            (
-
-              fontWeight : FontWeight . bold,
-              fontSize : 14,
-              color : Colors . white
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item . str , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
         )
 

@@ -43,14 +43,7 @@ class temp
 
       color : Colors . black,
       borderRadius : BorderRadius . circular ( 200 ),
-      image : DecorationImage
-      (
-
-        image : AssetImage ( "pic/pic1.png" ),
-        fit : BoxFit . fill,
-        repeat : ImageRepeat . noRepeat
-
-      )
+      image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat )
 
     ),
 
@@ -65,21 +58,7 @@ class temp
 
           padding : EdgeInsets . only ( top : 20 ),
 
-          child : Text
-          (
-
-            txt1,
-
-            style : TextStyle
-            (
-
-              color : Colors . white,
-              fontWeight : FontWeight . bold,
-              fontSize : size1
-
-            )
-
-          )
+          child : Text ( txt1 , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold , fontSize : size1 ) )
 
         ),
 
@@ -91,22 +70,7 @@ class temp
           child : Center
           (
 
-            child : Text
-            (
-
-              txt2,
-              textAlign : TextAlign . center,
-
-              style : TextStyle
-              (
-
-                color : Colors . white,
-                fontWeight : FontWeight . bold,
-                fontSize : size2
-
-              )
-
-            )
+            child : Text ( txt2 , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold , fontSize : size2 ) )
 
           )
 
@@ -137,6 +101,7 @@ class temp
 
     child : InkWell
     (
+
       onTap : ( )
       {
 
@@ -144,11 +109,9 @@ class temp
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
 
         else if ( txt == "إضافة أو تعديل بيانات مادة" )
-
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Colleges ( ) ) ) ;
 
         else
-
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => colleges ( ) ) ) ;
 
       },
@@ -178,22 +141,7 @@ class temp
 
                 color : Colors . black,
 
-                child : Text
-                (
-
-                  txt,
-                  textAlign : TextAlign . center,
-
-                  style : TextStyle
-                  (
-
-                    fontSize : 35,
-                    fontWeight : FontWeight . bold,
-                    color : Colors . white
-
-                  )
-
-                )
+                child : Text ( txt , textAlign : TextAlign . center , style : TextStyle ( fontSize : 35 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
               )
 
@@ -373,21 +321,7 @@ class temp
 
           onTap : ( ) { },
 
-          child : Text
-          (
-
-            txt,
-            textAlign : TextAlign . center,
-
-            style : TextStyle
-            (
-
-              color : Colors . white,
-              fontSize : size
-
-            )
-
-          )
+          child : Text ( txt , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : size ) )
 
         )
 
@@ -420,11 +354,9 @@ class temp
           {
 
             if ( text ==  "المدرسين" )
-
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Teachers ( ) ) ) ;
 
             else
-
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( ) ) ) ;
 
           },
@@ -459,21 +391,7 @@ class temp
 
                   padding : EdgeInsets . only ( top : top , left : left ),
 
-                  child : Text
-                  (
-
-                    text,
-
-                    style : TextStyle
-                    (
-
-                      fontSize : size,
-                      color : Colors . white,
-                      fontWeight : FontWeight . bold
-
-                    )
-
-                  )
+                  child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
 
                 )
 
@@ -511,11 +429,9 @@ class temp
           {
 
             if ( text == "الكليات و التخصصات" )
-
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges ( ) ) ) ;
 
             else
-
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;
 
           },
@@ -549,21 +465,7 @@ class temp
 
                   padding : EdgeInsets . only ( top : top , left : left ),
 
-                  child : Text
-                  (
-
-                    text,
-
-                    style : TextStyle
-                    (
-
-                      fontSize : size,
-                      color : Colors . white,
-                      fontWeight : FontWeight . bold
-
-                    )
-
-                  )
+                  child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
 
                 )
 
@@ -592,44 +494,40 @@ class temp
       {
 
         if ( txt == "نبذه عن المادة " || txt == " نبذه عن المدرس" || txt == " وسيلة التواصل" )
-            return Padding
+          return Padding
+          (
+
+            padding : EdgeInsets . only ( left : 342 , top : 35 ),
+
+            child : IconButton
             (
 
-              padding : EdgeInsets . only ( left : 342 , top : 35 ),
+              icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
+              onPressed : ( ) => controller . clear ( )
 
-              child : IconButton
-              (
+            )
 
-                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
-                onPressed : ( ) => controller . clear ( ),
-
-              )
-
-            );
+          );
 
         else
-            return Padding
+          return Padding
+          (
+
+            padding : EdgeInsets . only ( left : 340 , top : 10 ),
+
+            child : IconButton
             (
 
-              padding : EdgeInsets . only ( left : 340 , top : 10 ),
+              icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
+              onPressed : ( ) => controller . clear ( )
 
-              child : IconButton
-              (
+            )
 
-                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
-                onPressed : ( ) => controller . clear ( ),
-
-              )
-
-            );
-
+          );
 
       }
 
-
-
   }
-
 
 }
 

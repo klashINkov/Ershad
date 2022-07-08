@@ -8,7 +8,7 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Done_teachers.dart';
 
-import 'package:ershad/main screens/New/temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -86,12 +86,7 @@ class _Signup extends State < Signup >
           IconButton
           (
 
-            onPressed : ( ) async
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) async { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -104,19 +99,7 @@ class _Signup extends State < Signup >
       body : Container
       (
 
-        decoration : BoxDecoration
-        (
-
-          image : DecorationImage
-          (
-
-            image : AssetImage ( "pic/pic1.png" ),
-            fit : BoxFit . fill,
-            repeat : ImageRepeat . noRepeat
-
-          )
-
-        ),
+        decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ), fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
         padding : EdgeInsets . symmetric ( horizontal : 20 ),
 
         child : ListView

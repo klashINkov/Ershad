@@ -1,10 +1,10 @@
 // Done
 
-// ignore_for_file: deprecated_member_use, must_be_immutable
+// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -16,7 +16,7 @@ class Subject extends StatelessWidget
 
   final String name , NO , DESC , previous , college , syllabus ;
 
-  Subject ( this . name , this . NO , this . DESC , this . previous , this . college , this . syllabus ) ;
+  Subject ( { required this . name , required this . NO , required this . DESC , required this . previous , required this . college , required this . syllabus } ) ;
 
   var x = temp ( ) ;
 
@@ -39,37 +39,9 @@ class Subject extends StatelessWidget
           children :
           [
 
-            Text
-            (
+            Text ( "اسم المادة",   style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
-              "اسم المادة",
-
-              style : TextStyle
-              (
-
-                fontSize : 20,
-                color : Colors . white,
-                fontWeight : FontWeight . bold
-
-              )
-
-            ),
-
-            Text
-            (
-
-              name,
-
-              style : TextStyle
-              (
-
-                fontSize : 16,
-                color : Colors . white,
-                fontWeight : FontWeight . bold
-
-              )
-
-            )
+            Text ( name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           ]
 
@@ -85,12 +57,7 @@ class Subject extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -164,39 +131,11 @@ class Subject extends StatelessWidget
                           [
 
                             // Start Of وصف المساق
-                            Text
-                            (
-
-                              "وصف المساق",
-                              textAlign : TextAlign . center,
-                              style : TextStyle
-                              (
-
-                                fontSize : 20,
-                                fontWeight : FontWeight . bold,
-                                color : Colors . white
-
-                              )
-
-                            ),
+                            Text ( "وصف المساق" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) ),
                             // End Of وصف المساق
 
                             // Start Of Description Text
-                            Text
-                            (
-
-                              DESC,
-                              textAlign : TextAlign . right,
-                              style : TextStyle
-                              (
-
-                                fontSize : 20,
-                                fontWeight : FontWeight . bold,
-                                color : Colors . white
-
-                              )
-
-                            )
+                            Text ( DESC , textAlign : TextAlign . right , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
                             // End Of Description Text
 
                           ]
@@ -224,22 +163,7 @@ class Subject extends StatelessWidget
                       child : Center
                       (
 
-                        child : Text
-                        (
-
-                          "خطة المادة",
-
-                          style : TextStyle
-                          (
-
-                            color : Colors . blue,
-                            fontSize : 25,
-                            fontWeight : FontWeight . bold,
-                            decoration : TextDecoration.underline
-
-                          )
-
-                        )
+                        child : Text ( "خطة المادة" ,  style : TextStyle ( color : Colors . blue , fontSize : 25 , fontWeight : FontWeight . bold , decoration : TextDecoration . underline ) )
 
                       )
 

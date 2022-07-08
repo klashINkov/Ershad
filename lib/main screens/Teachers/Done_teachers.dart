@@ -1,14 +1,14 @@
 // Done
 
-// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_case_types
+// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_case_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-
-import 'package:ershad/main%20screens/New/temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Done_Colleges_Doctors.dart';
+
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 // Start Of _Teachers class
 class Teachers extends StatelessWidget
@@ -26,13 +26,7 @@ class Teachers extends StatelessWidget
 
       extendBodyBehindAppBar : true,
 
-      appBar : AppBar
-      (
-
-        backgroundColor : Colors . transparent,
-        elevation : 0
-
-      ),
+      appBar : AppBar ( backgroundColor : Colors . transparent , elevation : 0 ),
 
       body : Container
       (
@@ -89,18 +83,13 @@ class Control extends StatelessWidget
         [
 
           IconButton
-            (
+          (
 
-              onPressed : ( )
-              {
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
-                Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
+            icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
-              },
-
-              icon : Icon ( Icons . home , color : Colors . white , size : 40 )
-
-          )
+           )
 
         ]
 
@@ -110,18 +99,18 @@ class Control extends StatelessWidget
       (
 
         child : Column
-          (
+        (
 
-            mainAxisAlignment : MainAxisAlignment . spaceEvenly,
+          mainAxisAlignment : MainAxisAlignment . spaceEvenly,
 
-            children :
-            [
+          children :
+          [
 
-              x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "إضافة أو تعديل بيانات المدرس" ),
+            x . Pic ( context : context , image : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg" , txt : "إضافة أو تعديل بيانات المدرس" ),
 
-              x . Pic ( context : context , image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU" , txt : "إضافة أو تعديل بيانات مادة" )
+            x . Pic ( context : context , image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU" , txt : "إضافة أو تعديل بيانات مادة" )
 
-            ]
+          ]
 
         )
 
@@ -159,23 +148,7 @@ class colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 20 ),
 
-          child : Text
-          (
-
-            "الكليات",
-
-            style : TextStyle
-            (
-
-              fontSize : 25,
-              color : Colors . white,
-              fontWeight : FontWeight . bold
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( "الكليات" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 
@@ -189,16 +162,11 @@ class colleges extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
-        )
+          )
 
         ]
 
@@ -222,14 +190,7 @@ class colleges extends StatelessWidget
   Widget Grid_View ( ) => GridView . builder
   (
 
-    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount
-    (
-
-      crossAxisCount : 2,
-      crossAxisSpacing : 10,
-      mainAxisSpacing : 20
-
-    ),
+    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , crossAxisSpacing : 10 , mainAxisSpacing : 20 ),
 
     itemCount : x . Items . length,
     itemBuilder : ( context , index )
@@ -245,13 +206,7 @@ class colleges extends StatelessWidget
 
           onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ) ; },
 
-          child : Image
-          (
-
-            image : AssetImage ( item . image ),
-            fit : BoxFit . fill,
-
-          )
+          child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
         ),
 
@@ -261,23 +216,7 @@ class colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 25 ),
 
-          child : Text
-          (
-
-            item . str,
-
-            style : TextStyle
-            (
-
-              fontWeight: FontWeight . bold,
-              fontSize : 14,
-              color : Colors . white
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item . str , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
         )
 

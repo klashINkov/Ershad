@@ -1,20 +1,21 @@
 //Done
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-
-import 'package:ershad/main%20screens/New/temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Control/Done_T_Specialties.dart';
+
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 // Start Of _Home Class
 class T_Colleges extends StatelessWidget
 {
 
   var x = temp ( ) ;
+
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
@@ -33,23 +34,7 @@ class T_Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 20 ),
 
-          child : Text
-          (
-
-            "الكليات",
-
-            style : TextStyle
-            (
-
-              fontSize : 25,
-              color : Colors . white,
-              fontWeight : FontWeight . bold
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( "الكليات" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 
@@ -63,12 +48,7 @@ class T_Colleges extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -96,14 +76,7 @@ class T_Colleges extends StatelessWidget
   Widget Grid_View ( ) => GridView . builder
   (
 
-    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount
-    (
-
-      crossAxisCount : 2,
-      crossAxisSpacing : 10,
-      mainAxisSpacing : 20
-
-    ),
+    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , crossAxisSpacing : 10 , mainAxisSpacing : 20 ),
 
     itemCount : x . Items . length,
     itemBuilder : ( context , index )
@@ -117,15 +90,9 @@ class T_Colleges extends StatelessWidget
         child : InkWell
         (
 
-          onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ); },
+          onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ) ; },
 
-          child : Image
-          (
-
-            image : AssetImage ( item . image ),
-            fit : BoxFit . fill
-
-          )
+          child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
         ),
 
@@ -134,23 +101,7 @@ class T_Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( left : 15 , right : 15 ,  bottom : 25 ),
 
-          child : Text
-          (
-
-            item . str,
-
-            style : TextStyle
-            (
-
-              fontWeight : FontWeight . bold,
-              fontSize : 14,
-              color : Colors . white
-
-            ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item . str , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
         )
 

@@ -1,10 +1,10 @@
 // Done
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -16,7 +16,7 @@ class Subjects extends StatelessWidget
 
   var x = temp ( ) ;
   String title , Desc ;
-  List < String >  subjects ;
+  List < String > subjects ;
 
   Subjects ( { required this . title , required this . Desc , required this . subjects } ) ;
 
@@ -33,21 +33,7 @@ class Subjects extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text
-        (
-
-          title,
-
-          style : TextStyle
-          (
-
-            fontSize : 20,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
+        title  : Text ( title , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -59,12 +45,7 @@ class Subjects extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -122,40 +103,11 @@ class Subjects extends StatelessWidget
                         [
 
                           // Start Of نبذه عن التخصص
-                          Text
-                          (
-
-                            "نبذة عن التخصص",
-                            textAlign : TextAlign . center,
-
-                            style : TextStyle
-                            (
-
-                              fontSize : 25,
-                              fontWeight : FontWeight . bold,
-                              color : Colors . white
-
-                            )
-
-                          ),
+                          Text ( "نبذة عن التخصص" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) ),
                           // End Of نبذه عن التخصص
 
                           // Start Of Description Text
-                          Text
-                          (
-
-                            Desc,
-                            textAlign : TextAlign . center,
-                            style : TextStyle
-                            (
-
-                              fontSize : 20,
-                              fontWeight : FontWeight . bold,
-                              color : Colors . white
-
-                            )
-
-                          )
+                          Text ( Desc , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
                           // End Of Description Text
 
                         ]
@@ -198,20 +150,7 @@ class Subjects extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text
-                    (
-
-                      "مواد التخصص الاجبارية",
-                      style : TextStyle
-                      (
-
-                        fontSize : 25,
-                        fontWeight : FontWeight . bold,
-                        color : Colors . white
-
-                      )
-
-                    )
+                    child : Text ( "مواد التخصص الاجبارية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
@@ -288,7 +227,6 @@ class Subjects extends StatelessWidget
         title : Container
         (
 
-
           padding : EdgeInsets . only ( top : 5 ),
           margin : EdgeInsets . only ( left : 5 , right : 5 , bottom : 7 ),
 
@@ -301,16 +239,7 @@ class Subjects extends StatelessWidget
 
           ),
 
-          child : Text
-          (
-
-            item,
-
-            style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 
@@ -334,12 +263,12 @@ class Subjects extends StatelessWidget
           builder : ( context ) => Subject
           (
 
-            "مختبر قواعد البيانات",
-            "0601242",
-            "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات",
-            "قواعد البيانات ( 0601241 )",
-            "كلية تكنولوجيا المعلومات والاتصالات",
-            "fdfdf"
+            name : "مختبر قواعد البيانات",
+            college : "كلية تكنولوجيا المعلومات والاتصالات",
+            previous : "قواعد البيانات ( 0601241 )",
+            NO : "0601242",
+            syllabus : "fdfdf",
+            DESC : "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات"
 
            )
 

@@ -1,14 +1,14 @@
 //Done
 
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
-import 'package:ershad/main%20screens/New/temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Control/Subjects/Done_T_Subjects.dart';
+
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 // Start Of Specialties Class
 class Specialties extends StatelessWidget
@@ -33,25 +33,11 @@ class Specialties extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text
-        (
+        title  : Text ( title , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
-          title,
-
-          style : TextStyle
-          (
-
-            fontSize : 20,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
-
-        backgroundColor : Colors . transparent ,
-        elevation : 0 ,
-        centerTitle : true ,
+        backgroundColor : Colors . transparent,
+        elevation : 0,
+        centerTitle : true,
 
         actions :
         [
@@ -59,12 +45,7 @@ class Specialties extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -141,22 +122,7 @@ class Specialties extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text
-                    (
-
-                      "تخصصات الكلية",
-                      textAlign : TextAlign . center,
-
-                      style : TextStyle
-                      (
-
-                        fontSize : 25,
-                        fontWeight : FontWeight . bold,
-                        color : Colors . white
-
-                      )
-
-                    )
+                    child : Text ( "تخصصات الكلية" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
@@ -228,7 +194,7 @@ class Specialties extends StatelessWidget
   // End of build Widget
 
   // Start of Horizontal List View Widget
-  Widget Horizontal_List_View ( { required String item , required String image ,  required BuildContext context  } ) => InkWell
+  Widget Horizontal_List_View ( { required String item , required String image , required BuildContext context } ) => InkWell
   (
 
     // Start Of On Tap
@@ -240,18 +206,7 @@ class Specialties extends StatelessWidget
 
       width : 165,
 
-      decoration : BoxDecoration
-      (
-
-        image : DecorationImage
-        (
-
-          image : AssetImage ( image ),
-          fit : BoxFit . fill,
-
-        )
-
-      ),
+      decoration : BoxDecoration (image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill ) ),
 
       child : Center
       (
@@ -261,16 +216,7 @@ class Specialties extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 80 , left : 15 , right : 15 ),
 
-          child : Text
-          (
-
-            item,
-
-            style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ),
-
-            textAlign : TextAlign . center
-
-          )
+          child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ) )
 
         )
 
@@ -317,23 +263,7 @@ class Specialties extends StatelessWidget
             margin : EdgeInsets . only ( bottom : 7 ),
             padding : EdgeInsets . only ( top : 5 , bottom : 5 ),
 
-            child : Text
-            (
-
-              item,
-
-              style : TextStyle
-              (
-
-                fontSize : 16,
-                color : Colors . white,
-                fontWeight : FontWeight . bold
-
-              ),
-
-              textAlign : TextAlign . center
-
-            )
+            child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           )
 

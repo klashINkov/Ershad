@@ -1,10 +1,10 @@
 //Done
 
-// ignore_for_file: must_be_immutab, prefer_const_constructorsle, prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: must_be_immutab, prefer_const_constructorsle, prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, file_names
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main%20screens/New/Done_temp.dart';
 
 // Start Of Home Class
 class Home extends StatelessWidget
@@ -25,21 +25,7 @@ class Home extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text
-        (
-
-          "الرئيسة",
-
-          style : TextStyle
-          (
-
-            fontSize : 42,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
+        title : Text ( "الرئيسة" , style : TextStyle ( fontSize : 42 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -53,19 +39,7 @@ class Home extends StatelessWidget
         child : Container
         (
 
-          decoration : BoxDecoration
-          (
-
-            image : DecorationImage
-            (
-
-              image : AssetImage ( "pic/pic2.jpg" ),
-              fit : BoxFit . fill,
-              repeat : ImageRepeat . noRepeat
-
-            )
-
-         ),
+          decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic2.jpg" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
           child : Padding
           (
@@ -74,8 +48,6 @@ class Home extends StatelessWidget
 
             child :  Column
             (
-
-
 
               children :
               [

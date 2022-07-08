@@ -1,10 +1,10 @@
 //Done
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, file_names, camel_case_types, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -18,7 +18,7 @@ class T_Subjects extends StatelessWidget
 
   var x = temp ( ) ;
   String title , Desc ;
-  List < String >  subjects ;
+  List < String > subjects ;
 
   T_Subjects ( { required this . title , required this . Desc , required this . subjects } ) ;
 
@@ -35,21 +35,7 @@ class T_Subjects extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text
-        (
-
-          title,
-
-          style : TextStyle
-          (
-
-            fontSize : 20,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        ),
+        title  : Text ( title , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -61,12 +47,7 @@ class T_Subjects extends StatelessWidget
           IconButton
           (
 
-            onPressed : ( )
-            {
-
-              Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ;
-
-            },
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
@@ -108,21 +89,7 @@ class T_Subjects extends StatelessWidget
                     child : Center
                     (
 
-                      child : Text
-                      (
-
-                        "مواد التخصص الاجبارية",
-
-                        style : TextStyle
-                        (
-
-                          fontSize : 25,
-                          fontWeight : FontWeight . bold,
-                          color : Colors . white
-
-                        )
-
-                      )
+                      child : Text ( "مواد التخصص الاجبارية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                     )
 
@@ -238,16 +205,7 @@ class T_Subjects extends StatelessWidget
             padding : EdgeInsets . only ( top : 5 , bottom : 5 , left : 6 , right : 6 ),
             margin : EdgeInsets . only ( left : 5 , right : 5 ),
 
-            child : Text
-            (
-
-              item,
-
-              style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ),
-
-              textAlign : TextAlign . center,
-
-            )
+            child : Text ( item , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
           )
 
@@ -273,12 +231,13 @@ class T_Subjects extends StatelessWidget
         builder : ( context ) => Subject
         (
 
-          "مختبر قواعد البيانات",
-          "0601242",
-          "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات",
-          "قواعد البيانات ( 0601241 )",
-          "كلية تكنولوجيا المعلومات والاتصالات",
-          "fdfdf"
+          name : "مختبر قواعد البيانات",
+          college : "كلية تكنولوجيا المعلومات والاتصالات",
+          previous : "قواعد البيانات ( 0601241 )",
+          NO : "0601242",
+          syllabus : "fdfdf",
+          DESC : "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات"
+
         )
 
       )
