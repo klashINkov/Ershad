@@ -1,24 +1,26 @@
 // Done
 
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subjects.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Start Of Specialties Class
 class Specialties extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  final String title ;
-  final List < String > sp ;
+  final String College_Name ;
+  final List < String > Colleges_Specialties ;
 
-  Specialties ( { required this . title , required this . sp } ) ;
+  Specialties ( { required this . College_Name , required this . Colleges_Specialties } ) ;
 
   // Start of build Widget
   @override
@@ -33,7 +35,7 @@ class Specialties extends StatelessWidget
       appBar : AppBar
       (
 
-        title : Text ( title , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        title : Text ( College_Name , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -86,7 +88,7 @@ class Specialties extends StatelessWidget
                     scrollDirection : Axis . horizontal,
                     separatorBuilder : ( context , _ ) => SizedBox ( width : 0 ),
                     itemCount : x . Items . length,
-                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . str , image : x . Items [ index ] . image , context : context )
+                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
 
                   )
 
@@ -236,17 +238,17 @@ class Specialties extends StatelessWidget
 
       shrinkWrap : true,
       padding : EdgeInsets . only ( top : 0 ),
-      itemCount : sp . length,
+      itemCount : Colleges_Specialties . length,
 
       itemBuilder : ( context , index )
       {
 
-        String item = sp [ index ] ;
+        String Specialty_Name = Colleges_Specialties [ index ] ;
 
         return ListTile
         (
 
-          onTap : ( ) { List_View_On_Tap ( item , context ) ; },
+          onTap : ( ) { List_View_On_Tap ( Specialty_Name , context ) ; },
 
           title : Container
           (
@@ -263,7 +265,7 @@ class Specialties extends StatelessWidget
             margin : EdgeInsets . only ( bottom : 7 ),
             padding : EdgeInsets . only ( top : 5 , bottom : 5 ),
 
-            child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
+            child : Text ( Specialty_Name , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           )
 
@@ -289,7 +291,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -300,7 +302,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -311,7 +313,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب/ الذكاء الاصطناعي وعلم البيانات" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -322,7 +324,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -333,7 +335,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -344,7 +346,7 @@ class Specialties extends StatelessWidget
       {
 
         List < String > ss = [ "تربية خاصة" , "معلم صف" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( title : txt , sp : ss ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : txt , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
         break ;
 
       }
@@ -357,14 +359,25 @@ class Specialties extends StatelessWidget
   // End of Horizontal List View Function
 
   // Start of List View On Tap Function
-  void List_View_On_Tap ( String item , BuildContext context )
+  void List_View_On_Tap ( String Specialty_Name , BuildContext context ) async
   {
 
-    String Desc = "يهدف التخصص إلى تخريج وتأهيل الطلبة على حوسبة نظم المعلومات في المجالات المختلفة المحاسبية والمالية والإدارية والطبية …الخ، والهدف منه تنمية قدرات الطالب على التخطيط والتصميم والتنفيذ والتطوير وإدارة نظم المعلومات والتي تخدم المؤسسات المختلفة كالبنوك والجامعات والمستشفيات" ;
+    String path = "" , id = "وصف التخصص و اسماء المواد" ;
 
-    List < String > subjects = [ "البرمجة المرئية" , "نظم المعلومات" , "التدريب الميداني	" , "أمن الشبكات	" , "مختبر شبكات الحاسوب	" , "الذكاء الإصطناعي	" , "نظم التشغيل	" , "الخوارزميات	" , "البرمجة الكينونية 2	" ] ;
+    switch ( College_Name )
+    {
 
-    Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Subjects ( title : item , Desc : Desc , subjects : subjects ) ) ) ;
+    case "كلية الهندسة" :
+      {
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+        break ;
+      }
+
+    }
+    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( id ) . get ( ) ;
+
+    Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Subjects ( Specialty_Name : Specialty_Name , Desc : varibel [ "وصف التخصص" ] , subjects : varibel [ "مواد التخصص" ] ) ) ) ;
 
   }
   // End of List View On Tap Function

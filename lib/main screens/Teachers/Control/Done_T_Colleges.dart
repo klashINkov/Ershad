@@ -90,7 +90,7 @@ class T_Colleges extends StatelessWidget
         child : InkWell
         (
 
-          onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ) ; },
+          onTap : ( ) { Grid_View_On_Tap ( index , item . College_Name , context ) ; },
 
           child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
@@ -101,7 +101,7 @@ class T_Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( left : 15 , right : 15 ,  bottom : 25 ),
 
-          child : Text ( item . str , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
+          child : Text ( item . College_Name , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
         )
 

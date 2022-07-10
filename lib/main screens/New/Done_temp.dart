@@ -22,12 +22,12 @@ class temp
   List < sts > Items =
   [
 
-    sts ( str : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
-    sts ( str : "كلية العلوم"                        , image : "pic/sciences college.png" ),
-    sts ( str : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
-    sts ( str : "كلية الاعمال"                        , image : "pic/business  college.png" ),
-    sts ( str : "كلية الاداب"                         , image : "pic/arts college.png" ),
-    sts ( str : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
+    sts ( College_Name : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
+    sts ( College_Name : "كلية العلوم"                        , image : "pic/sciences college.png" ),
+    sts ( College_Name : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
+    sts ( College_Name : "كلية الاعمال"                        , image : "pic/business  college.png" ),
+    sts ( College_Name : "كلية الاداب"                         , image : "pic/arts college.png" ),
+    sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
 
   ];
 
@@ -548,10 +548,10 @@ class temp
 class sts
 {
 
-  String str ;
+  String College_Name ;
   String image ;
 
-  sts ( { required this . str , required this . image  } ) ;
+  sts ( { required this . College_Name , required this . image  } ) ;
 
 }
 

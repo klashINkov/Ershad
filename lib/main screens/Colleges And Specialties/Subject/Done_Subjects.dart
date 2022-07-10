@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -15,10 +15,10 @@ class Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  String title , Desc ;
-  List < String > subjects ;
+  String Specialty_Name , Desc ;
+  List < dynamic > subjects ;
 
-  Subjects ( { required this . title , required this . Desc , required this . subjects } ) ;
+  Subjects ( { required this . Specialty_Name , required this . Desc , required this . subjects } ) ;
 
   // Start of build Widget
   @override
@@ -33,7 +33,11 @@ class Subjects extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text ( title , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        title  : Padding
+        (
+          padding : EdgeInsets . only ( top : 10  ),
+          child : Text ( Specialty_Name , maxLines : 2, textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -58,7 +62,17 @@ class Subjects extends StatelessWidget
       body : Container
       (
 
-        color : Colors . green . shade900,
+        // color : Colors . green . shade900,
+        decoration : BoxDecoration
+        (
+
+            gradient :  LinearGradient
+            (
+
+                colors : [ Color (0xff780206) , Color(0xFF061161) ]
+
+              )
+        ),
 
         child : Column
         (
@@ -227,8 +241,8 @@ class Subjects extends StatelessWidget
         title : Container
         (
 
-          padding : EdgeInsets . only ( top : 5 ),
-          margin : EdgeInsets . only ( left : 5 , right : 5 , bottom : 7 ),
+          padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
+          margin : EdgeInsets . only ( right : 5 , bottom : 7 ),
 
           decoration : BoxDecoration
           (
@@ -239,7 +253,7 @@ class Subjects extends StatelessWidget
 
           ),
 
-          child : Text ( item , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
+          child : Text ( item , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 

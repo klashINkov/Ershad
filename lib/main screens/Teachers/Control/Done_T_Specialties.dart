@@ -86,7 +86,7 @@ class Specialties extends StatelessWidget
                     scrollDirection : Axis . horizontal,
                     separatorBuilder : ( context , _ ) => SizedBox ( width : 0 ),
                     itemCount : x . Items . length,
-                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . str , image : x . Items [ index ] . image , context : context )
+                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
 
                   )
 
@@ -170,11 +170,11 @@ class Specialties extends StatelessWidget
                 // End Of List View
 
                 // Start Of Arrow Up
-                x .Arrows ( top : 40 , left : 342 , icon : Icons . keyboard_arrow_up ),
+                x . Arrows ( top : 40 , left : 342 , icon : Icons . keyboard_arrow_up ),
                 // End Of Arrow Up
 
                 // Start Of Arrow down
-                x .Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down ),
+                x . Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down ),
                 // End Of Arrow down
 
               ]

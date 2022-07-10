@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison, prefer_const_literals_to_create_immutables
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison, prefer_const_literals_to_create_immutables, avoid_function_literals_in_foreach_calls, unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
 
@@ -12,13 +12,9 @@ import 'package:ershad/main screens/Teachers/Done_SignUp.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
-import 'package:firebase_core/firebase_core.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 
@@ -36,6 +32,7 @@ class Signin extends StatefulWidget
 class _Signin extends State < Signin >
 {
 
+  String  Name = "" , Dept = "" , Coll = "" ;
   final Email    = TextEditingController ( ) ;
   final Password = TextEditingController ( ) ;
 
@@ -50,6 +47,7 @@ class _Signin extends State < Signin >
     super . initState ( ) ;
     Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    data ( ) ;
 
   }
 
@@ -88,7 +86,35 @@ class _Signin extends State < Signin >
 
       ),
 
-      body : Container
+      body :
+      /*StreamBuilder < List < User > >
+      (
+        stream : Read_Users ( ) ,
+        builder : ( context , snapshot )
+        {
+
+          if ( snapshot . hasError)
+            {
+              return Text ( "wrong ${ snapshot . error }" ) ;
+            }
+
+         else if ( snapshot . hasData )
+            {
+
+              final Users = snapshot . data! ;
+              return ListView ( children : Users . map ( Build_User ) . toList ( ) ) ;
+
+            }
+
+         else
+           {
+             return Center ( child : CircularProgressIndicator ( ) ) ;
+           }
+
+        },
+
+      )*/
+      Container
       (
 
         decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
@@ -305,6 +331,17 @@ class _Signin extends State < Signin >
   }
   // End Of build Widget
 
+ /* Stream < List < User > > Read_Users ( ) => FirebaseFirestore . instance . collection ( "Doctors" ) . snapshots ( ) . map
+  (
+    ( snapshot ) => snapshot . docs . map ( ( doc ) => User . fromjson ( doc . data ( ) ) ) . toList ( ),
+  ) ;
+
+  Widget Build_User ( User user ) => ListTile
+  (
+    title : Text ("Name : ${ user . Name } --- Coll : ${ user . Coll } ---- Dept : ${ user . Dept }"  )
+  );*/
+
+
   signIn ( ) async
   {
 
@@ -330,7 +367,7 @@ class _Signin extends State < Signin >
         {
 
           AwesomeDialog
-          (
+            (
 
               padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 10 , right : 10 ),
               autoHide : Duration ( seconds : 5 ),
@@ -348,15 +385,15 @@ class _Signin extends State < Signin >
         {
 
           AwesomeDialog
-          (
+            (
 
-            padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
-            autoHide : Duration ( seconds : 2 ),
-            dialogBackgroundColor : Colors . black,
-            borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-            context : context,
+              padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
+              autoHide : Duration ( seconds : 2 ),
+              dialogBackgroundColor : Colors . black,
+              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+              context : context,
 
-            body : Text ( "كلمة المرور خاطئة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+              body : Text ( "كلمة المرور خاطئة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
           ) . show ( ) ;
 
@@ -373,15 +410,15 @@ class _Signin extends State < Signin >
     {
 
       AwesomeDialog
-      (
+        (
 
-        padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
-        autoHide : Duration ( seconds : 5 ),
-        dialogBackgroundColor : Colors . black,
-        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-        context : context,
+          padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
+          autoHide : Duration ( seconds : 5 ),
+          dialogBackgroundColor : Colors . black,
+          borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+          context : context,
 
-        body : Text ( "المعلومات التي قمت بادخالها غير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+          body : Text ( "المعلومات التي قمت بادخالها غير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
       ) . show ( ) ;
 
@@ -389,6 +426,91 @@ class _Signin extends State < Signin >
 
   }
 
+  data ( ) async
+  {
+
+    // CollectionReference user_data = FirebaseFirestore . instance . collection ( "Doctors" ) ;
+    Stream < List < User > >  user_data = FirebaseFirestore . instance . collection ( "Doctors" ) . snapshots ( ) . map
+      (
+          ( snapshot ) => snapshot . docs . map ( ( doc ) => User . fromjson ( doc . data ( ) ) ) . toList ( ),
+    ) ;
+
+
+
+    /*await user_data  . then
+      (
+
+        (value)
+        {
+
+          value . docs . forEach
+            (
+
+              ( element )
+              {
+                print ( "=======================================" ) ;
+                print ( element . data ( ) ) ;
+                print ( "=======================================" ) ;
+
+              }
+
+          );
+
+        }
+
+    );*/
+
+  }
+
+  data_Docs ( ) async
+  {
+
+    DocumentReference user_data = FirebaseFirestore . instance . collection ( "Doctors" ) . doc ( "iO4rHN9ImVmhaMU1r6NI" ) ;
+
+    await user_data . get ( ) . then
+      (
+
+            (value)
+        {
+
+          print ( value . data ( ) ) ;
+
+        }
+
+    );
+
+  }
+
+  /*Data ( )
+  {
+    Name = r . Name ;
+    Coll = r . Coll ;
+    Dept = r . Dept ;
+    print ( "==================" ) ;
+    print ( "Name : $Name" ) ;
+    print ( "==================" ) ;
+    print ( "Coll : $Coll" ) ;
+    print ( "==================" ) ;
+    print ( "Dept : $Dept" ) ;
+    print ( "==================" ) ;
+
+  }*/
+
 }
 // End Of _Signin Class
 
+class User
+{
+
+  final String Name ;
+  final String Coll ;
+  final String Dept ;
+
+  User ( { required this . Name , required this . Coll , required this . Dept } ) ;
+
+  Map < String , dynamic > tojason ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept } ;
+
+  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Dept : json [ "Dept" ] , Coll : json [ "Coll" ] );
+
+
+}

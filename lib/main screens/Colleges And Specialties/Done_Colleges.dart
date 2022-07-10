@@ -74,7 +74,7 @@ class Colleges extends StatelessWidget
         child : InkWell
         (
 
-          onTap : ( ) { Grid_View_On_Tap ( index , item . str , context ) ; },
+          onTap : ( ) { Grid_View_On_Tap ( index , item . College_Name , context ) ; },
 
           child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
@@ -85,7 +85,7 @@ class Colleges extends StatelessWidget
 
           padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 25 ),
 
-          child : Text ( item . str , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
+          child : Text ( item . College_Name , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
         )
 
@@ -97,7 +97,7 @@ class Colleges extends StatelessWidget
   // End Of Grid View Widget
 
   // Start of Grid View On Tap Function
-  void Grid_View_On_Tap ( int index , String item , BuildContext context )
+  void Grid_View_On_Tap ( int index , String College_Name , BuildContext context )
   {
 
     // Start Of Switch
@@ -108,8 +108,8 @@ class Colleges extends StatelessWidget
       case 0 :
       {
 
-        List < String > ss = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }
@@ -119,8 +119,8 @@ class Colleges extends StatelessWidget
       case 1 :
       {
 
-        List < String > ss = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }
@@ -130,8 +130,8 @@ class Colleges extends StatelessWidget
       case 2 :
       {
 
-        List < String > ss = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب / الذكاء الاصطناعي وعلم البيانات" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزه الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }
@@ -141,8 +141,8 @@ class Colleges extends StatelessWidget
       case 3 :
       {
 
-        List < String > ss = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }
@@ -152,8 +152,8 @@ class Colleges extends StatelessWidget
       case 4 :
       {
 
-        List < String > ss = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }
@@ -163,8 +163,8 @@ class Colleges extends StatelessWidget
       case 5 :
       {
 
-        List < String > ss = [ "تربية خاصة" , "معلم صف" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( title : item , sp : ss ) ) ) ;
+        List < String > Colleges_Specialties = [ "تربية خاصة" , "معلم صف" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
       }

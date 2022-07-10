@@ -85,7 +85,7 @@ class Colleges_Doctors extends StatelessWidget
                     scrollDirection : Axis . horizontal,
                     separatorBuilder : ( context , _ ) => SizedBox ( width : 0 ),
                     itemCount : x . Items . length,
-                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . str , image : x . Items [ index ] . image , context : context )
+                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
 
                   )
 
