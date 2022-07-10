@@ -25,7 +25,7 @@ class temp
     sts ( College_Name : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
     sts ( College_Name : "كلية العلوم"                        , image : "pic/sciences college.png" ),
     sts ( College_Name : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
-    sts ( College_Name : "كلية الاعمال"                        , image : "pic/business  college.png" ),
+    sts ( College_Name : "كلية الأعمال"                        , image : "pic/business  college.png" ),
     sts ( College_Name : "كلية الاداب"                         , image : "pic/arts college.png" ),
     sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
 
@@ -90,7 +90,7 @@ class temp
   (
 
     padding : EdgeInsets . only (  top  : top , left : left ),
-    child : Icon ( icon , color : Colors . black , size : 80 )
+    child : Icon ( icon , color : Colors . white , size : 80 )
 
   );
   // End Of Arrows Widget ==> اسهم القوائم

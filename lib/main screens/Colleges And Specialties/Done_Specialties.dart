@@ -367,11 +367,52 @@ class Specialties extends StatelessWidget
     switch ( College_Name )
     {
 
-    case "كلية الهندسة" :
+      case "كلية الهندسة" :
       {
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
 
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
         break ;
+
+      }
+
+      case "كلية العلوم" :
+      {
+
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+        break ;
+
+      }
+
+      case "كلية تكنولوجيا المعلومات و الاتصالات" :
+      {
+
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+        break ;
+
+      }
+
+      case "كلية الأعمال" :
+      {
+
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+        break ;
+
+      }
+
+      case "كلية الاداب" :
+      {
+
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+        break ;
+
+      }
+
+      case "كلية العلوم التربوية" :
+      {
+
+        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+        break ;
+
       }
 
     }

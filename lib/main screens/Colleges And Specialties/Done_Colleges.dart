@@ -108,7 +108,7 @@ class Colleges extends StatelessWidget
       case 0 :
       {
 
-        List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+        List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
@@ -130,7 +130,7 @@ class Colleges extends StatelessWidget
       case 2 :
       {
 
-        List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزه الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
+        List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
         break ;
 
