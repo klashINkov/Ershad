@@ -47,7 +47,7 @@ class Colleges extends StatelessWidget
 
         padding : EdgeInsets . only ( top : 15 , right : 5 , left : 5 ),
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
-        child : Opacity ( opacity : 0.6 , child: Grid_View ( ))
+        child : Grid_View ( )
 
       )
 
