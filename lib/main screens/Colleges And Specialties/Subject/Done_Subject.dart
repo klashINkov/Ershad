@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -14,9 +14,10 @@ import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subjec
 class Subject extends StatelessWidget
 {
 
-  final String name , NO , DESC , previous , college , syllabus ;
+  final String Name , NO , Previous , Type , syllabus , DESC ;
+  final int Credit_hours ;
 
-  Subject ( { required this . name , required this . NO , required this . DESC , required this . previous , required this . college , required this . syllabus } ) ;
+  Subject ( { required this . Name , required this . NO , required this . Previous , required this . Type , required this . Credit_hours , required this . syllabus , required this . DESC } ) ;
 
   var x = temp ( ) ;
 
@@ -41,7 +42,7 @@ class Subject extends StatelessWidget
 
             Text ( "اسم المادة",   style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
-            Text ( name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
+            Text ( Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           ]
 
@@ -73,7 +74,7 @@ class Subject extends StatelessWidget
         child : Container
         (
 
-          color : Colors . green . shade900,
+          decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
           padding : EdgeInsets . only ( top : 100 ),
 
           child : Column
@@ -82,19 +83,23 @@ class Subject extends StatelessWidget
             children :
             [
 
-              // بداية رقم المادة
+              // Start Of رقم المادة
               x . Item ( txt1 : "رقم المادة" , txt2 : NO , txt_pad : 90 , size1 : 30 , size2 : 30 ),
-              // نهاية رقم المادة
+              // End Of رقم المادة
 
-              // بداية المتطلب السابق للمادة
-              x . Item ( txt1 : "المتطلب السابق للمادة" , txt2 : previous , txt_pad : 85 , size1 : 30 , size2 : 18 ),
-              // نهاية المتطلب السابق للمادة
+              // Start Of المتطلب السابق للمادة
+              x . Item ( txt1 : "المتطلب السابق للمادة" , txt2 : Previous , txt_pad : 85 , size1 : 30 , size2 : 18 ),
+              // End Of المتطلب السابق للمادة
 
-              // بداية كلية المادة
-              x . Item ( txt1 : "كلية المادة" , txt2 : college , txt_pad : 90 , size1 : 30 , size2 : 18 ),
-              // نهاية كلية المادة
+              // Start Of االساعات المعتمدة
+              x . Item ( txt1 : "االساعات المعتمدة" , txt2 : Credit_hours . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
+              // End Of االساعات المعتمدة
 
-              // بداية وصف المساق
+              // Start Of االساعات المعتمدة
+              x . Item ( txt1 : "نوع المادة" , txt2 : Type . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
+              // End Of االساعات المعتمدة
+
+              // Start Of وصف المساق
               Stack
               (
 
@@ -111,7 +116,7 @@ class Subject extends StatelessWidget
                     decoration : BoxDecoration
                     (
 
-                      border : Border . all ( color : Colors . amber , width : 10 ),
+                      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
                       borderRadius : BorderRadius . circular ( 50 ),
 
                     ),
@@ -183,7 +188,7 @@ class Subject extends StatelessWidget
                 ]
 
               )
-              // نهاية وصف المساق
+              // End Of وصف المساق
 
             ]
 

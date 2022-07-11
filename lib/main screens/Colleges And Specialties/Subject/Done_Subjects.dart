@@ -2,6 +2,7 @@
 
 // ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main%20screens/New/Done_temp.dart';
@@ -15,10 +16,10 @@ class Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  String Specialty_Name , Desc ;
+  String Specialty_Name , College_Name , Desc ;
   List < dynamic > subjects ;
 
-  Subjects ( { required this . Specialty_Name , required this . Desc , required this . subjects } ) ;
+  Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
 
   // Start of build Widget
   @override
@@ -92,12 +93,12 @@ class Subjects extends StatelessWidget
                 (
 
                   height : 250,
-                  margin : EdgeInsets . only ( top : 90 , left : 25 , right : 25 ),
+                  margin : EdgeInsets . only ( top : 90 , left : 15 , right : 25 ),
 
                   decoration : BoxDecoration
                   (
 
-                    border : Border . all ( color : Colors . amber , width : 10 ),
+                    border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
                     borderRadius : BorderRadius . circular ( 50 ),
 
                   ),
@@ -176,7 +177,7 @@ class Subjects extends StatelessWidget
                 (
 
                   height : 305,
-                  margin : EdgeInsets . only ( top : 25 , left : 25 , right : 25 ),
+                  margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
 
                   decoration : BoxDecoration
                   (
@@ -231,18 +232,18 @@ class Subjects extends StatelessWidget
     itemBuilder : ( context , index )
     {
 
-      final item = subjects [ index ] ;
+      String Subject_Name = subjects [ index ] ;
 
       return ListTile
       (
 
-        onTap : ( ) { List_View_On_Tap ( item , context ) ; },
+        onTap : ( ) { List_View_On_Tap ( Subject_Name , context ) ; },
 
         title : Container
         (
 
           padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
-          margin : EdgeInsets . only ( right : 5 , bottom : 7 ),
+          margin : EdgeInsets . only ( right : 3 , bottom : 7 ),
 
           decoration : BoxDecoration
           (
@@ -253,7 +254,7 @@ class Subjects extends StatelessWidget
 
           ),
 
-          child : Text ( item , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
+          child : Text ( Subject_Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 
@@ -265,8 +266,55 @@ class Subjects extends StatelessWidget
   // End of list_view Widget
 
   // Start of List_View_On_Tap Function
-  void List_View_On_Tap ( final item , BuildContext context )
+  void List_View_On_Tap ( String Subject_Name , BuildContext context ) async
   {
+
+    String path = "" , id = Subject_Name ;
+
+    if ( College_Name == "كلية الهندسة" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية العلوم" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية الأعمال" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية الاداب" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية العلوم التربوية" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+
+    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( id ) . get ( ) ;
 
     Navigator. push
     (
@@ -277,12 +325,13 @@ class Subjects extends StatelessWidget
           builder : ( context ) => Subject
           (
 
-            name : "مختبر قواعد البيانات",
-            college : "كلية تكنولوجيا المعلومات والاتصالات",
-            previous : "قواعد البيانات ( 0601241 )",
-            NO : "0601242",
+            Name : Subject_Name,
+            Previous : varibel [ "Previous" ],
+            NO : varibel [ "NO" ] . toString ( ),
             syllabus : "fdfdf",
-            DESC : "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات"
+            Credit_hours : varibel [ "Credit_hours" ] ,
+            Type : varibel [ "Type" ] ,
+            DESC : varibel [ "DESC" ]
 
            )
 

@@ -2,6 +2,7 @@
 
 // ignore_for_file: must_be_immutable, file_names, camel_case_types, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
@@ -17,10 +18,10 @@ class T_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  String title , Desc ;
+  String Specialty_Name , College_Name , Desc ;
   List < String > subjects ;
 
-  T_Subjects ( { required this . title , required this . Desc , required this . subjects } ) ;
+  T_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
 
   // Start of build Widget
   @override
@@ -35,7 +36,11 @@ class T_Subjects extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text ( title , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        title  : Padding
+        (
+          padding : EdgeInsets . only ( top : 10  ),
+          child : Text ( Specialty_Name , maxLines : 2, textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -219,30 +224,78 @@ class T_Subjects extends StatelessWidget
   // End of list_view Widget
 
   // Start of List_View_On_Tap Function
-  void List_View_On_Tap ( final item , BuildContext context )
+  void List_View_On_Tap ( String Subject_Name , BuildContext context ) async
   {
 
-    Navigator . push
+    String path = "" , id = Subject_Name ;
+
+    if ( College_Name == "كلية الهندسة" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
+
+    }
+
+    if ( College_Name == "كلية العلوم" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+    }
+
+    if ( College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+    }
+
+    if ( College_Name == "كلية الأعمال" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+    }
+
+    if ( College_Name == "كلية الاداب" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+    }
+
+    if ( College_Name == "كلية العلوم التربوية" )
+    {
+
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+
+    }
+
+
+    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( id ) . get ( ) ;
+
+    Navigator. push
     (
 
       context , MaterialPageRoute
       (
 
-        builder : ( context ) => Subject
-        (
+          builder : ( context ) => Subject
+          (
 
-          name : "مختبر قواعد البيانات",
-          college : "كلية تكنولوجيا المعلومات والاتصالات",
-          previous : "قواعد البيانات ( 0601241 )",
-          NO : "0601242",
-          syllabus : "fdfdf",
-          DESC : "هذا المساق هو عبارة عن استكمال او الاصح تطبيق ما تم دراسته في مساق قواعد البيانات وبشكل مختصر هذا المساق يتحدث عن كيفية انشاء قواعد البيانات"
+            Name : Subject_Name,
+            Previous : varibel [ "Previous" ],
+            NO : varibel [ "NO" ],
+            syllabus : "fdfdf",
+            Credit_hours : varibel [ "Credit_hours" ] ,
+            Type : varibel [ "Type" ] ,
+            DESC : varibel [ "DESC" ]
 
-        )
+           )
 
       )
 
-    );
+   );
 
   }
   // End of List_View_On_Tap Function
