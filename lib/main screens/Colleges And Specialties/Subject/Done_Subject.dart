@@ -92,7 +92,7 @@ class Subject extends StatelessWidget
               // End Of المتطلب السابق للمادة
 
               // Start Of االساعات المعتمدة
-              x . Item ( txt1 : "االساعات المعتمدة" , txt2 : Credit_hours . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
+              x . Item ( txt1 : "الساعات المعتمدة" , txt2 : Credit_hours . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
               // End Of االساعات المعتمدة
 
               // Start Of االساعات المعتمدة
@@ -140,7 +140,7 @@ class Subject extends StatelessWidget
                             // End Of وصف المساق
 
                             // Start Of Description Text
-                            Text ( DESC , textAlign : TextAlign . right , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                            Text ( DESC , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
                             // End Of Description Text
 
                           ]
@@ -182,7 +182,7 @@ class Subject extends StatelessWidget
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  x . Arrows ( top : 230 , left : 346 , icon : Icons . keyboard_arrow_down ),
+                  x . Arrows ( top : 230 , left : 346 , icon : Icons . keyboard_arrow_down )
                   // End Of Arrow down
 
                 ]

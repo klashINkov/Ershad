@@ -173,7 +173,7 @@ class Colleges_Doctors extends StatelessWidget
                 // End Of Arrow Up
 
                 // Start Of Arrow down
-                x . Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down ),
+                x . Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down )
 
                 // End Of Arrow down
 

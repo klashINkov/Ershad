@@ -1,11 +1,8 @@
-//Done
+// Done
 
-// ignore_for_file: must_be_immutable, file_names, camel_case_types, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
@@ -13,13 +10,17 @@ import 'package:ershad/main screens/Teachers/Control/Done_Add_Subjects.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subject.dart';
 
+import 'package:ershad/main screens/New/Done_temp.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 // Start Of Subjects Class
 class T_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
   String Specialty_Name , College_Name , Desc ;
-  List < String > subjects ;
+  List < dynamic > subjects ;
 
   T_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
 
@@ -38,8 +39,10 @@ class T_Subjects extends StatelessWidget
 
         title  : Padding
         (
+
           padding : EdgeInsets . only ( top : 10  ),
-          child : Text ( Specialty_Name , maxLines : 2, textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+          child : Text ( Specialty_Name , maxLines : 2 , textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) )
+
         ),
 
         backgroundColor : Colors . transparent,
@@ -65,7 +68,7 @@ class T_Subjects extends StatelessWidget
       body : Container
       (
 
-        color : Colors . green . shade900,
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
         child : Column
         (
@@ -94,7 +97,7 @@ class T_Subjects extends StatelessWidget
                     child : Center
                     (
 
-                      child : Text ( "مواد التخصص الاجبارية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                      child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                     )
 
@@ -106,7 +109,7 @@ class T_Subjects extends StatelessWidget
                   (
 
                     height : 570,
-                    margin : EdgeInsets . only ( top : 25 , left : 25 , right : 25 ),
+                    margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
 
                     decoration : BoxDecoration
                     (
@@ -121,18 +124,7 @@ class T_Subjects extends StatelessWidget
 
                       padding : EdgeInsets . only ( top : 50 , bottom : 30 ),
 
-                      child : Column
-                      (
-
-                        mainAxisAlignment : MainAxisAlignment . center,
-
-                        children :
-                        [
-
-                          list_view ( )
-
-                        ]
-                      )
+                      child : list_view ( )
 
                     )
 
@@ -155,10 +147,10 @@ class T_Subjects extends StatelessWidget
 
                     child : FloatingActionButton
                     (
+                      backgroundColor : Colors . blueAccent . shade700,
+                      onPressed : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Add_Subjects ( ) ) ) ; },
 
-                    onPressed : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Add_Subjects ( ) ) ) ; },
-
-                    child : Icon ( Icons . add )
+                      child : Icon ( Icons . add )
 
                     )
 
@@ -183,42 +175,44 @@ class T_Subjects extends StatelessWidget
   // End of build Widget
 
   // Start of list_view Widget
-  Widget list_view ( )  => Flexible
+  Widget list_view ( )  => ListView . builder
   (
 
-    child : ListView . builder
-    (
+    padding : EdgeInsets . only ( top : 0 ),
+    itemCount : subjects . length,
 
-      shrinkWrap : true,
-      padding : EdgeInsets . only ( top : 0 ),
-      itemCount : subjects . length,
+    itemBuilder : ( context , index )
+    {
 
-      itemBuilder : ( context , index )
-      {
+      final Subject_Name = subjects [ index ] ;
 
-        final item = subjects [ index ] ;
+      return ListTile
+      (
 
-        return ListTile
+        onTap : ( ) { List_View_On_Tap ( Subject_Name , context ) ; },
+
+        title : Container
         (
 
-          onTap : ( ) { List_View_On_Tap ( item , context ) ; },
+          padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
+          margin : EdgeInsets . only ( right : 3 , bottom : 7 ),
 
-          title : Container
+          decoration : BoxDecoration
           (
 
             color : Colors . black,
-            padding : EdgeInsets . only ( top : 5 , bottom : 5 , left : 6 , right : 6 ),
-            margin : EdgeInsets . only ( left : 5 , right : 5 ),
+            border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+            borderRadius : BorderRadius . circular ( 40 )
 
-            child : Text ( item , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
+          ),
 
-          )
+          child : Text ( Subject_Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
-        );
+        )
 
-      }
+      );
 
-    )
+    }
 
   );
   // End of list_view Widget
@@ -227,7 +221,7 @@ class T_Subjects extends StatelessWidget
   void List_View_On_Tap ( String Subject_Name , BuildContext context ) async
   {
 
-    String path = "" , id = Subject_Name ;
+    String path = "";
 
     if ( College_Name == "كلية الهندسة" )
     {
@@ -239,40 +233,40 @@ class T_Subjects extends StatelessWidget
     if ( College_Name == "كلية العلوم" )
     {
 
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
 
     }
 
     if ( College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" )
     {
 
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
 
     }
 
     if ( College_Name == "كلية الأعمال" )
     {
 
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
 
     }
 
     if ( College_Name == "كلية الاداب" )
     {
 
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
 
     }
 
     if ( College_Name == "كلية العلوم التربوية" )
     {
 
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
 
     }
 
 
-    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( id ) . get ( ) ;
+    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Subject_Name ) . get ( ) ;
 
     Navigator. push
     (
@@ -280,18 +274,18 @@ class T_Subjects extends StatelessWidget
       context , MaterialPageRoute
       (
 
-          builder : ( context ) => Subject
-          (
+        builder : ( context ) => Subject
+        (
 
-            Name : Subject_Name,
-            Previous : varibel [ "Previous" ],
-            NO : varibel [ "NO" ],
-            syllabus : "fdfdf",
-            Credit_hours : varibel [ "Credit_hours" ] ,
-            Type : varibel [ "Type" ] ,
-            DESC : varibel [ "DESC" ]
+          Name : Subject_Name,
+          Previous : varibel [ "Previous" ],
+          NO : varibel [ "NO" ] . toString ( ),
+          syllabus : "fdfdf",
+          Credit_hours : varibel [ "Credit_hours" ] ,
+          Type : varibel [ "Type" ] ,
+          DESC : varibel [ "DESC" ]
 
-           )
+        )
 
       )
 

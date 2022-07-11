@@ -1,25 +1,26 @@
 //Done
 
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, camel_types, file_names, camel_case_types, prefer_const_literals_to_create_immutables
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Teachers/Control/Subjects/Done_T_Subjects.dart';
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main screens/New/Done_temp.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Start Of Specialties Class
-class Specialties extends StatelessWidget
+class T_Specialties extends StatelessWidget
 {
 
   var x = temp ( ) ;
   final String College_Name ;
   final List < String > Colleges_Specialties ;
 
-  Specialties ( { required this . College_Name , required this . Colleges_Specialties } ) ;
+  T_Specialties ( { required this . College_Name , required this . Colleges_Specialties } ) ;
 
   // Start of build Widget
   @override
@@ -59,7 +60,7 @@ class Specialties extends StatelessWidget
       body : Container
       (
 
-        color : Colors . green . shade900,
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
         child : Column
         (
@@ -87,7 +88,7 @@ class Specialties extends StatelessWidget
                     scrollDirection : Axis . horizontal,
                     separatorBuilder : ( context , _ ) => SizedBox ( width : 0 ),
                     itemCount : x . Items . length,
-                    itemBuilder : ( context , index ) => Horizontal_List_View ( item : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
+                    itemBuilder : ( context , index ) => Horizontal_List_View ( College_Name : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
 
                   )
 
@@ -99,7 +100,7 @@ class Specialties extends StatelessWidget
                 // End Of Arrow Back
 
                 // Start Of Arrow Forward
-                x .Arrows ( top : 115 , left : 330 , icon : Icons . arrow_forward_ios ),
+                x .Arrows ( top : 115 , left : 330 , icon : Icons . arrow_forward_ios )
                 // End Of Arrow Forward
 
               ]
@@ -123,7 +124,7 @@ class Specialties extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text ( "تخصصات الكلية" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                    child : Text ( "تخصصات الكلية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
@@ -135,7 +136,6 @@ class Specialties extends StatelessWidget
                 (
 
                   margin : EdgeInsets . only ( left : 25 , right : 25 , top : 15 ),
-                  padding : EdgeInsets . only ( left : 5 , right : 5 ),
                   height : 400,
 
                   decoration : BoxDecoration
@@ -175,7 +175,7 @@ class Specialties extends StatelessWidget
                 // End Of Arrow Up
 
                 // Start Of Arrow down
-                x . Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down ),
+                x . Arrows ( top : 300 , left : 342 , icon : Icons . keyboard_arrow_down )
                 // End Of Arrow down
 
               ]
@@ -195,7 +195,7 @@ class Specialties extends StatelessWidget
   // End of build Widget
 
   // Start of Horizontal List View Widget
-  Widget Horizontal_List_View ( { required String item , required String image , required BuildContext context } ) => InkWell
+  Widget Horizontal_List_View ( { required String College_Name , required String image , required BuildContext context } ) => InkWell
   (
 
     // Start Of On Tap
@@ -217,7 +217,7 @@ class Specialties extends StatelessWidget
 
           padding : EdgeInsets . only ( top : 80 , left : 15 , right : 15 ),
 
-          child : Text ( item , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ) )
+          child : Text ( College_Name , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontWeight : FontWeight . bold ) )
 
         )
 
@@ -262,7 +262,7 @@ class Specialties extends StatelessWidget
             ),
 
             margin : EdgeInsets . only ( bottom : 7 ),
-            padding : EdgeInsets . only ( top : 5 , bottom : 5 ),
+            padding : EdgeInsets . only ( top : 10 , bottom : 10 ),
 
             child : Text ( Specialty_Name , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
@@ -278,81 +278,68 @@ class Specialties extends StatelessWidget
   // End of List View Widget
 
   // Start of Horizontal List View Function
-  void Horizontal_List_View_On_Tap ( String txt , BuildContext context )
+  void Horizontal_List_View_On_Tap ( String College_Name , BuildContext context )
   {
 
-    // Start Of Switch
-    switch ( txt )
+    // Start Of كلية الهندسة
+    if ( College_Name ==  "كلية الهندسة" )
     {
 
-      // Start Of كلية الهندسة case
-      case "كلية الهندسة" :
-      {
-
-        List < String > ss = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية الهندسة Case
-
-      // Start Of كلية العلوم Case
-      case "كلية العلوم" :
-      {
-
-        List < String > ss = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية العلوم Case
-
-      // Start Of كلية تكنولوجيا المعلومات و الاتصالات Case
-      case "كلية تكنولوجيا المعلومات و الاتصالات" :
-      {
-
-        List < String > ss = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب/ الذكاء الاصطناعي وعلم البيانات" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية تكنولوجيا المعلومات و الاتصالات Case
-
-      // Start Of كلية الاعمال Case
-      case "كلية الاعمال" :
-      {
-
-        List < String > ss = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية الاعمال case
-
-      // Start Of كلية الاداب Case
-      case "كلية الاداب" :
-      {
-
-        List < String > ss = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية الاداب case
-
-      // Start Of كلية العلوم التربوية Case
-      case "كلية العلوم التربوية" :
-      {
-
-        List < String > ss = [ "تربية خاصة" , "معلم صف" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
-        break ;
-
-      }
-      // End Of كلية العلوم التربوية Case
+      List < String > ss = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
 
     }
-    // End Of Switch
+    // End Of كلية الهندسة
+
+    // Start Of كلية العلوم
+    if ( College_Name ==  "كلية العلوم" )
+    {
+
+      List < String > ss = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
+
+    }
+    // End Of كلية العلوم
+
+    // Start Of كلية تكنولوجيا المعلومات و الاتصالات
+    if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
+    {
+
+      List < String > ss = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب/ الذكاء الاصطناعي وعلم البيانات" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
+
+    }
+    // End Of كلية تكنولوجيا المعلومات و الاتصالات
+
+    // Start Of كلية الاعمال
+    if ( College_Name ==  "كلية الاعمال" )
+    {
+
+      List < String > ss = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
+
+    }
+    // End Of كلية الاعمال
+
+    // Start Of كلية الاداب
+    if ( College_Name ==  "كلية الاداب" )
+    {
+
+      List < String > ss = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
+
+    }
+    // End Of كلية الاداب
+
+    // Start Of كلية العلوم التربوية
+    if ( College_Name ==  "كلية العلوم التربوية" )
+    {
+
+      List < String > ss = [ "تربية خاصة" , "معلم صف" ] ;
+      Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : ss ) ) , ( route ) => route . isFirst ) ;
+
+    }
+    // End Of كلية العلوم التربوية
 
   }
   // End of Horizontal List View Function
@@ -361,7 +348,7 @@ class Specialties extends StatelessWidget
   void List_View_On_Tap ( String Specialty_Name , BuildContext context ) async
   {
 
-    String path = "" , id = "وصف التخصص و اسماء المواد و بياناتها" ;
+    String path = "" ;
 
       if ( College_Name == "كلية الهندسة" )
       {
@@ -406,7 +393,7 @@ class Specialties extends StatelessWidget
       }
 
 
-    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( id ) . get ( ) ;
+    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) ;
 
     Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects : varibel [ "مواد التخصص" ] ) ) ) ;
 

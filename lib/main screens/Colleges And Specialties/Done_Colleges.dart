@@ -1,12 +1,12 @@
 // Done
 
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/New/Done_temp.dart';
-
 import 'package:ershad/main screens/Colleges And Specialties/Done_Specialties.dart';
+
+import 'package:ershad/main screens/New/Done_temp.dart';
 
 // Start Of Colleges Class
 class Colleges extends StatelessWidget
@@ -46,8 +46,8 @@ class Colleges extends StatelessWidget
       (
 
         padding : EdgeInsets . only ( top : 15 , right : 5 , left : 5 ),
-        color : Colors . green . shade900,
-        child : Grid_View ( )
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+        child : Opacity ( opacity : 0.6 , child: Grid_View ( ))
 
       )
 
@@ -61,8 +61,8 @@ class Colleges extends StatelessWidget
   (
 
     gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , crossAxisSpacing : 10 , mainAxisSpacing : 20 ),
-
     itemCount : x . Items . length,
+
     itemBuilder : ( context , index )
     {
 
@@ -100,78 +100,65 @@ class Colleges extends StatelessWidget
   void Grid_View_On_Tap ( int index , String College_Name , BuildContext context )
   {
 
-    // Start Of Switch
-    switch ( index )
+    // Start Of كلية الهندسة
+    if ( index == 0 )
     {
 
-      // Start Of كلية الهندسة case
-      case 0 :
-      {
-
-        List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية الهندسة Case
-
-      // Start Of كلية العلوم Case
-      case 1 :
-      {
-
-        List < String > Colleges_Specialties = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية العلوم Case
-
-      // Start Of كلية تكنولوجيا المعلومات و الاتصالات Case
-      case 2 :
-      {
-
-        List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية تكنولوجيا المعلومات و الاتصالات Case
-
-      // Start Of كلية الاعمال Case
-      case 3 :
-      {
-
-        List < String > Colleges_Specialties = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية الاعمال case
-
-      // Start Of كلية الاداب Case
-      case 4 :
-      {
-
-        List < String > Colleges_Specialties = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية الاداب case
-
-      // Start Of كلية العلوم التربوية Case
-      case 5 :
-      {
-
-        List < String > Colleges_Specialties = [ "تربية خاصة" , "معلم صف" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
-        break ;
-
-      }
-      // End Of كلية العلوم التربوية Case
+      List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
-    // End Of Switch
+    // End Of كلية الهندسة
+
+    // Start Of كلية العلوم
+    if ( index == 1 )
+    {
+
+      List < String > Colleges_Specialties = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+
+    }
+    // End Of كلية العلوم
+
+    // Start Of كلية تكنولوجيا المعلومات و الاتصالات
+    if ( index == 2 )
+    {
+
+      List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب/ الذكاء الاصطناعي وعلم البيانات" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+
+    }
+    // End Of كلية تكنولوجيا المعلومات و الاتصالات
+
+    // Start Of كلية الاعمال
+    if ( index == 3 )
+    {
+
+      List < String > Colleges_Specialties = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+
+    }
+    // End Of كلية الاعمال
+
+    // Start Of كلية الاداب
+    if ( index == 4 )
+    {
+
+      List < String > Colleges_Specialties = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+
+    }
+    // End Of كلية الاداب
+
+    // Start Of كلية العلوم التربوية
+    if ( index == 5 )
+    {
+
+      List < String > Colleges_Specialties = [ "تربية خاصة" , "معلم صف" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+
+    }
+    // End Of كلية العلوم التربوية
 
   }
   // End of Grid View On Tap Function
