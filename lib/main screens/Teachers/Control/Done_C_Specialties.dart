@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Control/Subjects/Done_T_Subjects.dart';
+import 'package:ershad/main screens/Teachers/Control/Subjects/Done_C_Subjects.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
@@ -35,7 +35,7 @@ class T_Specialties extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Text ( College_Name , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        title  : Text ( College_Name , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -256,7 +256,7 @@ class T_Specialties extends StatelessWidget
             (
 
               color : Colors . black,
-              border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
+              border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
               borderRadius : BorderRadius . circular ( 40 )
 
             ),

@@ -11,13 +11,13 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subject Syllabus.dart';
 
 // ٍStart Of Subject Class
-class Subject extends StatelessWidget
+class S_Subject extends StatelessWidget
 {
 
   final String Name , NO , Previous , Type , syllabus , DESC ;
   final int Credit_hours ;
 
-  Subject ( { required this . Name , required this . NO , required this . Previous , required this . Type , required this . Credit_hours , required this . syllabus , required this . DESC } ) ;
+  S_Subject ( { required this . Name , required this . NO , required this . Previous , required this . Type , required this . Credit_hours , required this . syllabus , required this . DESC } ) ;
 
   var x = temp ( ) ;
 
@@ -34,17 +34,11 @@ class Subject extends StatelessWidget
       appBar : AppBar
       (
 
-        title : Column
+        title : Padding
         (
 
-          children :
-          [
-
-            Text ( "اسم المادة",   style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ),
-
-            Text ( Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-          ]
+          padding : EdgeInsets . only ( top : 10 ),
+          child : Text ( Name , maxLines : 3 , textAlign : TextAlign . center ,  style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 

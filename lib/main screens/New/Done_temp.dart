@@ -4,9 +4,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Colleges And Specialties/Done_Colleges.dart';
+import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
 
-import 'package:ershad/main screens/Teachers/Done_teachers.dart';
+import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dart';
 
 import 'package:ershad/main screens/Map/Done_Map.dart';
 
@@ -14,7 +14,7 @@ import 'package:ershad/main screens/personal lost.dart';
 
 import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
-import 'package:ershad/main screens/Teachers/Control/Done_T_Colleges.dart';
+import 'package:ershad/main screens/Teachers/Control/Done_C_Colleges.dart';
 
 class temp
 {
@@ -30,7 +30,6 @@ class temp
     sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
 
   ];
-
 
 
   // Start Of Item Widget ==> لعرض بيانات المادة
@@ -116,7 +115,7 @@ class temp
           else
               {
 
-                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Control ( ) ) ) ;
+                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
 
               }
 
@@ -126,7 +125,7 @@ class temp
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Colleges ( ) ) ) ;
 
         else
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => colleges ( ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_T_Colleges ( ) ) ) ;
 
       },
 
@@ -173,7 +172,7 @@ class temp
   // End Of Pic Widget ==> لقسم المدرسين
 
   // Start Of Text Field Widget ==> لمعلومات المواد و المدرسين
-  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required int maxLines } ) =>
+  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines } ) =>
   Container
   (
 
@@ -193,7 +192,7 @@ class temp
 
             child : TextFormField
             (
-
+              textInputAction : textInputAction,
               controller : controller,
               keyboardType : keyboardType,
               style : TextStyle ( fontSize : 25 , color : Colors . white ),
@@ -443,7 +442,7 @@ class temp
           {
 
             if ( text == "الكليات و التخصصات" )
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges ( ) ) ) ;
+              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( ) ) ) ;
 
             else
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;

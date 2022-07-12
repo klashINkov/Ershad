@@ -6,23 +6,21 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Control/Done_Add_Subjects.dart';
-
-import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subject.dart';
+import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Start Of Subjects Class
-class T_Subjects extends StatelessWidget
+class S_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
   String Specialty_Name , College_Name , Desc ;
   List < dynamic > subjects ;
 
-  T_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
+  S_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
 
   // Start of build Widget
   @override
@@ -63,26 +61,92 @@ class T_Subjects extends StatelessWidget
 
         ]
 
-      ),
+    ),
 
-      body : Container
+      body : SingleChildScrollView
       (
 
-        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
-
-        child : Column
+        child : Container
         (
 
-          children :
-          [
+          decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
-            // STart Of List View
-            Padding
-            (
+          child : Column
+          (
 
-              padding : EdgeInsets . only ( top : 70 ),
+            children :
+            [
 
-              child : Stack
+              // Start Of Description
+              Stack
+              (
+
+                children :
+                [
+
+                  // Start Of Description Text
+                  Container
+                  (
+
+                    height : 400,
+                    margin : EdgeInsets . only ( top : 90 , left : 15 , right : 25 ),
+
+                    decoration : BoxDecoration
+                    (
+
+                      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                      borderRadius : BorderRadius . circular ( 50 ),
+
+                    ),
+
+                    child : Padding
+                    (
+
+                      padding : EdgeInsets . only ( top : 5 , left : 22 , right : 22 , bottom : 8 ),
+
+                      child : SingleChildScrollView
+                      (
+
+                        child : Column
+                        (
+
+                          children :
+                          [
+
+                            // Start Of نبذه عن التخصص
+                            Text ( "نبذة عن التخصص" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) ),
+                            // End Of نبذه عن التخصص
+
+                            // Start Of Description Text
+                            Text ( Desc , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                            // End Of Description Text
+
+                          ]
+
+                        )
+
+                      )
+
+                    )
+
+                  ),
+                  // End Of Description Text
+
+                  // Start Of Arrow Up
+                  x . Arrows ( top : 100 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                  // End Of Arrow Up
+
+                  // Start Of Arrow down
+                  x . Arrows (top : 400 , left : 341 , icon : Icons . keyboard_arrow_down )
+                  // End Of Arrow down
+
+                ]
+
+              ),
+              // End Of Description
+
+              // STart Of List View
+              Stack
               (
 
                 children :
@@ -108,21 +172,21 @@ class T_Subjects extends StatelessWidget
                   Container
                   (
 
-                    height : 570,
+                    height : 600,
                     margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
 
                     decoration : BoxDecoration
                     (
 
                       border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                      borderRadius : BorderRadius . circular ( 50 )
+                      borderRadius : BorderRadius . circular ( 50 ),
 
                     ),
 
                     child : Padding
                     (
 
-                      padding : EdgeInsets . only ( top : 50 , bottom : 30 ),
+                      padding : EdgeInsets . only ( top : 45 , bottom : 10 ),
 
                       child : list_view ( )
 
@@ -132,38 +196,21 @@ class T_Subjects extends StatelessWidget
                   // End Of List View
 
                   // Start Of Arrow Up
-                  x .Arrows ( top : 50 , left : 334 , icon : Icons . keyboard_arrow_up ),
+                  x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  x .Arrows ( top : 470 , left : 335 , icon : Icons . keyboard_arrow_down ),
+                  x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
                   // End Of Arrow down
 
-                  // Start Of Add subject Button
-                  Padding
-                  (
-
-                    padding : EdgeInsets . only ( top : 550 , left : 15 ),
-
-                    child : FloatingActionButton
-                    (
-                      backgroundColor : Colors . blueAccent . shade700,
-                      onPressed : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Add_Subjects ( ) ) ) ; },
-
-                      child : Icon ( Icons . add )
-
-                    )
-
-                  )
-                  // End Of Add subject Button
                 ]
 
               )
+              // End Of List View
 
-            )
-            // End Of List View
+            ]
 
-          ]
+          )
 
         )
 
@@ -184,7 +231,7 @@ class T_Subjects extends StatelessWidget
     itemBuilder : ( context , index )
     {
 
-      final Subject_Name = subjects [ index ] ;
+      String Subject_Name = subjects [ index ] ;
 
       return ListTile
       (
@@ -195,7 +242,7 @@ class T_Subjects extends StatelessWidget
         (
 
           padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
-          margin : EdgeInsets . only ( right : 3 , bottom : 7 ),
+          margin : EdgeInsets . only ( bottom : 10  ),
 
           decoration : BoxDecoration
           (
@@ -274,12 +321,12 @@ class T_Subjects extends StatelessWidget
       context , MaterialPageRoute
       (
 
-        builder : ( context ) => Subject
+        builder : ( context ) => S_Subject
         (
 
           Name : Subject_Name,
           Previous : varibel [ "Previous" ],
-          NO : varibel [ "NO" ] . toString ( ),
+          NO : varibel [ "NO" ] ,
           syllabus : "fdfdf",
           Credit_hours : varibel [ "Credit_hours" ] ,
           Type : varibel [ "Type" ] ,

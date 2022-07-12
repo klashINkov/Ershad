@@ -2,11 +2,13 @@
 
 // ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names, unnecessary_new, deprecated_member_use, prefer_const_constructors, unnecessary_this, avoid_print, unnecessary_null_comparison, file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Done_teachers.dart';
+import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
@@ -122,7 +124,7 @@ class _Signup extends State < Signup >
                    SizedBox ( height : 20 ),
 
                     // Start of البريد الالكتروني TextField
-                    x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , maxLines : 1 ),
+                    x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of البريد الالكتروني TextField
 
                     SizedBox ( height : 30 ),
@@ -221,43 +223,43 @@ class _Signup extends State < Signup >
                     SizedBox ( height : 30 ),
 
                     // Start of الاسم TextField
-                    x . Text_Field ( label : " الاسم" , hint : "" , controller : Name , keyboardType : TextInputType . text , maxLines : 1 ),
+                    x . Text_Field ( label : " الاسم" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of الاسم TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of الكلية TextField
-                    x . Text_Field ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . text , maxLines : 1 ),
+                    x . Text_Field ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . text ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
                     // End of الكلية TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of القسم TextField
-                    x . Text_Field ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , controller : Dept , keyboardType : TextInputType . text , maxLines : 1 ),
+                    x . Text_Field ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , controller : Dept , keyboardType : TextInputType . text ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
                     // End of القسم TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of الدرجة الجامعية TextField
-                    x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , maxLines : 1 ),
+                    x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of الدرجة الجامعية TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of عنوان المكتب TextField
-                    x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Offec , keyboardType : TextInputType . text , maxLines : 1 ),
+                    x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Offec , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of عنوان المكتب TextField
 
                     SizedBox ( height : 30 ),
 
                       // Start of وسيلة التواصل TextField
-                      x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , maxLines : 3 ),
+                      x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 ),
                       // End of وسيلة التواصل TextField
 
                     SizedBox ( height : 30 ),
 
                       // Start of نبذه عن المدرس TextField
-                      x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , maxLines : 3 ),
+                      x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 ),
                       // End of نبذه عن المدرس TextField
 
                     SizedBox ( height : 20 ),
@@ -295,7 +297,8 @@ class _Signup extends State < Signup >
                             if ( response != null )
                               {
 
-                                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Control ( ) ) ) ;
+                                UseR ( Name : Name . text , Dgree : Dgree . text , Desc : Desc . text , Dept : Dept . text , Contact : Contact . text , Coll : Coll . text , Offec : Offec . text  ) ;
+                                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
 
                               }
 
@@ -412,5 +415,41 @@ class _Signup extends State < Signup >
 
   }
 
+  Future UseR ( { required String Name , required String Coll , required String Contact , required String Dept , required String Desc  , required String Dgree , required String Offec } ) async
+  {
+
+    final docUser = FirebaseFirestore . instance . collection ( "/المدرسين/كلية تكنولوجيا المعلومات و الاتصالات/قسم علم الحاسوب" ) . doc ( Name ) ;
+    final user = User ( Coll : Coll , Contact : Contact , Dept : Dept , Desc : Desc , Dgree : Dgree , Offec : Offec  ) ;
+    final json = user . tojson ( );
+    await docUser . set ( json ) ;
+
+  }
+
+  Add_Teacher ( { required String Name , required String Coll , required String Contact , required String Dept , required String Desc  , required String Dgree , required String Offec } ) async
+  {
+    var varibel = FirebaseFirestore. instance . collection ( "Name Of Collection" ) ;
+    varibel . add ( { "Coll" : Coll , "Contact" : Contact , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec } ) . then ( ( value ) { } ) ;
+
+  }
+
 }
 // End Of _Signup Class
+
+class User
+{
+
+  final String Coll ;
+  final String Dept ;
+  final String Desc ;
+  final String Dgree ;
+  final String Offec ;
+  final String Contact ;
+
+  User ( { required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
+
+  Map < String , dynamic > tojson ( ) => { "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
+
+  static User fromjson ( Map < String , dynamic > json ) => User ( Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
+
+
+}

@@ -1,15 +1,17 @@
-// Done
+//Done
 
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
+// ignore_for_file: must_be_immutable, file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Colleges And Specialties/Done_Specialties.dart';
+import 'package:ershad/main screens/Done_Home Page.dart';
+
+import 'package:ershad/main screens/Teachers/Control/Done_C_Specialties.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
-// Start Of Colleges Class
-class Colleges extends StatelessWidget
+// Start Of _Home Class
+class T_Colleges extends StatelessWidget
 {
 
   var x = temp ( ) ;
@@ -27,7 +29,7 @@ class Colleges extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Padding
+        title : Padding
         (
 
           padding : EdgeInsets . only ( top : 20 ),
@@ -38,7 +40,21 @@ class Colleges extends StatelessWidget
 
         backgroundColor : Colors . transparent,
         elevation : 0,
-        centerTitle : true
+        centerTitle : true,
+
+        actions :
+        [
+
+          IconButton
+          (
+
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+
+            icon : Icon ( Icons . home , color : Colors . white , size : 40 )
+
+          )
+
+        ]
 
       ),
 
@@ -83,7 +99,7 @@ class Colleges extends StatelessWidget
         footer : Container
         (
 
-          padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 25 ),
+          padding : EdgeInsets . only ( left : 15 , right : 15 ,  bottom : 25 ),
 
           child : Text ( item . College_Name , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
 
@@ -96,7 +112,7 @@ class Colleges extends StatelessWidget
   );
   // End Of Grid View Widget
 
-  // Start of Grid View On Tap Function
+  // Start of Grid_View_On_Tap Function
   void Grid_View_On_Tap ( int index , String College_Name , BuildContext context )
   {
 
@@ -104,8 +120,8 @@ class Colleges extends StatelessWidget
     if ( index == 0 )
     {
 
-      List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية/الإنتاج والآلات" , "الهندسة الميكانيكية/التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية/المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      List < String > Colleges_Specialties = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية الهندسة
@@ -115,7 +131,7 @@ class Colleges extends StatelessWidget
     {
 
       List < String > Colleges_Specialties = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية العلوم
@@ -124,8 +140,8 @@ class Colleges extends StatelessWidget
     if ( index == 2 )
     {
 
-      List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب/ الذكاء الاصطناعي وعلم البيانات" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      List < String > Colleges_Specialties = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية تكنولوجيا المعلومات و الاتصالات
@@ -135,7 +151,7 @@ class Colleges extends StatelessWidget
     {
 
       List < String > Colleges_Specialties = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية الاعمال
@@ -145,7 +161,7 @@ class Colleges extends StatelessWidget
     {
 
       List < String > Colleges_Specialties = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية الاداب
@@ -155,13 +171,13 @@ class Colleges extends StatelessWidget
     {
 
       List < String > Colleges_Specialties = [ "تربية خاصة" , "معلم صف" ] ;
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Specialties ( College_Name : College_Name , Colleges_Specialties : Colleges_Specialties ) ) ) ;
 
     }
     // End Of كلية العلوم التربوية
 
   }
-  // End of Grid View On Tap Function
+  // End of Grid_View_On_Tap Function
 
 }
-// End Of Colleges Class
+// End Of _Home Class

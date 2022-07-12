@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Done_teachers.dart';
+import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
 
-import 'package:ershad/main screens/Teachers/Done_SignUp.dart';
+import 'package:ershad/main screens/Teachers/SignUp.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
@@ -144,7 +144,7 @@ class _Signin extends State < Signin >
                      SizedBox ( height : 60 ),
 
                       // Start of Email TextField
-                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , maxLines : 1 ),
+                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , maxLines : 1 ),
                       // End of Email TextField
 
                       SizedBox ( height : 260 ),
@@ -267,7 +267,7 @@ class _Signin extends State < Signin >
                               if (user != null)
                               {
 
-                                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Control ( ) ) ) ;
+                                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
 
                               }
 

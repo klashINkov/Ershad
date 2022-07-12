@@ -1,16 +1,18 @@
 // Done
 
-// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_case_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names
+// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types, file_names
 
-import 'package:ershad/main%20screens/Teachers/Done_SignIn.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Done_Colleges_Doctors.dart';
+import 'package:ershad/main screens/Teachers/Teacher/Colleges_Depts.dart';
+
+import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 // Start Of _Teachers class
 class Teachers extends StatefulWidget
@@ -83,11 +85,12 @@ class _Teachers extends State < Teachers >
     );
 
   }
+
 }
 // End Of _Teachers class
 
 // Start Of _Control Class
-class Control extends StatelessWidget
+class T_Control extends StatelessWidget
 {
 
   var x = temp ( ) ;
@@ -189,7 +192,7 @@ class Control extends StatelessWidget
 // End Of _Control Class
 
 // Start Of _colleges Class
-class colleges extends StatelessWidget
+class S_T_Colleges extends StatelessWidget
 {
 
   var x = temp ( ) ;
@@ -207,14 +210,7 @@ class colleges extends StatelessWidget
       appBar : AppBar
       (
 
-        title  : Padding
-        (
-
-          padding : EdgeInsets . only ( top : 20 ),
-
-          child : Text ( "الكليات" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-        ),
+        title  : Text ( "الكليات" , style : TextStyle ( fontSize : 25 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
         backgroundColor : Colors . transparent,
         elevation : 0,
@@ -239,8 +235,8 @@ class colleges extends StatelessWidget
       body : Container
       (
 
-        padding : EdgeInsets . only ( top : 15 , right : 5 , left : 5 ),
-        color : Colors . green . shade900 ,
+        padding : EdgeInsets . only ( right : 5 , left : 5 ),
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
         child : Grid_View ( )
 
       )
@@ -254,9 +250,10 @@ class colleges extends StatelessWidget
   Widget Grid_View ( ) => GridView . builder
   (
 
-    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , crossAxisSpacing : 10 , mainAxisSpacing : 20 ),
+    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 ),
 
     itemCount : x . Items . length,
+
     itemBuilder : ( context , index )
     {
 
@@ -268,7 +265,7 @@ class colleges extends StatelessWidget
         child : InkWell
         (
 
-          onTap : ( ) { Grid_View_On_Tap ( index , item . College_Name , context ) ; },
+          onTap : ( ) { Grid_View_On_Tap ( item . College_Name , context ) ; },
 
           child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
@@ -292,81 +289,68 @@ class colleges extends StatelessWidget
   // End Of Grid View Widget
 
   // Start of Grid View On Tap Function
-  void Grid_View_On_Tap ( int index , String item , BuildContext context )
+  void Grid_View_On_Tap ( String College_Name , BuildContext context )
   {
 
-    // Start Of Switch
-    switch ( index )
-    {
-
-      // Start Of كلية الهندسة case
-      case 0 :
+      // Start Of كلية الهندسة
+      if ( College_Name ==  "كلية الهندسة" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Depts = [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
-      // End Of كلية الهندسة Case
+      // End Of كلية الهندسة
 
-      // Start Of كلية العلوم Case
-      case 1 :
+      // Start Of كلية العلوم
+      if ( College_Name ==  "كلية العلوم" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Specialties = [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
 
       }
-      // End Of كلية العلوم Case
+      // End Of كلية العلوم
 
-      // Start Of كلية تكنولوجيا المعلومات و الاتصالات Case
-      case 2 :
+      // Start Of كلية تكنولوجيا المعلومات و الاتصالات
+      if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Specialties = [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
 
       }
-      // End Of كلية تكنولوجيا المعلومات و الاتصالات Case
+      // End Of كلية تكنولوجيا المعلومات و الاتصالات
 
-      // Start Of كلية الاعمال Case
-      case 3 :
+      // Start Of كلية الاعمال
+      if ( College_Name ==  "كلية الاعمال" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Specialties = [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
 
       }
-      // End Of كلية الاعمال case
+      // End Of كلية الاعمال
 
-      // Start Of كلية الاداب Case
-      case 4 :
+      // Start Of كلية الاداب
+      if ( College_Name ==  "كلية الاداب" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Specialties = [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
 
       }
-      // End Of كلية الاداب case
+      // End Of كلية الاداب
 
-      // Start Of كلية العلوم التربوية Case
-      case 5 :
+      // Start Of كلية العلوم التربوية
+      if ( College_Name ==  "كلية العلوم التربوية" )
       {
 
-        List < String > ss = [ ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_Doctors ( title : item , sp : ss ) ) ) ;
-        break ;
+        List < String > Colleges_Specialties = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
 
       }
-      // End Of كلية العلوم التربوية Case
-
-    }
-    // End Of Switch
+      // End Of كلية العلوم التربوية
 
   }
   // End of Grid View On Tap Function

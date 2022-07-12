@@ -108,25 +108,25 @@ class _Add_Subjects extends State < Add_Subjects >
                 [
 
                   // Start of اسم المادة TextField
-                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , maxLines : 1 ),
+                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                   // End of اسم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of رقم المادة TextField
-                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , maxLines : 1 ),
+                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , textInputAction : TextInputAction . done , maxLines : 1 ),
                   // End of رقم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of المتطلب السابق للمادة TextField
-                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , maxLines : 1 ),
+                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                   // End of المتطلب السابق للمادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of نبذه عن المادة TextField
-                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , maxLines : 3 ),
+                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 ),
                   // End of نبذه عن المادة TextField
 
                   // Start Of Add Button
