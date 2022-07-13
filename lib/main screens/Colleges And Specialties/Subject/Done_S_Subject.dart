@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutabl, camel_case_typeses, camel_case_types, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 

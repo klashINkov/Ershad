@@ -1,9 +1,10 @@
 //Done
 
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_unnecessary_containers, use_key_in_widget_constructors, must_be_immutable, constant_identifier_names, must_call_super, unnecessary_overrides
 
 import 'package:flutter/material.dart';
-
+// Width = 0.2429824561403509    => 10=2.44
+//Height = 0.1463636363636364
 import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dart';
@@ -16,8 +17,12 @@ import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
 import 'package:ershad/main screens/Teachers/Control/Done_C_Colleges.dart';
 
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+
 class temp
 {
+
+  int  Index = 0 ;
 
   List < sts > Items =
   [
@@ -28,6 +33,26 @@ class temp
     sts ( College_Name : "كلية الأعمال"                        , image : "pic/business  college.png" ),
     sts ( College_Name : "كلية الاداب"                         , image : "pic/arts college.png" ),
     sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
+
+  ];
+
+  List < String >  CollAuto_Fill = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الاداب" , "كلية العلوم التربوية" ] ;
+
+
+  List < Coll_Depts > Coll_And_Depts =
+  [
+
+    Coll_Depts ( Colleges_Depts : [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ),
+
+    Coll_Depts ( Colleges_Depts : [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ),
+
+    Coll_Depts ( Colleges_Depts : [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ),
+
+    Coll_Depts ( Colleges_Depts : [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ),
+
+    Coll_Depts ( Colleges_Depts : [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ),
+
+    Coll_Depts ( Colleges_Depts : [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] )
 
   ];
 
@@ -302,6 +327,152 @@ class temp
   );
   // End Of Text Field Widget ==> لمعلومات المواد و المدرسين
 
+  // Start Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
+  Widget Type_Ahead ( { required String label , required String hint , required String Tmpe , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines } ) =>
+  Container
+  (
+
+    child : Opacity
+    (
+
+      opacity : 0.6,
+
+      child : Stack
+      (
+
+        children :
+        [
+
+          TypeAheadFormField
+          (
+
+            suggestionsBoxDecoration : SuggestionsBoxDecoration ( color : Colors . black ),
+            suggestionsCallback : label == " القسم" ?
+
+            ( val ) => Coll_And_Depts [ Index ] . Colleges_Depts . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) )
+            :
+            ( val ) => CollAuto_Fill . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ),
+
+            itemBuilder :  ( _ , String element ) => Container
+            (
+
+              margin : EdgeInsets . all ( 10 ),
+
+              decoration : BoxDecoration
+              (
+
+                color : Colors . black,
+                border :  Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                  borderRadius : BorderRadius . circular ( 50 )
+
+              ),
+
+              child : ListTile
+              (
+
+                title : Text ( element , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+              )
+
+            ),
+            onSuggestionSelected : ( String val )
+            {
+
+              controller . text = val ;
+              Index = CollAuto_Fill . indexOf ( val ) ;
+
+            },
+            getImmediateSuggestions : true,
+            hideSuggestionsOnKeyboardHide : true,
+            hideOnEmpty : true,
+            textFieldConfiguration : TextFieldConfiguration
+            (
+                textInputAction : textInputAction,
+                controller : controller,
+                keyboardType : keyboardType,
+                style : TextStyle ( fontSize : 25 , color : Colors . white ),
+                textAlign : TextAlign . center,
+                cursorColor : Colors . white,
+                cursorWidth : 5,
+                maxLines : maxLines,
+
+                decoration : InputDecoration
+                  (
+
+                    filled : true,
+                    fillColor : Colors . black,
+
+                    enabledBorder : OutlineInputBorder
+                      (
+
+                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+
+                    ),
+                    focusedBorder : OutlineInputBorder
+                      (
+
+                        borderRadius : BorderRadius . circular ( 30 ),
+
+                        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+
+                    ),
+
+                    errorBorder : OutlineInputBorder
+                      (
+
+                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+
+                    ),
+                    focusedErrorBorder : OutlineInputBorder
+                      (
+
+                        borderRadius : BorderRadius . circular ( 30 ),
+
+                        borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+
+                    ),
+                    errorStyle : TextStyle ( fontSize : 18 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
+
+                    hintText : hint,
+                    hintStyle : TextStyle ( color : Colors . white, fontSize : 20  ),
+
+                    labelText :  label,
+                    labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
+                    floatingLabelStyle : TextStyle ( fontSize : 30 , backgroundColor : Colors . transparent , color : Colors . white ),
+                    floatingLabelAlignment : FloatingLabelAlignment . center
+
+                ),
+
+            ),
+            validator : ( val )
+            {
+
+              if ( val == "" )
+              {
+
+                return "لا يمكن ان يكون حقل$label فارغا" ;
+
+              }
+
+              return null ;
+
+            } ,
+
+          ),
+
+          suffixIcon ( controller , label )
+
+        ]
+
+      )
+
+    )
+
+  );
+  // End Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
+
   // Start Of TXT Function ==> للخارطه
   Widget TXT ( { required String txt , required double size , required int quarterTurns , required double bottom , required double top , required double left  } ) =>
   Opacity
@@ -554,4 +725,9 @@ class sts
 
 }
 
+class Coll_Depts
+{
+  List < String > Colleges_Depts ;
+  Coll_Depts ( { required this . Colleges_Depts } ) ;
+}
 

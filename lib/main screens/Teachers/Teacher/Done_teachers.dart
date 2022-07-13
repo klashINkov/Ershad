@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types, file_names
+// ignore_for_file: must_be_immutab, use_key_in_widget_constructorsle, use_key_in_widget_constructors, must_be_immutable, camel_types, prefer_const_constructors, avoid_unnecessary_containers, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types, file_names, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 
@@ -306,8 +306,8 @@ class S_T_Colleges extends StatelessWidget
       if ( College_Name ==  "كلية العلوم" )
       {
 
-        List < String > Colleges_Specialties = [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
+        List < String > Colleges_Depts = [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية العلوم
@@ -316,8 +316,8 @@ class S_T_Colleges extends StatelessWidget
       if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
       {
 
-        List < String > Colleges_Specialties = [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
+        List < String > Colleges_Depts = [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية تكنولوجيا المعلومات و الاتصالات
@@ -326,8 +326,8 @@ class S_T_Colleges extends StatelessWidget
       if ( College_Name ==  "كلية الاعمال" )
       {
 
-        List < String > Colleges_Specialties = [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
+        List < String > Colleges_Depts = [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية الاعمال
@@ -336,8 +336,8 @@ class S_T_Colleges extends StatelessWidget
       if ( College_Name ==  "كلية الاداب" )
       {
 
-        List < String > Colleges_Specialties = [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
+        List < String > Colleges_Depts = [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية الاداب
@@ -346,8 +346,8 @@ class S_T_Colleges extends StatelessWidget
       if ( College_Name ==  "كلية العلوم التربوية" )
       {
 
-        List < String > Colleges_Specialties = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Specialties ) ) ) ;
+        List < String > Colleges_Depts = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية العلوم التربوية

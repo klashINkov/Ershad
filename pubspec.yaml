@@ -33,17 +33,21 @@ dependencies :
 
   syncfusion_flutter_pdfviewer : ^20.1.56-beta
   draggable_scrollbar : ^0.1.0
+  flutter_typeahead: ^4.0.0
 
 
   flutter :
     sdk : flutter
   cupertino_icons : ^1.0.5
+  autocomplete_textfield: ^2.0.1
+  get: ^4.6.5
+  dropdownfield: ^1.0.3
+  flutter_screenutil: ^5.5.3+2
 
 dev_dependencies :
   flutter_test :
       sdk : flutter
 
-  flutter_lints : ^1.0.0
 
 flutter_launcher_name :
   name : "Ershad"

@@ -1,6 +1,6 @@
 //Done
 
-// ignore_for_file: must_be_immutable, file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
+// ignore_for_file: must_be_immutable, file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 
@@ -15,11 +15,16 @@ class T_Colleges extends StatelessWidget
 {
 
   var x = temp ( ) ;
+  var Width ;
+  var Height ;
 
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
   {
+
+    Width = MediaQuery . of ( context ) . size . width / 100 ;
+    Height = MediaQuery . of ( context ) . size . height / 100 ;
 
     return Scaffold
     (

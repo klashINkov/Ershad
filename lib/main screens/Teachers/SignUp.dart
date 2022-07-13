@@ -31,6 +31,8 @@ class _Signup extends State < Signup >
 {
 
   var x = temp ( ) ;
+  bool pass = true ;
+  GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
 
   final Email    = TextEditingController ( ) ;
   final Password = TextEditingController ( ) ;
@@ -42,13 +44,10 @@ class _Signup extends State < Signup >
   final Offec    = TextEditingController ( ) ;
   final Contact  = TextEditingController ( ) ;
 
-
-  bool pass = true ;
-
-  GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
   @override
   void initState ( )
   {
+
 
     super . initState ( ) ;
     Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
@@ -61,12 +60,45 @@ class _Signup extends State < Signup >
     Offec    . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Contact  . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
+    /*ErrorWidget . builder = ( FlutterErrorDetails details )
+    {
+
+      return Material
+      (
+
+        child : Container
+        (
+
+          decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+          child : Column
+          (
+
+              mainAxisAlignment : MainAxisAlignment . center,
+
+              children :
+              [
+
+                Text ( details . exception . toString ( ) , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+              ]
+
+          )
+
+        )
+
+      );
+
+    };*/
+
   }
 
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
   {
+
+    String Tmpe = Coll . text ;
 
     return Scaffold
     (
@@ -229,13 +261,13 @@ class _Signup extends State < Signup >
                     SizedBox ( height : 30 ),
 
                     // Start of الكلية TextField
-                    x . Text_Field ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . text ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
+                    x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , Tmpe : Tmpe ,  controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1  ),
                     // End of الكلية TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of القسم TextField
-                    x . Text_Field ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , controller : Dept , keyboardType : TextInputType . text ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
+                    x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , Tmpe : Tmpe , controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
                     // End of القسم TextField
 
                     SizedBox ( height : 30 ),
@@ -292,14 +324,12 @@ class _Signup extends State < Signup >
                           onPressed : ( ) async
                           {
 
-                            UserCredential response = await signUp ( ) ;
+                            UserCredential response = await SignUp ( ) ;
 
                             if ( response != null )
                               {
 
-                                UseR ( Name : Name . text , Dgree : Dgree . text , Desc : Desc . text , Dept : Dept . text , Contact : Contact . text , Coll : Coll . text , Offec : Offec . text  ) ;
                                 Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
-
                               }
 
                           },
@@ -331,7 +361,7 @@ class _Signup extends State < Signup >
   }
   // End Of build Widget
 
-  signUp ( ) async
+  SignUp (  ) async
   {
 
     var formdata = formstate . currentState ;
@@ -345,6 +375,12 @@ class _Signup extends State < Signup >
       {
 
         UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
+
+        final docUser = FirebaseFirestore . instance . collection ( "/المدرسين/كلية تكنولوجيا المعلومات و الاتصالات/قسم علم الحاسوب" ) . doc ( Name . text ) ;
+        final user = User ( Coll : Coll . text , Contact : Contact . text , Dept : Dept . text , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
+        final json = user . tojson ( );
+        await docUser . set ( json ) ;
+
         return userCredential ;
 
       }
@@ -395,19 +431,17 @@ class _Signup extends State < Signup >
     }
 
     else
-
     {
-
       AwesomeDialog
       (
 
         padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
-        autoHide : Duration ( seconds : 5 ),
+        autoHide : Duration ( seconds : 7 ),
         dialogBackgroundColor : Colors . black,
         borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
         context : context,
 
-        body : Text ( "المعلومات التي قمت بادخالها عير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+        body : Text ( "المعلومات التي قمت بادخالها عير صالحة قم بالتاكد من ان جميع ما في الحقول صحيح" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
       ) . show ( ) ;
 
@@ -425,12 +459,6 @@ class _Signup extends State < Signup >
 
   }
 
-  Add_Teacher ( { required String Name , required String Coll , required String Contact , required String Dept , required String Desc  , required String Dgree , required String Offec } ) async
-  {
-    var varibel = FirebaseFirestore. instance . collection ( "Name Of Collection" ) ;
-    varibel . add ( { "Coll" : Coll , "Contact" : Contact , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec } ) . then ( ( value ) { } ) ;
-
-  }
 
 }
 // End Of _Signup Class

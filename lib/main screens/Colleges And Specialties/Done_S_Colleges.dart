@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 
@@ -8,16 +8,22 @@ import 'package:ershad/main screens/Colleges And Specialties/Done_S_Specialties.
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
+
 // Start Of Colleges Class
 class S_Colleges extends StatelessWidget
 {
 
   var x = temp ( ) ;
+  var Width ;
+  var Height ;
 
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
   {
+
+    Width = MediaQuery . of ( context ) . size . width / 100 ;
+    Height = MediaQuery . of ( context ) . size . height / 100 ;
 
     return Scaffold
     (
@@ -38,7 +44,7 @@ class S_Colleges extends StatelessWidget
       body : Container
       (
 
-        padding : EdgeInsets . only ( right : 5 , left : 5 ),
+        padding : EdgeInsets . only ( right : Width * 1.5 , left : Width * 1.5 ),
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
         child : Grid_View ( )
 
