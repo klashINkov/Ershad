@@ -324,12 +324,14 @@ class _Signup extends State < Signup >
                           onPressed : ( ) async
                           {
 
-                            UserCredential response = await SignUp ( ) ;
+                            UserCredential response = await SignUp ( Dept : Dept . text , Coll : Coll . text ) ;
+
 
                             if ( response != null )
                               {
 
                                 Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
+
                               }
 
                           },
@@ -361,7 +363,7 @@ class _Signup extends State < Signup >
   }
   // End Of build Widget
 
-  SignUp (  ) async
+  SignUp ( { required String Coll , required String Dept } ) async
   {
 
     var formdata = formstate . currentState ;
@@ -376,8 +378,8 @@ class _Signup extends State < Signup >
 
         UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
 
-        final docUser = FirebaseFirestore . instance . collection ( "/المدرسين/كلية تكنولوجيا المعلومات و الاتصالات/قسم علم الحاسوب" ) . doc ( Name . text ) ;
-        final user = User ( Coll : Coll . text , Contact : Contact . text , Dept : Dept . text , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
+        final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
+        final user = User ( Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
         final json = user . tojson ( );
         await docUser . set ( json ) ;
 
@@ -448,17 +450,6 @@ class _Signup extends State < Signup >
     }
 
   }
-
-  Future UseR ( { required String Name , required String Coll , required String Contact , required String Dept , required String Desc  , required String Dgree , required String Offec } ) async
-  {
-
-    final docUser = FirebaseFirestore . instance . collection ( "/المدرسين/كلية تكنولوجيا المعلومات و الاتصالات/قسم علم الحاسوب" ) . doc ( Name ) ;
-    final user = User ( Coll : Coll , Contact : Contact , Dept : Dept , Desc : Desc , Dgree : Dgree , Offec : Offec  ) ;
-    final json = user . tojson ( );
-    await docUser . set ( json ) ;
-
-  }
-
 
 }
 // End Of _Signup Class
