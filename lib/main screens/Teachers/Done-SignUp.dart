@@ -330,7 +330,27 @@ class _Signup extends State < Signup >
                             if ( response != null )
                               {
 
-                                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
+                                Navigator . pushReplacement
+                                (
+                                  context , MaterialPageRoute
+                                  (
+
+                                    builder : ( _ ) => Teachers
+                                    (
+
+                                      Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
+
+                                      Image1_text : "إضافة أو تعديل بيانات المدرس",
+
+                                      Image2_Url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU",
+
+                                      Image2text : "إضافة أو تعديل بيانات مادة"
+
+                                    )
+
+                                  )
+
+                                );
 
                               }
 

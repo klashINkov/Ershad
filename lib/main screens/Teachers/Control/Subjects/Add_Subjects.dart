@@ -2,6 +2,7 @@
 
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, body_might_complete_normally_nullable, empty_statements, non_constant_identifier_names, use_key_in_widget_constructors, camel_case_types, unnecessary_new
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
@@ -25,8 +26,12 @@ class _Add_Subjects extends State < Add_Subjects >
 
   var x = temp ( ) ;
 
+
+
   final Name = TextEditingController ( ) ;
   final Id   = TextEditingController ( ) ;
+  final Coll = TextEditingController ( ) ;
+  final Dept = TextEditingController ( ) ;
   final prev = TextEditingController ( ) ;
   final coll = TextEditingController ( ) ;
   final Desc = TextEditingController ( ) ;
@@ -39,6 +44,8 @@ class _Add_Subjects extends State < Add_Subjects >
 
     super . initState ( ) ;
     Name . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Coll . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Dept . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Id   . addListener ( ( ) => setState ( ( ) { } ) ) ;
     prev . addListener ( ( ) => setState ( ( ) { } ) ) ;
     coll . addListener ( ( ) => setState ( ( ) { } ) ) ;
@@ -50,6 +57,8 @@ class _Add_Subjects extends State < Add_Subjects >
   @override
   Widget build ( BuildContext context )
   {
+
+    String Tmpe = Coll . text ;
 
     return Scaffold
     (
@@ -88,7 +97,7 @@ class _Add_Subjects extends State < Add_Subjects >
         (
 
           image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ), fit : BoxFit . fill, repeat : ImageRepeat . noRepeat ) ),
-          padding : EdgeInsets . symmetric ( horizontal : 20 ),
+        padding : EdgeInsets . symmetric ( horizontal : 20 ),
 
         child : ListView
         (
@@ -119,6 +128,18 @@ class _Add_Subjects extends State < Add_Subjects >
 
                   SizedBox ( height : 30 ),
 
+                  // Start of رقم المادة TextField
+                  x . Type_Ahead ( label : " الكلية" , hint : "" , Tmpe : Tmpe ,  controller : Coll , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  // End of رقم المادة TextField
+
+                  SizedBox ( height : 30 ),
+
+                  // Start of رقم المادة TextField
+                  x . Type_Ahead ( label : " التخصص" , hint : "التخصص الذي ترغب في اضافة المادة اليه" , Tmpe : Tmpe , controller : Dept , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  // End of رقم المادة TextField
+
+                  SizedBox ( height : 30 ),
+
                   // Start of المتطلب السابق للمادة TextField
                   x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                   // End of المتطلب السابق للمادة TextField
@@ -142,13 +163,12 @@ class _Add_Subjects extends State < Add_Subjects >
                       width : 300,
                       margin : EdgeInsets . only ( top : 40 ),
 
-
                       decoration : BoxDecoration
                       (
 
                         color : Colors . black,
-                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
-                        borderRadius : BorderRadius . circular ( 20 )
+                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                        borderRadius : BorderRadius . circular ( 40 )
 
                       ),
 
@@ -163,6 +183,8 @@ class _Add_Subjects extends State < Add_Subjects >
                           {
 
                             formdata . save ( ) ;
+                            Add_Subject ( Dept : Dept . text , Coll : Coll . text ) ;
+                            // Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => T_Subjects ( ) ) );
 
                           }
 
@@ -194,5 +216,31 @@ class _Add_Subjects extends State < Add_Subjects >
   }
   // End Of build Widget
 
+Add_Subject ( { required String Coll , required String Dept } ) async
+{
+
+  final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
+  final user = User ( Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text ) ;
+  final json = user . tojson ( );
+  await docUser . set ( json ) ;
+}
+
 }
 // End Of _Add_SubjectsState Class
+
+class User
+{
+
+  final String Coll ;
+  final String Dept ;
+  final String Desc ;
+  final String prev ;
+
+  User ( { required this . Coll , required this . Dept , required this . Desc , required this . prev } ) ;
+
+  Map < String , dynamic > tojson ( ) => { "Coll" : Coll , "Dept" : Dept , "Desc" : Desc ,  "prev" : prev  } ;
+
+  static User fromjson ( Map < String , dynamic > json ) => User ( Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , prev : json [ "prev" ] ) ;
+
+
+}

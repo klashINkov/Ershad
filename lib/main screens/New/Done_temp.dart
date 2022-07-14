@@ -15,8 +15,6 @@ import 'package:ershad/main screens/personal lost.dart';
 
 import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
-import 'package:ershad/main screens/Teachers/Control/Done_C_Colleges.dart';
-
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class temp
@@ -36,25 +34,43 @@ class temp
 
   ];
 
-  List < String >  CollAuto_Fill = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الاداب" , "كلية العلوم التربوية" ] ;
+  List < String >  College_Name = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الاداب" , "كلية العلوم التربوية" ] ;
 
 
-  List < Coll_Depts > Coll_And_Depts =
+  List < College_Depts > College_DeptS =
   [
 
-    Coll_Depts ( Colleges_Depts : [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ),
+    College_Depts ( Colleges_Depts : [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ),
 
-    Coll_Depts ( Colleges_Depts : [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ),
+    College_Depts ( Colleges_Depts : [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ),
 
-    Coll_Depts ( Colleges_Depts : [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ),
+    College_Depts ( Colleges_Depts : [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ),
 
-    Coll_Depts ( Colleges_Depts : [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ),
+    College_Depts ( Colleges_Depts : [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ),
 
-    Coll_Depts ( Colleges_Depts : [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ),
+    College_Depts ( Colleges_Depts : [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ),
 
-    Coll_Depts ( Colleges_Depts : [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] )
+    College_Depts ( Colleges_Depts : [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] )
 
   ];
+
+  List < College_Specialties > College_SpecialtieS =
+  [
+
+    College_Specialties ( Colleges_SpecialtieS : [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ),
+
+    College_Specialties ( Colleges_SpecialtieS :  [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ),
+
+    College_Specialties ( Colleges_SpecialtieS : [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ),
+
+    College_Specialties ( Colleges_SpecialtieS :  [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ]  ),
+
+    College_Specialties ( Colleges_SpecialtieS : [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ),
+
+    College_Specialties ( Colleges_SpecialtieS : [ "تربية خاصة" , "معلم صف" ] )
+
+  ];
+
 
 
   // Start Of Item Widget ==> لعرض بيانات المادة
@@ -138,19 +154,39 @@ class temp
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
 
           else
-              {
+            {
 
-                Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Control ( ) ) ) ;
+              Navigator . pushReplacement
+              (
+                context , MaterialPageRoute
+                (
 
-              }
+                  builder : ( _ ) => Teachers
+                  (
+
+                    Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
+
+                    Image1_text : "إضافة أو تعديل بيانات المدرس",
+
+                    Image2_Url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU",
+
+                    Image2text : "إضافة أو تعديل بيانات مادة"
+
+                  )
+
+                )
+
+              );
+
+            }
 
         }
 
         else if ( txt == "إضافة أو تعديل بيانات مادة" )
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => T_Colleges ( ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 1 ) ) ) ;
 
         else
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_T_Colleges ( ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 2 ) ) ) ;
 
       },
 
@@ -235,14 +271,14 @@ class temp
                 enabledBorder : OutlineInputBorder
                 (
 
-                  borderRadius : BorderRadius . circular ( 30 ),
+                  borderRadius : BorderRadius . circular ( 50 ),
                   borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
                 ),
                 focusedBorder : OutlineInputBorder
                 (
 
-                  borderRadius : BorderRadius . circular ( 30 ),
+                  borderRadius : BorderRadius . circular ( 50 ),
 
                   borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
@@ -251,14 +287,14 @@ class temp
                 errorBorder : OutlineInputBorder
                 (
 
-                  borderRadius : BorderRadius . circular ( 30 ),
+                  borderRadius : BorderRadius . circular ( 50 ),
                   borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
                 ),
                 focusedErrorBorder : OutlineInputBorder
                 (
 
-                  borderRadius : BorderRadius . circular ( 30 ),
+                  borderRadius : BorderRadius . circular ( 50 ),
 
                   borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
@@ -346,40 +382,48 @@ class temp
           TypeAheadFormField
           (
 
-            suggestionsBoxDecoration : SuggestionsBoxDecoration ( color : Colors . black ),
+            suggestionsBoxDecoration : SuggestionsBoxDecoration ( color : Colors . transparent ),
             suggestionsCallback : label == " القسم" ?
 
-            ( val ) => Coll_And_Depts [ Index ] . Colleges_Depts . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) )
+            ( val ) => College_DeptS [ Index ] . Colleges_Depts . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ) :
+
+            label == " التخصص" ?
+
+            ( val ) => College_SpecialtieS [ Index ] . Colleges_SpecialtieS . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) )
             :
-            ( val ) => CollAuto_Fill . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ),
+            ( val ) => College_Name . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ),
 
-            itemBuilder :  ( _ , String element ) => Container
+            itemBuilder :  ( _ , String element ) => Opacity
             (
-
-              margin : EdgeInsets . all ( 10 ),
-
-              decoration : BoxDecoration
+              opacity : 0.6 ,
+              child : Container
               (
 
-                color : Colors . black,
-                border :  Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                  borderRadius : BorderRadius . circular ( 50 )
+                margin : EdgeInsets . all ( 10 ),
+
+                decoration : BoxDecoration
+                (
+
+                  color : Colors . black,
+                  border :  Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                    borderRadius : BorderRadius . circular ( 50 )
+
+                ),
+
+                child : ListTile
+                (
+
+                  title : Text ( element , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+                )
 
               ),
-
-              child : ListTile
-              (
-
-                title : Text ( element , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
-
-              )
-
             ),
             onSuggestionSelected : ( String val )
             {
 
               controller . text = val ;
-              Index = CollAuto_Fill . indexOf ( val ) ;
+              Index = College_Name . indexOf ( val ) ;
 
             },
             getImmediateSuggestions : true,
@@ -405,14 +449,14 @@ class temp
                     enabledBorder : OutlineInputBorder
                       (
 
-                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
                         borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
                     ),
                     focusedBorder : OutlineInputBorder
                       (
 
-                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
 
                         borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
@@ -421,14 +465,14 @@ class temp
                     errorBorder : OutlineInputBorder
                       (
 
-                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
                         borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
                     ),
                     focusedErrorBorder : OutlineInputBorder
                       (
 
-                        borderRadius : BorderRadius . circular ( 30 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
 
                         borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
@@ -495,7 +539,7 @@ class temp
         (
 
             color : Colors . black,
-            border : Border . all ( color : Colors . white , width : 10 ),
+            border : Border . all ( color : Colors . white , width : 5 ),
             borderRadius : BorderRadius . circular ( 50 )
 
         ),
@@ -538,7 +582,27 @@ class temp
           {
 
             if ( text ==  "المدرسين" )
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Teachers ( ) ) ) ;
+              Navigator . push
+              (
+                context , MaterialPageRoute
+                (
+
+                  builder : ( _ ) => Teachers
+                  (
+
+                    Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
+
+                    Image1_text : "مُدرس",
+
+                    Image2_Url : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513",
+
+                    Image2text : "طالب"
+
+                  )
+
+                )
+
+              );
 
             else
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( ) ) ) ;
@@ -613,7 +677,7 @@ class temp
           {
 
             if ( text == "الكليات و التخصصات" )
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( ) ) ) ;
+              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 0 ) ) ) ;
 
             else
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;
@@ -725,9 +789,16 @@ class sts
 
 }
 
-class Coll_Depts
+class College_Depts
 {
   List < String > Colleges_Depts ;
-  Coll_Depts ( { required this . Colleges_Depts } ) ;
+  College_Depts ( { required this . Colleges_Depts } ) ;
 }
 
+class College_Specialties
+{
+
+  List < String > Colleges_SpecialtieS ;
+  College_Specialties ( { required this . Colleges_SpecialtieS } ) ;
+
+}

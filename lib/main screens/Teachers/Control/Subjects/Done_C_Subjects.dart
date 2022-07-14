@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main%20screens/Teachers/Control/Subjects/Done_Add_Subjects.dart';
+import 'package:ershad/main%20screens/Teachers/Control/Subjects/Add_Subjects.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
 
@@ -16,16 +16,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 // Start Of Subjects Class
-class T_Subjects extends StatelessWidget
+class C_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
   var Width ;
   var Height ;
-  String Specialty_Name , College_Name , Desc ;
+  String Specialty_Name , College_Name ;
   List < dynamic > subjects ;
 
-  T_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
+  C_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . subjects } ) ;
 
   // Start of build Widget
   @override
