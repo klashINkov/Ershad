@@ -194,7 +194,7 @@ class Colleges_DeptS extends StatelessWidget
   Widget Horizontal_List_View ( { required String College_Name , required String image , required BuildContext context } ) => InkWell
   (
 
-    onTap : ( ) { /*Horizontal_List_View_On_Tap ( item ) ;*/ },
+    onTap : ( ) { Horizontal_List_View_On_Tap ( College_Name , context ) ; },
 
     child : Container
     (
@@ -280,7 +280,7 @@ class Colleges_DeptS extends StatelessWidget
       {
 
         List < String > Colleges_Depts = [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية الهندسة Case
@@ -290,7 +290,7 @@ class Colleges_DeptS extends StatelessWidget
       {
 
         List < String > Colleges_Depts = [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية العلوم Case
@@ -300,17 +300,17 @@ class Colleges_DeptS extends StatelessWidget
       {
 
         List < String > Colleges_Depts = [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية تكنولوجيا المعلومات و الاتصالات Case
 
       // Start Of كلية الاعمال
-      if ( College_Name ==  "كلية الاعمال" )
+      if ( College_Name ==  "كلية الأعمال" )
       {
 
         List < String > Colleges_Depts = [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية الاعمال case
@@ -320,7 +320,7 @@ class Colleges_DeptS extends StatelessWidget
       {
 
         List < String > Colleges_Depts = [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية الاداب case
@@ -330,7 +330,7 @@ class Colleges_DeptS extends StatelessWidget
       {
 
         List < String > Colleges_Depts = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
-        Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) , ( route ) => route . isFirst ) ;
+        Navigator . of ( context ) . pushReplacement ( MaterialPageRoute ( builder : ( context ) => Colleges_DeptS ( College_Name : College_Name , Colleges_Depts : Colleges_Depts ) ) ) ;
 
       }
       // End Of كلية العلوم التربوية Case

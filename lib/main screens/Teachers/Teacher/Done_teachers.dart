@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Teacher/Colleges_Depts.dart';
+import 'package:ershad/main screens/Teachers/Teacher/Done_Colleges_Depts.dart';
 
 import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
