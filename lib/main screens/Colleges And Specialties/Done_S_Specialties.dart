@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, file_names, camel_case_types
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, file_names, camel_case_types, unused_local_variable
 
 import 'package:ershad/main%20screens/Teachers/Control/Subjects/Done_C_Subjects.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +19,7 @@ class S_Specialties extends StatelessWidget
 
   var x = temp ( ) ;
   int num , _num = 0 ;
+  bool isempty = false ;
   final String College_Name ;
   final List < String > College_Specialties_Or_College_Depts ;
 
@@ -30,6 +31,7 @@ class S_Specialties extends StatelessWidget
   {
 
     _num = num ;
+
 
     return Scaffold
     (
@@ -128,7 +130,7 @@ class S_Specialties extends StatelessWidget
                   child : Center
                   (
 
-                    child : Text ( "تخصصات الكلية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                    child : Text ( _num != 2 ? "تخصصات الكلية" : "اقسام الكلية" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                   )
 
@@ -249,7 +251,7 @@ class S_Specialties extends StatelessWidget
         return ListTile
         (
 
-          onTap : ( ) { List_View_On_Tap ( _Specialty_Name , context ) ; },
+          onTap : ( ) { fun (  _Specialty_Name ) ; List_View_On_Tap (  _Specialty_Name , context ) ;   },
 
           title : Container
           (
@@ -339,7 +341,7 @@ class S_Specialties extends StatelessWidget
 
     }
 
-    if ( College_Name ==  "كلية الاداب" )
+    if ( College_Name ==  "كلية الآداب" )
     {
 
       List < String > College_Specialties_Or_College_Depts = [ ];
@@ -374,60 +376,32 @@ class S_Specialties extends StatelessWidget
   void List_View_On_Tap ( String Specialty_Name , BuildContext context ) async
   {
 
-    String path = "" ;
-
-      if ( College_Name == "كلية الهندسة" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-      if ( College_Name == "كلية العلوم" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-      if ( College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-      if ( College_Name == "كلية الأعمال" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-      if ( College_Name == "كلية الاداب" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-      if ( College_Name == "كلية العلوم التربوية" )
-      {
-
-        path = "/الكليات و التخصصات/$College_Name/$Specialty_Name" ;
-
-      }
-
-
-    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) ;
-
+    var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) ;
     Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => _num == 0 ?
-    S_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects : varibel [ "مواد التخصص" ] )
+    S_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects : varibel [ "مواد التخصص" ] , is_empty : isempty  )
     :
     C_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name  , subjects : varibel [ "مواد التخصص" ] ) ) );
 
   }
   // End of List View On Tap Function
+
+  fun (  String Specialty_Name ) async
+  {
+    final varr = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) . then
+      (
+
+        (value)
+        {
+
+          if ( value . data ( )! [ "مواد التخصص" ] . length == 0 )
+              {
+                isempty = true;
+                print ( "============ Done" ) ;
+              }
+    }
+
+    );
+  }
 
 }
 // End Of Specialties Class

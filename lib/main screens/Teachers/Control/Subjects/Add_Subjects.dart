@@ -1,6 +1,6 @@
 //Done
 
-// ignore_for_file: deprecated_member_use, prefer_const_constructors, body_might_complete_normally_nullable, empty_statements, non_constant_identifier_names, use_key_in_widget_constructors, camel_case_types, unnecessary_new
+// ignore_for_file: deprecated_member_use, prefer_const_constructors, body_might_complete_normally_nullable, empty_statements, non_constant_identifier_names, use_key_in_widget_constructors, camel_case_types, unnecessary_new, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -216,31 +216,61 @@ class _Add_Subjects extends State < Add_Subjects >
   }
   // End Of build Widget
 
-Add_Subject ( { required String Coll , required String Dept } ) async
-{
+  Add_Subject ( { required String Coll , required String Dept } ) async
+  {
 
-  final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
-  final user = User ( Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text ) ;
-  final json = user . tojson ( );
-  await docUser . set ( json ) ;
-}
+    final doc = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) ;
+
+
+    final docUser = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Name . text ) ;
+    final user = User ( Name : Name . text , Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text ) ;
+    final json = user . tojson ( ) ;
+    await docUser . set ( json ) ;
+    
+    List < String > arr = [ Name . text ] ;
+
+    var varibel = await FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) . then
+    (
+
+      (value)
+      {
+        if ( value . data ( )! [ "مواد التخصص" ] . length == 0 )
+        {
+          doc . update ( { "مواد التخصص"  : FieldValue . arrayUnion( arr) } )  ;
+          print ( "========== update done" ) ;
+        }
+        else
+        {
+          doc . set ( { "مواد التخصص"  : FieldValue . arrayUnion( arr) }, SetOptions(merge: true) )  ;
+          print ( "========== set done" ) ;
+        }
+
+      }
+
+    );
+
+
+
+
+
+  }
 
 }
 // End Of _Add_SubjectsState Class
 
 class User
 {
-
+  final String Name ;
   final String Coll ;
   final String Dept ;
   final String Desc ;
   final String prev ;
 
-  User ( { required this . Coll , required this . Dept , required this . Desc , required this . prev } ) ;
+  User ( { required this . Name , required this . Coll , required this . Dept , required this . Desc , required this . prev } ) ;
 
-  Map < String , dynamic > tojson ( ) => { "Coll" : Coll , "Dept" : Dept , "Desc" : Desc ,  "prev" : prev  } ;
+  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc ,  "prev" : prev  } ;
 
-  static User fromjson ( Map < String , dynamic > json ) => User ( Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , prev : json [ "prev" ] ) ;
+  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , prev : json [ "prev" ] ) ;
 
 
 }

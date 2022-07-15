@@ -185,7 +185,7 @@ class S_Colleges extends StatelessWidget
 
     }
 
-    if ( College_Name ==  "كلية الاداب" )
+    if ( College_Name ==  "كلية الآداب" )
     {
 
       List < String > College_Specialties_Or_College_Depts = [ ];

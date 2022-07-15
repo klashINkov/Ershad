@@ -18,9 +18,10 @@ class S_Subjects extends StatelessWidget
 
   var x = temp ( ) ;
   String Specialty_Name , College_Name , Desc ;
+  bool is_empty ;
   List < dynamic > subjects ;
 
-  S_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects } ) ;
+  S_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects , required this . is_empty  } ) ;
 
   // Start of build Widget
   @override
@@ -172,7 +173,9 @@ class S_Subjects extends StatelessWidget
                   Container
                   (
 
-                    height : 600,
+                    height : is_empty ? 200 : 600,
+                    width : 400 ,
+
                     margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
 
                     decoration : BoxDecoration
@@ -188,7 +191,25 @@ class S_Subjects extends StatelessWidget
 
                       padding : EdgeInsets . only ( top : 45 , bottom : 10 ),
 
-                      child : list_view ( )
+                      child :  is_empty ?
+                      Center(
+                        child: Text
+                        (
+
+                          "لم يتم اضافة مواد من قبل مدرسين هذا التخصص بعد",
+                          textAlign : TextAlign . center,
+                          style : TextStyle
+                          (
+
+                            fontWeight : FontWeight . bold ,
+                            color : Colors . white,
+                            fontSize : 25
+
+                          ),
+
+                        ),
+                      ) :
+                      list_view ( )
 
                     )
 
@@ -196,11 +217,11 @@ class S_Subjects extends StatelessWidget
                   // End Of List View
 
                   // Start Of Arrow Up
-                  x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                  is_empty ? SizedBox( ) : x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
+                  is_empty ? SizedBox( ) : x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
                   // End Of Arrow down
 
                 ]
@@ -268,52 +289,8 @@ class S_Subjects extends StatelessWidget
   void List_View_On_Tap ( String Subject_Name , BuildContext context ) async
   {
 
-    String path = "";
 
-    if ( College_Name == "كلية الهندسة" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-    if ( College_Name == "كلية العلوم" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-    if ( College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-    if ( College_Name == "كلية الأعمال" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-    if ( College_Name == "كلية الاداب" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-    if ( College_Name == "كلية العلوم التربوية" )
-    {
-
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ;
-
-    }
-
-
-    var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Subject_Name ) . get ( ) ;
+    var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Subject_Name ) . get ( ) ;
 
     Navigator. push
     (

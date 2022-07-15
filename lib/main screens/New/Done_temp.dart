@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 // Width = 0.2429824561403509    => 10=2.44
 //Height = 0.1463636363636364
-import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
+import 'package:ershad/main%20screens/Teachers/Done_Teachers.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dart';
 
@@ -29,12 +29,12 @@ class temp
     sts ( College_Name : "كلية العلوم"                        , image : "pic/sciences college.png" ),
     sts ( College_Name : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
     sts ( College_Name : "كلية الأعمال"                        , image : "pic/business  college.png" ),
-    sts ( College_Name : "كلية الاداب"                         , image : "pic/arts college.png" ),
+    sts ( College_Name : "كلية الآداب"                         , image : "pic/arts college.png" ),
     sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
 
   ];
 
-  List < String >  College_Name = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الاداب" , "كلية العلوم التربوية" ] ;
+  List < String >  College_Name = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الآداب" , "كلية العلوم التربوية" ] ;
 
 
   List < College_Depts > College_DeptS =
@@ -395,7 +395,9 @@ class temp
 
             itemBuilder :  ( _ , String element ) => Opacity
             (
+
               opacity : 0.6 ,
+
               child : Container
               (
 
@@ -417,18 +419,15 @@ class temp
 
                 )
 
-              ),
+              )
+
             ),
-            onSuggestionSelected : ( String val )
-            {
 
-              controller . text = val ;
-              Index = College_Name . indexOf ( val ) ;
-
-            },
+            onSuggestionSelected : ( String val )  { controller . text = val ; Index = College_Name . indexOf ( val ) ; },
             getImmediateSuggestions : true,
             hideSuggestionsOnKeyboardHide : true,
             hideOnEmpty : true,
+
             textFieldConfiguration : TextFieldConfiguration
             (
                 textInputAction : textInputAction,
@@ -441,40 +440,40 @@ class temp
                 maxLines : maxLines,
 
                 decoration : InputDecoration
-                  (
+                (
 
                     filled : true,
                     fillColor : Colors . black,
 
                     enabledBorder : OutlineInputBorder
-                      (
+                    (
 
-                        borderRadius : BorderRadius . circular ( 50 ),
-                        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                      borderRadius : BorderRadius . circular ( 50 ),
+                      borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
                     ),
                     focusedBorder : OutlineInputBorder
-                      (
+                    (
 
-                        borderRadius : BorderRadius . circular ( 50 ),
+                      borderRadius : BorderRadius . circular ( 50 ),
 
-                        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                      borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
 
                     ),
 
                     errorBorder : OutlineInputBorder
-                      (
+                    (
 
-                        borderRadius : BorderRadius . circular ( 50 ),
-                        borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+                      borderRadius : BorderRadius . circular ( 50 ),
+                      borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
                     ),
                     focusedErrorBorder : OutlineInputBorder
-                      (
+                    (
 
-                        borderRadius : BorderRadius . circular ( 50 ),
+                      borderRadius : BorderRadius . circular ( 50 ),
 
-                        borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+                      borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
 
                     ),
                     errorStyle : TextStyle ( fontSize : 18 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
@@ -490,6 +489,7 @@ class temp
                 ),
 
             ),
+
             validator : ( val )
             {
 
@@ -502,7 +502,7 @@ class temp
 
               return null ;
 
-            } ,
+            }
 
           ),
 

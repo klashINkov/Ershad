@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/Teacher/Done_teachers.dart';
+import 'package:ershad/main%20screens/Teachers/Done_Teachers.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
