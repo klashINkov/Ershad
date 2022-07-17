@@ -2,6 +2,7 @@
 
 // ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
+import 'package:ershad/main%20screens/Teachers/Control/C_Doctor_data_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
@@ -17,11 +18,12 @@ class S_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  String Specialty_Name , College_Name , Desc ;
+  String Specialty_Name_Or_Dept_Name , College_Name , Desc ;
   bool is_empty ;
-  List < dynamic > subjects ;
+  int num ;
+  List < dynamic > subjects_Or_Doctors_Names ;
 
-  S_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . Desc , required this . subjects , required this . is_empty  } ) ;
+  S_Subjects ( { required this . Specialty_Name_Or_Dept_Name , required this . College_Name , required this . Desc , required this . subjects_Or_Doctors_Names , required this . is_empty , required this . num } ) ;
 
   // Start of build Widget
   @override
@@ -39,8 +41,8 @@ class S_Subjects extends StatelessWidget
         title  : Padding
         (
 
-          padding : EdgeInsets . only ( top : 10  ),
-          child : Text ( Specialty_Name , maxLines : 2 , textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) )
+          padding : EdgeInsets . only ( top : 10 ),
+          child : Text ( Specialty_Name_Or_Dept_Name , maxLines : 2 , textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 
@@ -64,89 +66,53 @@ class S_Subjects extends StatelessWidget
 
     ),
 
-      body : SingleChildScrollView
+      body : num == 2 ?
+      Container
       (
 
-        child : Container
+        height : 684,
+
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+        child : Padding
         (
 
-          decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+          padding : EdgeInsets . only ( top : 70 ),
 
-          child : Column
+          child : num == 2 && is_empty ?
+          Center
           (
 
-            children :
-            [
+            child : Padding
+            (
 
-              // Start Of Description
-              Stack
+              padding : EdgeInsets . symmetric ( horizontal : 20 ),
+
+              child : Text
               (
 
-                children :
-                [
+                "لم يقم احد مدرسين هذا التخصص باضافة بياناته بعد",
+                textAlign : TextAlign . center,
+                style : TextStyle
+                (
 
-                  // Start Of Description Text
-                  Container
-                  (
+                  fontWeight : FontWeight . bold ,
+                  color : Colors . white,
+                  fontSize : 25
 
-                    height : 400,
-                    margin : EdgeInsets . only ( top : 90 , left : 15 , right : 25 ),
+                )
 
-                    decoration : BoxDecoration
-                    (
+              )
 
-                      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                      borderRadius : BorderRadius . circular ( 50 ),
+            )
 
-                    ),
+          ):
+          Column
+          (
 
-                    child : Padding
-                    (
+            children:
+            [
 
-                      padding : EdgeInsets . only ( top : 5 , left : 22 , right : 22 , bottom : 8 ),
-
-                      child : SingleChildScrollView
-                      (
-
-                        child : Column
-                        (
-
-                          children :
-                          [
-
-                            // Start Of نبذه عن التخصص
-                            Text ( "نبذة عن التخصص" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) ),
-                            // End Of نبذه عن التخصص
-
-                            // Start Of Description Text
-                            Text ( Desc , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
-                            // End Of Description Text
-
-                          ]
-
-                        )
-
-                      )
-
-                    )
-
-                  ),
-                  // End Of Description Text
-
-                  // Start Of Arrow Up
-                  x . Arrows ( top : 100 , left : 341 , icon : Icons . keyboard_arrow_up ),
-                  // End Of Arrow Up
-
-                  // Start Of Arrow down
-                  x . Arrows (top : 400 , left : 341 , icon : Icons . keyboard_arrow_down )
-                  // End Of Arrow down
-
-                ]
-
-              ),
-              // End Of Description
-
-              // STart Of List View
               Stack
               (
 
@@ -162,7 +128,7 @@ class S_Subjects extends StatelessWidget
                     child : Center
                     (
 
-                      child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                      child : Text ( "مدرسين القسم" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                     )
 
@@ -173,7 +139,7 @@ class S_Subjects extends StatelessWidget
                   Container
                   (
 
-                    height : is_empty ? 200 : 600,
+                    height : 580,
                     width : 400 ,
 
                     margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
@@ -186,30 +152,17 @@ class S_Subjects extends StatelessWidget
 
                     ),
 
-                    child : Padding
+                    child : Column
                     (
 
-                      padding : EdgeInsets . only ( top : 45 , bottom : 10 ),
+                      mainAxisAlignment : MainAxisAlignment . center,
 
-                      child :  is_empty ?
-                      Center(
-                        child: Text
-                        (
+                      children :
+                      [
 
-                          "لم يتم اضافة مواد من قبل مدرسين هذا التخصص بعد",
-                          textAlign : TextAlign . center,
-                          style : TextStyle
-                          (
+                        list_view ( )
 
-                            fontWeight : FontWeight . bold ,
-                            color : Colors . white,
-                            fontSize : 25
-
-                          ),
-
-                        ),
-                      ) :
-                      list_view ( )
+                      ]
 
                     )
 
@@ -221,17 +174,210 @@ class S_Subjects extends StatelessWidget
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  is_empty ? SizedBox( ) : x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
+                  is_empty ? SizedBox( ) : x . Arrows (top : 510 , left : 341 , icon : Icons . keyboard_arrow_down )
                   // End Of Arrow down
 
                 ]
 
               )
-              // End Of List View
 
             ]
 
           )
+
+        )
+
+      ) :
+      Container
+      (
+
+        height : 683,
+
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+        child : ListView
+        (
+
+          children :
+          [
+
+            Column
+            (
+
+              children :
+              [
+
+                // Start Of Description
+                Stack
+                (
+
+                  children :
+                  [
+
+                    // Start Of Description Text
+                    Container
+                    (
+
+                      height : is_empty ? 360 : 400,
+                      margin : EdgeInsets . only ( top : 10 , left : 15 , right : 25 ),
+
+                      decoration : BoxDecoration
+                      (
+
+                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
+
+                      ),
+
+                      child : Padding
+                      (
+
+                        padding : EdgeInsets . only ( top : 5 , left : 22 , right : 22 , bottom : 8 ),
+
+                        child : SingleChildScrollView
+                        (
+
+                          child : Column
+                          (
+
+                            children :
+                            [
+
+                              // Start Of نبذه عن التخصص
+                              Text ( "نبذة عن التخصص" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) ),
+                              // End Of نبذه عن التخصص
+
+                              // Start Of Description Text
+                              Text ( Desc , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                              // End Of Description Text
+
+                            ]
+
+                          )
+
+                        )
+
+                      )
+
+                    ),
+                    // End Of Description Text
+
+                    // Start Of Arrow Up
+                    x . Arrows ( top : 30 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                    // End Of Arrow Up
+
+                    // Start Of Arrow down
+                    x . Arrows (top : is_empty ? 270 : 310 , left : 341 , icon : Icons . keyboard_arrow_down )
+                    // End Of Arrow down
+
+                  ]
+
+                ),
+                // End Of Description
+
+                // STart Of List View
+                Stack
+                (
+
+                  children :
+                  [
+
+                    // Start Of مواد التخصص الاجبارية
+                    Padding
+                    (
+
+                      padding : EdgeInsets . only ( top : 50 ),
+
+                      child : Center
+                      (
+
+                        child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+                      )
+
+                    ),
+                    // End Of مواد التخصص الاجبارية
+
+                    // STart Of List View
+                    Container
+                    (
+
+                      height : is_empty ? 200 : 580,
+                      width : 400 ,
+
+                      margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
+
+                      decoration : BoxDecoration
+                      (
+
+                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                        borderRadius : BorderRadius . circular ( 50 ),
+
+                      ),
+
+                      child : Padding
+                      (
+
+                        padding : EdgeInsets . only ( top : 65 , bottom : 10 ),
+
+                        child :  is_empty ?
+                        Center
+                        (
+
+                          child : Text
+                          (
+                            "لم يتم اضافة مواد من قبل مدرسين هذا التخصص بعد",
+                            textAlign : TextAlign . center,
+                            style : TextStyle
+                            (
+
+                              fontWeight : FontWeight . bold,
+                              color : Colors . white,
+                              fontSize : 25
+
+                            )
+
+                          )
+
+                        ) :
+
+                        Column
+                        (
+
+                          mainAxisAlignment : MainAxisAlignment . center,
+
+                          children :
+                          [
+
+                            list_view ( )
+
+                          ]
+
+                        )
+
+                      )
+
+                    ),
+                    // End Of List View
+
+                    // Start Of Arrow Up
+                    is_empty ? SizedBox( ) : x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                    // End Of Arrow Up
+
+                    // Start Of Arrow down
+                    is_empty ? SizedBox( ) : x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
+                    // End Of Arrow down
+
+                  ]
+
+                )
+                // End Of List View
+
+              ]
+
+            )
+
+          ]
 
         )
 
@@ -243,65 +389,75 @@ class S_Subjects extends StatelessWidget
   // End of build Widget
 
   // Start of list_view Widget
-  Widget list_view ( )  => ListView . builder
+  Widget list_view ( )  => Flexible
   (
 
-    padding : EdgeInsets . only ( top : 0 ),
-    itemCount : subjects . length,
+    child : ListView . builder
+    (
 
-    itemBuilder : ( context , index )
-    {
+      shrinkWrap : true,
+      padding : EdgeInsets . only ( top : 0 ),
+      itemCount : subjects_Or_Doctors_Names . length,
 
-      String Subject_Name = subjects [ index ] ;
+      itemBuilder : ( context , index )
+      {
 
-      return ListTile
-      (
+        String Subject_Name_Or_Doctor_Name = subjects_Or_Doctors_Names [ index ] ;
 
-        onTap : ( ) { List_View_On_Tap ( Subject_Name , context ) ; },
-
-        title : Container
+        return ListTile
         (
 
-          padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
-          margin : EdgeInsets . only ( bottom : 10  ),
+          onTap : ( ) { List_View_On_Tap ( Subject_Name_Or_Doctor_Name , context ) ; },
 
-          decoration : BoxDecoration
+          title : Container
           (
 
-            color : Colors . black,
-            border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-            borderRadius : BorderRadius . circular ( 40 )
+            padding : EdgeInsets . only ( top : 10 , bottom : 10  ),
+            margin : EdgeInsets . only ( bottom : 10  ),
 
-          ),
+            decoration : BoxDecoration
+            (
 
-          child : Text ( Subject_Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
+              color : Colors . black,
+              border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+              borderRadius : BorderRadius . circular ( 40 )
 
-        )
+            ),
 
-      );
+            child : Text ( Subject_Name_Or_Doctor_Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
-    }
+          )
+
+        );
+
+      }
+
+    )
 
   );
   // End of list_view Widget
 
   // Start of List_View_On_Tap Function
-  void List_View_On_Tap ( String Subject_Name , BuildContext context ) async
+  void List_View_On_Tap ( String Subject_Name_Or_Doctor_Name , BuildContext context ) async
   {
 
+    var Varibel = await FirebaseFirestore . instance . collection ( "/المدرسين/$College_Name/$Specialty_Name_Or_Dept_Name"  ) . doc ( Subject_Name_Or_Doctor_Name ) . get ( ) ;
 
-    var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Subject_Name ) . get ( ) ;
+    var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Subject_Name_Or_Doctor_Name ) . get ( ) ;
 
-    Navigator. push
+    Navigator . push
     (
 
       context , MaterialPageRoute
       (
 
-        builder : ( context ) => S_Subject
+        builder : ( context ) => num == 2 ?
+        C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Desc : Varibel [ "Desc" ]  , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Offec : Varibel [ "Offec" ]  ):
+
+        S_Subject
         (
 
-          Name : Subject_Name,
+          Name : Subject_Name_Or_Doctor_Name,
           Previous : varibel [ "Previous" ],
           NO : varibel [ "NO" ] ,
           syllabus : "fdfdf",

@@ -2,6 +2,7 @@
 
 // ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_unnecessary_containers, use_key_in_widget_constructors, must_be_immutable, constant_identifier_names, must_call_super, unnecessary_overrides
 
+
 import 'package:flutter/material.dart';
 // Width = 0.2429824561403509    => 10=2.44
 //Height = 0.1463636363636364
@@ -11,7 +12,7 @@ import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dar
 
 import 'package:ershad/main screens/Map/Done_Map.dart';
 
-import 'package:ershad/main screens/personal lost.dart';
+import 'package:ershad/main%20screens/personal%20lost/personal%20lost.dart';
 
 import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
 
@@ -560,6 +561,102 @@ class temp
   );
   // End Of TXT Function ==> للخارطه
 
+  // Start Of TexT Function ==> لعرض بيانات المدرس للطالب
+  Widget TexT ( { required String text , required String label } ) =>
+  Stack
+  (
+    // clipBehavior: Clip . none,
+    children :
+    [
+
+      Container
+      (
+
+        margin : EdgeInsets . only ( top : 15 ),
+        padding : EdgeInsets . only ( top: 10 , bottom: 10 ),
+        height : label == "عنوان المكتب" || label == "وسيلة التواصل" ? 200 : label == "النبذه" ? 400 : label == "الكلية" ? 150 : 90,
+
+        decoration : BoxDecoration
+        (
+
+          color : Colors . black,
+          border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+          borderRadius : BorderRadius . circular ( 50 )
+
+        ),
+
+        child : Center
+        (
+
+          child : SingleChildScrollView
+          (
+
+            child : Text
+            (
+
+              text,
+              maxLines : label == "الكلية" ||label == "عنوان المكتب" || label == "وسيلة التواصل" ? 3 : 1 ,
+              textAlign : TextAlign . center,
+              style : TextStyle
+              (
+
+                color : Colors . white,
+                fontSize : 25,
+                fontWeight : FontWeight . bold
+
+              ),
+
+            )
+
+          )
+
+        )
+
+      ),
+
+      Center(
+        child: Positioned
+        (
+          // left: 330,
+          top : -20 ,
+          child: Text
+            (
+
+            label,
+            textAlign : TextAlign . center,
+            style : TextStyle
+              (
+
+                color : Colors . white,
+                fontSize : 25,
+                fontWeight : FontWeight . bold
+
+            ),
+
+          ),
+        ),
+      ),
+
+      /*Padding
+      (
+
+        padding : EdgeInsets . only ( left : 345 , top : 10 ),
+
+        child : IconButton
+        (
+
+            onPressed : ( ) { },
+
+            icon : Icon ( CupertinoIcons . pen , color : Colors . white , size : 40 )
+
+        ),
+      )*/
+
+    ]
+
+  );
+  // End Of TexT Function ==> لعرض بيانات المدرس للطالب
+
   // Start Of sdfa Widget ==> للصفحة الرئيسية
   Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) => text == "المدرسين" || text == "المفقودات" ?
   Opacity
@@ -580,6 +677,7 @@ class temp
 
           onTap :  ( )
           {
+
 
             if ( text ==  "المدرسين" )
               Navigator . push
@@ -605,7 +703,15 @@ class temp
               );
 
             else
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( ) ) ) ;
+              Navigator . push
+              ( context , MaterialPageRoute
+                (
+                    builder : ( context ) => Personal_Lost()
+
+
+            )
+            ) ;
+
 
           },
 
@@ -776,6 +882,26 @@ class temp
       }
 
   }
+
+  Widget Lost ( { required String text } ) =>
+  Container
+  (
+
+    height : 250,
+    padding : EdgeInsets . only ( top : 10 , bottom : 10 , left : 5 , right : 5  ),
+      margin : EdgeInsets . only ( bottom: 20 ) ,
+    decoration : BoxDecoration
+    (
+
+      color : Colors . black,
+      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+      borderRadius : BorderRadius . circular ( 30 )
+
+    ),
+
+    child : Center ( child : Text ( text , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 18 ) ) )
+
+  );
 
 }
 

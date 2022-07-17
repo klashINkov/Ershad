@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names, unnecessary_new, deprecated_member_use, prefer_const_constructors, unnecessary_this, avoid_print, unnecessary_null_comparison, file_names
+// ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names, unnecessary_new, deprecated_member_use, prefer_const_constructors, unnecessary_this, avoid_print, unnecessary_null_comparison, file_names, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -396,12 +396,20 @@ class _Signup extends State < Signup >
       try
       {
 
+        //لاضافة بيانات الدكتور الى الفاير بيس
         UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
-
         final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
-        final user = User ( Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
+        final user = User ( Name : Name . text , Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
         final json = user . tojson ( );
         await docUser . set ( json ) ;
+        //لاضافة بيانات الدكتور الى الفاير بيس
+
+        // لاضافة اسم الدكتور الى قائمة اسماء مدرسين الكلية
+        List < String > arr = [ Name . text ] ;
+        final doc = FirebaseFirestore . instance . collection ( "المدرسين" ) . doc ( Coll ) ;
+        var varibel = await FirebaseFirestore . instance . collection ( "المدرسين" ) . doc ( Coll ) . get ( ) . then ( ( value ) => doc . set ( { "مدرسين $Dept"  : FieldValue . arrayUnion ( arr ) } , SetOptions ( merge : true ) ) ) ;
+        // لاضافة اسم الدكتور الى قائمة اسماء مدرسين الكلية
+
 
         return userCredential ;
 
@@ -477,18 +485,13 @@ class _Signup extends State < Signup >
 class User
 {
 
-  final String Coll ;
-  final String Dept ;
-  final String Desc ;
-  final String Dgree ;
-  final String Offec ;
-  final String Contact ;
+  final String Name , Coll , Dept , Desc , Dgree , Offec , Contact ;
 
-  User ( { required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
+  User ( { required this . Name , required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
 
-  Map < String , dynamic > tojson ( ) => { "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
+  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
 
-  static User fromjson ( Map < String , dynamic > json ) => User ( Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
+  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
 
 
 }

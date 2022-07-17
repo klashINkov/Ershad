@@ -9,7 +9,6 @@ import 'package:ershad/main screens/Colleges And Specialties/Done_S_Specialties.
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
-
 // Start Of Colleges Class
 class S_Colleges extends StatelessWidget
 {

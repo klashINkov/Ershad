@@ -32,7 +32,6 @@ class S_Specialties extends StatelessWidget
 
     _num = num ;
 
-
     return Scaffold
     (
 
@@ -246,12 +245,12 @@ class S_Specialties extends StatelessWidget
       itemBuilder : ( context , index )
       {
 
-        String _Specialty_Name = College_Specialties_Or_College_Depts [ index ] ;
+        String Specialty_Name_Or_Dept_Name = College_Specialties_Or_College_Depts [ index ] ;
 
         return ListTile
         (
 
-          onTap : ( ) { fun (  _Specialty_Name ) ; List_View_On_Tap (  _Specialty_Name , context ) ;   },
+          onTap : ( ) => List_View_On_Tap ( Specialty_Name_Or_Dept_Name , context ),
 
           title : Container
           (
@@ -268,7 +267,7 @@ class S_Specialties extends StatelessWidget
             margin : EdgeInsets . only ( bottom : 7 ),
             padding : EdgeInsets . only ( top : 15 , bottom : 15 ),
 
-            child : Text ( _Specialty_Name , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
+            child : Text ( Specialty_Name_Or_Dept_Name , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
           )
 
@@ -373,35 +372,39 @@ class S_Specialties extends StatelessWidget
   // End of Horizontal List View Function
 
   // Start of List View On Tap Function
-  void List_View_On_Tap ( String Specialty_Name , BuildContext context ) async
+  void List_View_On_Tap ( String Specialty_Name_Or_Dept_Name , BuildContext context ) async
   {
 
-    var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) ;
-    Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => _num == 0 ?
-    S_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects : varibel [ "مواد التخصص" ] , is_empty : isempty  )
-    :
-    C_Subjects ( Specialty_Name : Specialty_Name , College_Name : College_Name  , subjects : varibel [ "مواد التخصص" ] ) ) );
+    String path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" , array = "مواد التخصص" , Doc = "وصف التخصص و اسماء المواد و بياناتها"  ;
+
+    if ( _num == 2 )
+    {
+
+      path = "المدرسين" ;
+      array = "مدرسين $Specialty_Name_Or_Dept_Name" ;
+      Doc = College_Name ;
+
+    }
+
+      final varr = await FirebaseFirestore . instance . collection ( path ) .
+      doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( )! [ array ] . length == 0 ) ?
+      isempty = true : isempty = isempty ) ;
+
+      var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => _num == 0 ?
+
+      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) :
+
+      _num == 1 ?
+
+      C_Subjects ( Specialty_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , subjects : varibel [ array ] )
+          :
+
+      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
 
   }
   // End of List View On Tap Function
-
-  fun (  String Specialty_Name ) async
-  {
-    final varr = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) . then
-      (
-
-        (value)
-        {
-
-          if ( value . data ( )! [ "مواد التخصص" ] . length == 0 )
-              {
-                isempty = true;
-                print ( "============ Done" ) ;
-              }
-    }
-
-    );
-  }
 
 }
 // End Of Specialties Class

@@ -9,7 +9,6 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
-
 // Start Of Add_Subjects Class
 class Add_Subjects extends StatefulWidget
 {
@@ -25,8 +24,7 @@ class _Add_Subjects extends State < Add_Subjects >
 {
 
   var x = temp ( ) ;
-
-
+  GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
 
   final Name = TextEditingController ( ) ;
   final Id   = TextEditingController ( ) ;
@@ -35,8 +33,6 @@ class _Add_Subjects extends State < Add_Subjects >
   final prev = TextEditingController ( ) ;
   final coll = TextEditingController ( ) ;
   final Desc = TextEditingController ( ) ;
-
-  GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
 
   @override
   void initState ( )
@@ -219,39 +215,19 @@ class _Add_Subjects extends State < Add_Subjects >
   Add_Subject ( { required String Coll , required String Dept } ) async
   {
 
-    final doc = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) ;
-
-
+    // لاضافة بيانات المادة الى الفاير بيس عندما يدخلها الدكتور
     final docUser = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Name . text ) ;
     final user = User ( Name : Name . text , Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text ) ;
     final json = user . tojson ( ) ;
     await docUser . set ( json ) ;
-    
+    // لاضافة بيانات المادة الى الفاير بيس عندما يدخلها الدكتور
+
+    // لاضافة اسم المادة في قائمة اسماء مواد التخصص
+    final doc = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) ;
     List < String > arr = [ Name . text ] ;
-
     var varibel = await FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept" ) . doc ( "وصف التخصص و اسماء المواد و بياناتها" ) . get ( ) . then
-    (
-
-      (value)
-      {
-        if ( value . data ( )! [ "مواد التخصص" ] . length == 0 )
-        {
-          doc . update ( { "مواد التخصص"  : FieldValue . arrayUnion( arr) } )  ;
-          print ( "========== update done" ) ;
-        }
-        else
-        {
-          doc . set ( { "مواد التخصص"  : FieldValue . arrayUnion( arr) }, SetOptions(merge: true) )  ;
-          print ( "========== set done" ) ;
-        }
-
-      }
-
-    );
-
-
-
-
+    ( (value) => doc . set ( { "مواد التخصص"  : FieldValue . arrayUnion ( arr ) } , SetOptions ( merge : true ) ) ) ;
+    // لاضافة اسم المادة في قائمة اسماء مواد التخصص
 
   }
 
@@ -260,11 +236,8 @@ class _Add_Subjects extends State < Add_Subjects >
 
 class User
 {
-  final String Name ;
-  final String Coll ;
-  final String Dept ;
-  final String Desc ;
-  final String prev ;
+
+  String Name, Coll, Dept, Desc, prev ;
 
   User ( { required this . Name , required this . Coll , required this . Dept , required this . Desc , required this . prev } ) ;
 
