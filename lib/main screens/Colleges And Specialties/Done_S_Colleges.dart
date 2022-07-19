@@ -102,7 +102,7 @@ class S_Colleges extends StatelessWidget
         child : InkWell
         (
 
-          onTap : ( ) { Grid_View_On_Tap ( index , item . College_Name , context ) ; },
+          onTap : ( ) { Grid_View_On_Tap ( item . College_Name , context ) ; },
 
           child : Image ( image : AssetImage ( item . image ) , fit : BoxFit . fill )
 
@@ -125,7 +125,7 @@ class S_Colleges extends StatelessWidget
   // End Of Grid View Widget
 
   // Start of Grid View On Tap Function
-  void Grid_View_On_Tap ( int index , String College_Name , BuildContext context )
+  void Grid_View_On_Tap ( String College_Name , BuildContext context )
   {
 
     if ( College_Name ==  "كلية الهندسة" )

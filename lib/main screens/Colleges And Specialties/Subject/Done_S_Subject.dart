@@ -130,7 +130,7 @@ class S_Subject extends StatelessWidget
                           [
 
                             // Start Of وصف المساق
-                            Text ( "وصف المساق" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) ),
+                            Text ( "نبذه عن المساق" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) ),
                             // End Of وصف المساق
 
                             // Start Of Description Text

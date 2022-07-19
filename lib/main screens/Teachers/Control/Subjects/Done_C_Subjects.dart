@@ -23,9 +23,11 @@ class C_Subjects extends StatelessWidget
   var Width ;
   var Height ;
   String Specialty_Name , College_Name ;
+  bool is_empty ;
+  int num ;
   List < dynamic > subjects ;
 
-  C_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . subjects } ) ;
+  C_Subjects ( { required this . Specialty_Name , required this . College_Name , required this . subjects , required this . is_empty , required this . num } ) ;
 
   // Start of build Widget
   @override
@@ -130,7 +132,35 @@ class C_Subjects extends StatelessWidget
 
                       padding : EdgeInsets . only ( top : Height * 7 ),
 
-                      child : list_view ( )
+                      child : is_empty ?
+                        Center
+                        (
+
+                          child : Padding
+                          (
+
+                            padding : EdgeInsets . symmetric ( horizontal : 20 ),
+
+                            child : Text
+                            (
+
+                              "لم يقم احد مدرسين هذا التخصص باضافة اي بيانات لاي مادة بعد",
+                              textAlign : TextAlign . center,
+                              style : TextStyle
+                              (
+
+                                fontWeight : FontWeight . bold ,
+                                color : Colors . white,
+                                fontSize : 25
+
+                              )
+
+                            )
+
+                          )
+
+                        ):
+                        list_view ( )
 
                     )
 

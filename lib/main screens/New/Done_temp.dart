@@ -863,6 +863,22 @@ class temp
 
           );
 
+        else if ( txt == " الرقم الجامعي" )
+          return Padding
+          (
+
+            padding : EdgeInsets . only ( left : 342 , top : 35 ),
+
+            child : IconButton
+              (
+
+                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
+                onPressed : ( ) => controller . clear ( )
+
+            )
+
+          );
+
         else
           return Padding
           (

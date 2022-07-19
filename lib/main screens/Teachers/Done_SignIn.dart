@@ -32,7 +32,7 @@ class Signin extends StatefulWidget
 class _Signin extends State < Signin >
 {
 
-  String  Name = "" , Dept = "" , Coll = "" ;
+
   final Email    = TextEditingController ( ) ;
   final Password = TextEditingController ( ) ;
 
@@ -47,7 +47,7 @@ class _Signin extends State < Signin >
     super . initState ( ) ;
     Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    data ( ) ;
+
 
   }
 
@@ -128,7 +128,7 @@ class _Signin extends State < Signin >
             Container
             (
 
-              padding : EdgeInsets . all ( 20 ),
+              padding : EdgeInsets . symmetric ( horizontal : 20 ),
 
               child : Form
               (
@@ -165,7 +165,6 @@ class _Signin extends State < Signin >
                           decoration : InputDecoration
                           (
 
-                            filled : true,
                             fillColor : Colors . black,
 
                             suffixIcon : IconButton
@@ -252,7 +251,7 @@ class _Signin extends State < Signin >
 
                             color : Colors . black,
                             border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
-                            borderRadius : BorderRadius . circular ( 20 )
+                            borderRadius : BorderRadius . circular ( 50 )
 
                           ),
 
@@ -446,91 +445,7 @@ class _Signin extends State < Signin >
 
   }
 
-  data ( ) async
-  {
 
-    // CollectionReference user_data = FirebaseFirestore . instance . collection ( "Doctors" ) ;
-    Stream < List < User > >  user_data = FirebaseFirestore . instance . collection ( "Doctors" ) . snapshots ( ) . map
-      (
-          ( snapshot ) => snapshot . docs . map ( ( doc ) => User . fromjson ( doc . data ( ) ) ) . toList ( ),
-    ) ;
-
-
-
-    /*await user_data  . then
-      (
-
-        (value)
-        {
-
-          value . docs . forEach
-            (
-
-              ( element )
-              {
-                print ( "=======================================" ) ;
-                print ( element . data ( ) ) ;
-                print ( "=======================================" ) ;
-
-              }
-
-          );
-
-        }
-
-    );*/
-
-  }
-
-  data_Docs ( ) async
-  {
-
-    DocumentReference user_data = FirebaseFirestore . instance . collection ( "Doctors" ) . doc ( "iO4rHN9ImVmhaMU1r6NI" ) ;
-
-    await user_data . get ( ) . then
-      (
-
-            (value)
-        {
-
-          print ( value . data ( ) ) ;
-
-        }
-
-    );
-
-  }
-
-  /*Data ( )
-  {
-    Name = r . Name ;
-    Coll = r . Coll ;
-    Dept = r . Dept ;
-    print ( "==================" ) ;
-    print ( "Name : $Name" ) ;
-    print ( "==================" ) ;
-    print ( "Coll : $Coll" ) ;
-    print ( "==================" ) ;
-    print ( "Dept : $Dept" ) ;
-    print ( "==================" ) ;
-
-  }*/
 
 }
 // End Of _Signin Class
-
-class User
-{
-
-  final String Name ;
-  final String Coll ;
-  final String Dept ;
-
-  User ( { required this . Name , required this . Coll , required this . Dept } ) ;
-
-  Map < String , dynamic > tojason ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept } ;
-
-  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Dept : json [ "Dept" ] , Coll : json [ "Coll" ] );
-
-
-}

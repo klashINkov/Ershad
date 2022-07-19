@@ -386,7 +386,8 @@ class S_Specialties extends StatelessWidget
 
     }
 
-      final varr = await FirebaseFirestore . instance . collection ( path ) .
+
+      final  varr = await FirebaseFirestore . instance . collection ( path ) .
       doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( )! [ array ] . length == 0 ) ?
       isempty = true : isempty = isempty ) ;
 
@@ -398,7 +399,7 @@ class S_Specialties extends StatelessWidget
 
       _num == 1 ?
 
-      C_Subjects ( Specialty_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , subjects : varibel [ array ] )
+      C_Subjects ( Specialty_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , subjects : varibel [ array ] , is_empty : isempty , num : _num )
           :
 
       S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;

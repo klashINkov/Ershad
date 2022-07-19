@@ -26,26 +26,30 @@ class _Add_Subjects extends State < Add_Subjects >
   var x = temp ( ) ;
   GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
 
-  final Name = TextEditingController ( ) ;
-  final Id   = TextEditingController ( ) ;
-  final Coll = TextEditingController ( ) ;
-  final Dept = TextEditingController ( ) ;
-  final prev = TextEditingController ( ) ;
-  final coll = TextEditingController ( ) ;
-  final Desc = TextEditingController ( ) ;
+  final Name         = TextEditingController ( ) ;
+  final Id           = TextEditingController ( ) ;
+  final Coll         = TextEditingController ( ) ;
+  final Dept         = TextEditingController ( ) ;
+  final prev         = TextEditingController ( ) ;
+  final coll         = TextEditingController ( ) ;
+  final Desc         = TextEditingController ( ) ;
+  final Type         = TextEditingController ( ) ;
+  final Credit_hours = TextEditingController ( ) ;
 
   @override
   void initState ( )
   {
 
     super . initState ( ) ;
-    Name . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Coll . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Dept . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Id   . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    prev . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    coll . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Desc . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Name          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Coll          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Dept          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Id            . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    prev          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    coll          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Desc          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Type          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Credit_hours . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
   }
 
@@ -142,6 +146,18 @@ class _Add_Subjects extends State < Add_Subjects >
 
                   SizedBox ( height : 30 ),
 
+                  // Start of نوع المادة TextField
+                  x . Text_Field ( label : " نوع المادة" , hint : "عملي ام نظري؟" , controller : Type , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  // End of نوع المادة TextField
+
+                  SizedBox ( height : 30 ),
+
+                  // Start of الساعات المعتمدة للمادة TextField
+                  x . Text_Field ( label : " الساعات المعتمدة للمادة" , hint : "" , controller : Credit_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  // End of الساعات المعتمدة للمادة TextField
+
+                  SizedBox ( height : 30 ),
+
                   // Start of نبذه عن المادة TextField
                   x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 ),
                   // End of نبذه عن المادة TextField
@@ -217,7 +233,7 @@ class _Add_Subjects extends State < Add_Subjects >
 
     // لاضافة بيانات المادة الى الفاير بيس عندما يدخلها الدكتور
     final docUser = FirebaseFirestore . instance . collection ( "الكليات و التخصصات/$Coll/$Dept/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Name . text ) ;
-    final user = User ( Name : Name . text , Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text ) ;
+    final user = Subject ( Name : Name . text , NO : Id . text , Coll : Coll , prev : prev . text , Dept : Dept , Desc : Desc . text , Credit_hours : Credit_hours . text , Type : Type . text  ) ;
     final json = user . tojson ( ) ;
     await docUser . set ( json ) ;
     // لاضافة بيانات المادة الى الفاير بيس عندما يدخلها الدكتور
@@ -234,16 +250,16 @@ class _Add_Subjects extends State < Add_Subjects >
 }
 // End Of _Add_SubjectsState Class
 
-class User
+class Subject
 {
 
-  String Name, Coll, Dept, Desc, prev ;
+  String Name, NO , Coll, Dept, Desc, prev , Credit_hours , Type ;
 
-  User ( { required this . Name , required this . Coll , required this . Dept , required this . Desc , required this . prev } ) ;
+  Subject ( { required this . Name , required this . NO , required this . Coll , required this . Dept , required this . Desc , required this . prev  , required this . Credit_hours , required this . Type } ) ;
 
-  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc ,  "prev" : prev  } ;
+  Map < String , dynamic > tojson ( ) => { "Name" : Name , "NO" : NO ,  "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "prev" : prev  , "Credit_hours" : Credit_hours  , "Type" : Type } ;
 
-  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , prev : json [ "prev" ] ) ;
+  static Subject fromjson ( Map < String , dynamic > json ) => Subject ( Name : json [ "Name" ] , NO : json [ "NO" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , prev : json [ "prev" ] , Credit_hours : json [ "Credit_hours" ] , Type : json [ "Type" ] ) ;
 
 
 }

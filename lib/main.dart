@@ -12,6 +12,7 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 void main ( ) async
 {
+
   WidgetsFlutterBinding . ensureInitialized ( ) ;
   await Firebase . initializeApp ( ) ;
   runApp ( My ( ) );

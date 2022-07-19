@@ -37,6 +37,7 @@ class _Signup extends State < Signup >
   final Email    = TextEditingController ( ) ;
   final Password = TextEditingController ( ) ;
   final Name     = TextEditingController ( ) ;
+  final ID     = TextEditingController ( ) ;
   final Coll     = TextEditingController ( ) ;
   final Dept     = TextEditingController ( ) ;
   final Desc     = TextEditingController ( ) ;
@@ -260,14 +261,20 @@ class _Signup extends State < Signup >
 
                     SizedBox ( height : 30 ),
 
+                  // Start of  الرقم الجامعي TextField
+                  x . Text_Field ( label : " الرقم الجامعي" , hint : "لن يعرض الرقم للطالب وانما سوف يستعمل من اجل التعامل مع البيانات في التطبيق" , controller : ID , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 2 ),
+                  // End of  الرقم الجامعي TextField
+
+                  SizedBox ( height : 30 ),
+
                     // Start of الكلية TextField
-                    x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , Tmpe : Tmpe ,  controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1  ),
+                    x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , Tmpe : Tmpe , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1  ),
                     // End of الكلية TextField
 
                     SizedBox ( height : 30 ),
 
                     // Start of القسم TextField
-                    x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , Tmpe : Tmpe , controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
+                    x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" , Tmpe : Tmpe ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1 ),
                     // End of القسم TextField
 
                     SizedBox ( height : 30 ),
@@ -399,7 +406,7 @@ class _Signup extends State < Signup >
         //لاضافة بيانات الدكتور الى الفاير بيس
         UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
         final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
-        final user = User ( Name : Name . text , Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
+        final user = User ( Name : Name . text , Id : ID . text , Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
         final json = user . tojson ( );
         await docUser . set ( json ) ;
         //لاضافة بيانات الدكتور الى الفاير بيس
@@ -485,13 +492,13 @@ class _Signup extends State < Signup >
 class User
 {
 
-  final String Name , Coll , Dept , Desc , Dgree , Offec , Contact ;
+  final String Name , Id , Coll , Dept , Desc , Dgree , Offec , Contact ;
 
-  User ( { required this . Name , required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
+  User ( { required this . Name  , required this . Id , required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
 
-  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
+  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Id" : Id , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
 
-  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
+  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Id : json [ "Id" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
 
 
 }
