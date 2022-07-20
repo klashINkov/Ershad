@@ -375,21 +375,31 @@ class S_Specialties extends StatelessWidget
   void List_View_On_Tap ( String Specialty_Name_Or_Dept_Name , BuildContext context ) async
   {
 
-    String path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" , array = "مواد التخصص" , Doc = "وصف التخصص و اسماء المواد و بياناتها"  ;
+    String path = "" , array = "" , Doc = ""  ;
+
 
     if ( _num == 2 )
     {
 
       path = "المدرسين" ;
-      array = "مدرسين $Specialty_Name_Or_Dept_Name" ;
       Doc = College_Name ;
+      array = "مدرسين $Specialty_Name_Or_Dept_Name" ;
+
+    }
+
+    else
+    {
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name";
+      Doc = "وصف التخصص و اسماء المواد و بياناتها"  ;
+      array = "مواد التخصص" ;
+
 
     }
 
 
       final  varr = await FirebaseFirestore . instance . collection ( path ) .
       doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( )! [ array ] . length == 0 ) ?
-      isempty = true : isempty = isempty ) ;
+      isempty = true : isempty = false ) ;
 
       var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
 
@@ -403,6 +413,8 @@ class S_Specialties extends StatelessWidget
           :
 
       S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
+
+      print ( "============ \npath = $path\nDoc = $Doc\narray = $array" );
 
   }
   // End of List View On Tap Function

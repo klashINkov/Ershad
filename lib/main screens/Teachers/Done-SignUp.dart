@@ -309,7 +309,8 @@ class _Signup extends State < Signup >
 
                       opacity : 0.6,
 
-                      child : Container
+                      child :
+                      Container
                       (
 
                         height : 50,

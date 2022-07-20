@@ -3,6 +3,7 @@
 // ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_unnecessary_containers, use_key_in_widget_constructors, must_be_immutable, constant_identifier_names, must_call_super, unnecessary_overrides
 
 
+
 import 'package:flutter/material.dart';
 // Width = 0.2429824561403509    => 10=2.44
 //Height = 0.1463636363636364
@@ -71,8 +72,6 @@ class temp
     College_Specialties ( Colleges_SpecialtieS : [ "تربية خاصة" , "معلم صف" ] )
 
   ];
-
-
 
   // Start Of Item Widget ==> لعرض بيانات المادة
   Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) => Container
@@ -705,13 +704,14 @@ class temp
             else
               Navigator . push
               ( context , MaterialPageRoute
+
                 (
-                    builder : ( context ) => Personal_Lost()
 
+                    builder : ( context ) => Personal_Lost ( )
 
-            )
-            ) ;
+                )
 
+              ) ;
 
           },
 
@@ -918,6 +918,9 @@ class temp
     child : Center ( child : Text ( text , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 18 ) ) )
 
   );
+
+
+
 
 }
 

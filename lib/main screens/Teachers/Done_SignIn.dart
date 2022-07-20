@@ -86,35 +86,7 @@ class _Signin extends State < Signin >
 
       ),
 
-      body :
-      /*StreamBuilder < List < User > >
-      (
-        stream : Read_Users ( ) ,
-        builder : ( context , snapshot )
-        {
-
-          if ( snapshot . hasError)
-            {
-              return Text ( "wrong ${ snapshot . error }" ) ;
-            }
-
-         else if ( snapshot . hasData )
-            {
-
-              final Users = snapshot . data! ;
-              return ListView ( children : Users . map ( Build_User ) . toList ( ) ) ;
-
-            }
-
-         else
-           {
-             return Center ( child : CircularProgressIndicator ( ) ) ;
-           }
-
-        },
-
-      )*/
-      Container
+      body : Container
       (
 
         decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),

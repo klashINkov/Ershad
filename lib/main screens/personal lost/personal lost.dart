@@ -1,35 +1,22 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, camel_case_types, prefer_const_literals_to_create_immutables, must_be_immutable, non_constant_identifier_names
 
-import 'package:ershad/main%20screens/New/Done_temp.dart';
+import 'package:ershad/main%20screens/personal%20lost/ADD_Post.dart';
 import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:ershad/main screens/New/Done_temp.dart';
+
 // Start Of Personal_Lost Class
-class Personal_Lost extends StatefulWidget
+class Personal_Lost extends StatelessWidget
 {
 
-  @override
-  State<Personal_Lost> createState() => _Personal_LostState();
-}
-
-class _Personal_LostState extends State<Personal_Lost> {
   var x = temp ( ) ;
-
-  List < String >  arr = [  ] ;
-  List < String > str = [ ] ;
-  @override
-  void initState() {
-
-    super.initState();
-    get_post ( ) ;
-  }
-
-
 
   @override
   Widget build ( BuildContext context )
   {
-    get_post ( ) ;
+
     return Scaffold
     (
 
@@ -62,43 +49,74 @@ class _Personal_LostState extends State<Personal_Lost> {
 
       body : Container
       (
-        padding : EdgeInsets . all ( 10 ),
+
         decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
 
-        child : Column
+        padding : EdgeInsets . only ( top : 20 , left : 15 , right : 15 ),
+
+        child : Stack
         (
 
           children :
           [
 
-            Container
-              (
+            StreamBuilder < List < Post > >
+            (
 
-                margin : EdgeInsets . only ( left : 15 , right : 25 , top : 0 ),
-                height : 400,
+              stream : get_post ( ),
 
-                child : Padding
-                  (
+              builder : ( context , snapshot )
+              {
 
-                    padding : EdgeInsets . only ( top : 0 , bottom : 15 ),
+                if ( snapshot . hasData )
+                  {
 
-                    child : Column
+                    final post = snapshot . data! ;
+
+                    return Flexible
+                    (
+
+                      child : ListView
                       (
 
-                        mainAxisAlignment : MainAxisAlignment . center,
+                        shrinkWrap : true,
+                        children : post . map ( Post_Text ) . toList( )
 
-                        children :
-                        [
+                      )
 
-                          List_View ( )
+                    );
 
-                        ]
+                  }
 
-                    )
+                else
+                    return SizedBox ( ) ;
+
+
+              }
+
+            ),
+
+            // Start Of Add subject Button
+            Padding
+            (
+
+              padding : EdgeInsets . only ( top : 590 ),
+
+              child : Center
+              (
+
+                child : FloatingActionButton
+                (
+                  backgroundColor : Colors . blueAccent . shade700,
+                  onPressed : ( ) => Navigator . push ( context , MaterialPageRoute( builder : ( _ ) => ADD_Post ( ) ) ),
+                  child : Icon ( Icons . add )
 
                 )
 
-            ),
+              )
+
+            )
+            // End Of Add subject Button
 
           ]
 
@@ -110,82 +128,58 @@ class _Personal_LostState extends State<Personal_Lost> {
 
   }
 
+  Stream < List < Post > > get_post ( ) => FirebaseFirestore . instance . collection ( "المفقودات" ) .
+  snapshots ( ) . map ( ( event ) => event . docs . map ( ( e ) => Post . fromjson ( e . data ( ) ) ) . toList ( ) );
 
-
-  Widget List_View ( ) => Flexible
+  Widget Post_Text ( Post post ) => Container
   (
 
-    child : ListView . builder
+    width : 300,
+    height : 300,
+
+    decoration : BoxDecoration
+    (
+      color : Colors . black,
+      border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
+      borderRadius : BorderRadius . circular ( 40 )
+    ),
+
+    margin : EdgeInsets . only ( bottom : 20 ),
+    padding : EdgeInsets . all ( 15 ),
+
+    child : Center
     (
 
-      shrinkWrap : true,
-      padding : EdgeInsets . only ( top : 0 ),
-      itemCount : str . length,
+      child : SingleChildScrollView
+      (
 
-      itemBuilder : ( context , index )
-      {
-
-        String Array = str [ index ] ;
-
-        return ListTile
+        child : Text
         (
 
-          onTap : ( ) {},
-
-          title : Container
+          post . Post_Text,
+          textAlign : TextAlign . center,
+          style : TextStyle
           (
 
-            decoration : BoxDecoration
-            (
-
-              color : Colors . black,
-              border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-              borderRadius : BorderRadius . circular ( 40 )
-
-            ),
-
-            margin : EdgeInsets . only ( bottom : 7 ),
-            padding : EdgeInsets . only ( top : 15 , bottom : 15 ),
-
-            child : Text ( Array , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
+            fontSize : 20,
+            color : Colors . white,
+            fontWeight : FontWeight . bold
 
           )
 
-        );
+        )
 
-      }
+      )
 
-    ),
+    )
+
   );
 
-  get_post ( ) async
-  {
-    str . clear ( ) ;
-    arr . clear ( ) ;
-    CollectionReference post = FirebaseFirestore . instance . collection ( "المفقودات" ) ;
 
-    await post . get ( ) . then ( ( value ) { value . docs . forEach ( ( element ) { arr . add (  element . id ) ; } ); } ) ;
-
-    for ( int i = 0 ; i < arr . length ; i++ )
-    {
-      var varibel = await FirebaseFirestore . instance . collection ( "المفقودات" ) . doc ( arr [ i ] ) . get ( ) ;
-      str . add ( varibel [ "Post_Text" ] ) ;
-    }
-
-    print ( str ) ;
-
-  }
-
-  Add_post ( ) async
-  {
-    final docUser = FirebaseFirestore . instance . collection ( "المفقودات" ) . doc (  ) ;
-    final post = Post ( Post_Text : "" ) ;
-    final json = post . tojson ( );
-    await docUser . set ( json ) ;
-
-  }
 }
 // End Of Personal_Lost Class
+
+
 class Post
 {
 
@@ -196,6 +190,5 @@ class Post
   Map < String , dynamic > tojson ( ) => { "Post_Text" : Post_Text  } ;
 
   static Post fromjson ( Map < String , dynamic > json ) => Post ( Post_Text : json [ "Post_Text" ]  ) ;
-
 
 }

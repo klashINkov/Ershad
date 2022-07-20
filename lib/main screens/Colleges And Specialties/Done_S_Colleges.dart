@@ -16,8 +16,6 @@ class S_Colleges extends StatelessWidget
   int num ;
 
   var x = temp ( ) ;
-  var Width ;
-  var Height ;
 
   S_Colleges ( { required this . num } ) ;
 
@@ -25,9 +23,6 @@ class S_Colleges extends StatelessWidget
   @override
   Widget build ( BuildContext context )
   {
-
-    Width = MediaQuery . of ( context ) . size . width / 100 ;
-    Height = MediaQuery . of ( context ) . size . height / 100 ;
 
     return Scaffold
     (
@@ -73,7 +68,7 @@ class S_Colleges extends StatelessWidget
       body : Container
       (
 
-        padding : EdgeInsets . only ( right : Width * 1.5 , left : Width * 1.5 ),
+        padding : EdgeInsets . only ( right : 5 , left : 5 ),
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
         child : Grid_View ( )
 

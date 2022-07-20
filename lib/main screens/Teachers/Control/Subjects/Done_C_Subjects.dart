@@ -14,14 +14,11 @@ import 'package:ershad/main screens/New/Done_temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 // Start Of Subjects Class
 class C_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  var Width ;
-  var Height ;
   String Specialty_Name , College_Name ;
   bool is_empty ;
   int num ;
@@ -34,9 +31,6 @@ class C_Subjects extends StatelessWidget
   Widget build ( BuildContext context )
   {
 
-    Width = MediaQuery . of ( context ) . size . width / 100 ;
-    Height = MediaQuery . of ( context ) . size . height / 100 ;
-
     return Scaffold
     (
 
@@ -48,7 +42,7 @@ class C_Subjects extends StatelessWidget
         title  : Padding
         (
 
-          padding : EdgeInsets . only ( top : Height * 1.46  ),
+          padding : EdgeInsets . only ( top : 10 ),
           child : Text ( Specialty_Name , maxLines : 2 , textAlign : TextAlign . center , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
@@ -65,7 +59,7 @@ class C_Subjects extends StatelessWidget
 
             onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
-            icon : Icon ( Icons . home , color : Colors . white , size : Width * 9.71 )
+            icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
           )
 
@@ -88,7 +82,7 @@ class C_Subjects extends StatelessWidget
             Padding
             (
 
-              padding : EdgeInsets . only ( top : Height * 10 ),
+              padding : EdgeInsets . only ( top : 70 ),
 
               child : Stack
               (
@@ -100,12 +94,12 @@ class C_Subjects extends StatelessWidget
                   Padding
                   (
 
-                    padding : EdgeInsets . only ( top : Height * 5.5 ),
+                    padding : EdgeInsets . only ( top : 40 ),
 
                     child : Center
                     (
 
-                      child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : Width * 6.074 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                      child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                     )
 
@@ -116,21 +110,21 @@ class C_Subjects extends StatelessWidget
                   Container
                   (
 
-                    height : Height * 85.2,
-                    margin : EdgeInsets . only ( top : Height * 3 , left : Width * 4 , right : Width * 6 ),
+                    height : 580,
+                    margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
 
                     decoration : BoxDecoration
                     (
 
-                      border : Border . all ( color : Colors . blueAccent . shade700 , width : Width * 2.5 ),
-                      borderRadius : BorderRadius . circular ( Width * 12.5 )
+                      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                      borderRadius : BorderRadius . circular ( 50 )
 
                     ),
 
                     child : Padding
                     (
 
-                      padding : EdgeInsets . only ( top : Height * 7 ),
+                      padding : EdgeInsets . only ( top : 50 ),
 
                       child : is_empty ?
                         Center
@@ -168,18 +162,18 @@ class C_Subjects extends StatelessWidget
                   // End Of List View
 
                   // Start Of Arrow Up
-                  x .Arrows ( top : Height * 7.2 , left : Width * 83.1 , icon : Icons . keyboard_arrow_up ),
+                  x .Arrows ( top : 50 , left : 342 , icon : Icons . keyboard_arrow_up ),
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  x .Arrows ( top : Height * 72 , left : Width * 83.1 , icon : Icons . keyboard_arrow_down ),
+                  x .Arrows ( top : 490 , left : 343 , icon : Icons . keyboard_arrow_down ),
                   // End Of Arrow down
 
                   // Start Of Add subject Button
                   Padding
                   (
 
-                    padding : EdgeInsets . only ( top : Height * 80.5 , left : Width * 3.66 ),
+                    padding : EdgeInsets . only ( top : 550 , left : 15 ),
 
                     child : FloatingActionButton
                     (
@@ -192,6 +186,7 @@ class C_Subjects extends StatelessWidget
 
                   )
                   // End Of Add subject Button
+
                 ]
 
               )
@@ -230,19 +225,19 @@ class C_Subjects extends StatelessWidget
         title : Container
         (
 
-          padding : EdgeInsets . only ( top : Height * 1.46 , bottom : Height * 1.16 ),
-          margin : EdgeInsets . only ( bottom : Height * 1.46 ),
+          padding : EdgeInsets . only ( top : 10 , bottom : 10 ),
+          margin : EdgeInsets . only ( bottom : 10 ),
 
           decoration : BoxDecoration
           (
 
             color : Colors . black,
-            border : Border . all ( color : Colors . blueAccent . shade700 , width : Width * 2.44 ),
-            borderRadius : BorderRadius . circular ( Width * 97.6 )
+            border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+            borderRadius : BorderRadius . circular ( 50 )
 
           ),
 
-          child : Text ( Subject_Name , style : TextStyle ( fontSize : Width * 3.887 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
+          child : Text ( Subject_Name , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) , textAlign : TextAlign . center )
 
         )
 
