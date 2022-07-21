@@ -1,9 +1,12 @@
 // ignore_for_file: camel_case_types, deprecated_member_use, non_constant_identifier_names
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ershad/main%20screens/Done_Home%20Page.dart';
-import 'package:ershad/main%20screens/personal%20lost/personal%20lost.dart';
 import 'package:flutter/material.dart';
+
+import 'package:ershad/main screens/Done_Home Page.dart';
+
+import 'package:ershad/main screens/personal lost/Done_personal lost.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Start Of ADD_Post Class
 class ADD_Post extends StatefulWidget

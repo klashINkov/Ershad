@@ -4,19 +4,15 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/New/Done_temp.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-
+import 'package:ershad/main screens/New/Undone_temp.dart';
 
 // Start Of _C_Doctor_data_View
 class C_Doctor_data_view extends StatelessWidget
 {
 
-   String  Name  , Coll , Dept , Desc , Dgree , Offec , Contact ;
+   String  Name  , Coll , Dept , Desc , Dgree , Office , Contact ;
 
-   C_Doctor_data_view ( {  required this . Name , required this . Coll , required this . Dept ,  required this . Desc , required this . Dgree , required this . Offec , required this . Contact  } ) ;
+   C_Doctor_data_view ( {  required this . Name , required this . Coll , required this . Dept ,  required this . Desc , required this . Dgree , required this . Office , required this . Contact  } ) ;
 
   var x = temp ( ) ;
   GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
@@ -94,7 +90,7 @@ class C_Doctor_data_view extends StatelessWidget
 
                   SizedBox ( height : 25 ),
 
-                  x . TexT ( text : Offec , label : "عنوان المكتب"  ),
+                  x . TexT ( text : Office , label : "عنوان المكتب"  ),
 
                   SizedBox ( height : 25 ),
 

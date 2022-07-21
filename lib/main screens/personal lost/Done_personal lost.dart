@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, camel_case_types, prefer_const_literals_to_create_immutables, must_be_immutable, non_constant_identifier_names
 
-import 'package:ershad/main%20screens/personal%20lost/ADD_Post.dart';
+import 'package:ershad/main%20screens/personal%20lost/Done_ADD_Post.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:ershad/main screens/New/Done_temp.dart';
+import 'package:ershad/main screens/New/Undone_temp.dart';
 
 // Start Of Personal_Lost Class
 class Personal_Lost extends StatelessWidget
