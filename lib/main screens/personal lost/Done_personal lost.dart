@@ -13,6 +13,7 @@ class Personal_Lost extends StatelessWidget
 
   var x = temp ( ) ;
 
+  // Start Of Build Widget
   @override
   Widget build ( BuildContext context )
   {
@@ -127,6 +128,7 @@ class Personal_Lost extends StatelessWidget
     );
 
   }
+  // End Of Build Widget
 
   Stream < List < Post > > get_post ( ) => FirebaseFirestore . instance . collection ( "المفقودات" ) .
   snapshots ( ) . map ( ( event ) => event . docs . map ( ( e ) => Post . fromjson ( e . data ( ) ) ) . toList ( ) );
