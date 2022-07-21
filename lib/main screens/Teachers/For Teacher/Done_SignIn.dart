@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main%20screens/Teachers/Done_Teachers.dart';
+import 'package:ershad/main screens/Teachers/For Teacher/Undone_SignUp.dart';
 
-import 'package:ershad/main screens/Teachers/Done-SignUp.dart';
+import 'package:ershad/main screens/Teachers/For Teacher/Undone_Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/New/Done_temp.dart';
+import 'package:ershad/main screens/New/Undone_temp.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -238,27 +238,7 @@ class _Signin extends State < Signin >
                               if (user != null)
                               {
 
-                                Navigator . pushReplacement
-                                (
-                                  context , MaterialPageRoute
-                                  (
-
-                                    builder : ( _ ) => Teachers
-                                    (
-
-                                      Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
-
-                                      Image1_text : "إضافة أو تعديل بيانات المدرس",
-
-                                      Image2_Url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU",
-
-                                      Image2text : "إضافة أو تعديل بيانات مادة"
-
-                                    )
-
-                                  )
-
-                                );
+                                Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Email : Email . text  ) ) );
 
                               }
 
