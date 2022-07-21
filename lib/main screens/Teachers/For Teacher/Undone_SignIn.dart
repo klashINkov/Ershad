@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Undone_SignUp.dart';
+import 'package:ershad/main screens/Teachers/For Teacher/Done_SignUp.dart';
 
 import 'package:ershad/main screens/Teachers/For Teacher/Undone_Doctor_view&_Edit_data.dart';
 

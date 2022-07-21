@@ -2,15 +2,15 @@
 
 // ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names, unnecessary_new, deprecated_member_use, prefer_const_constructors, unnecessary_this, avoid_print, unnecessary_null_comparison, file_names, unused_local_variable
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main%20screens/Teachers/Done_Teachers.dart';
+import 'package:ershad/main%20screens/Teachers/For%20Teacher/Undone_Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/New/Done_temp.dart';
+import 'package:ershad/main screens/New/Undone_temp.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,16 +34,18 @@ class _Signup extends State < Signup >
   bool pass = true ;
   GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
 
-  final Email    = TextEditingController ( ) ;
-  final Password = TextEditingController ( ) ;
-  final Name     = TextEditingController ( ) ;
-  final ID     = TextEditingController ( ) ;
-  final Coll     = TextEditingController ( ) ;
-  final Dept     = TextEditingController ( ) ;
-  final Desc     = TextEditingController ( ) ;
-  final Dgree    = TextEditingController ( ) ;
-  final Offec    = TextEditingController ( ) ;
-  final Contact  = TextEditingController ( ) ;
+  final Email            = TextEditingController ( ) ;
+  final Password         = TextEditingController ( ) ;
+  final Name             = TextEditingController ( ) ;
+  final ID               = TextEditingController ( ) ;
+  final Coll             = TextEditingController ( ) ;
+  final Dept             = TextEditingController ( ) ;
+  final Current_courses  = TextEditingController ( ) ;
+  final Office_hours     = TextEditingController ( ) ;
+  final Dgree            = TextEditingController ( ) ;
+  final Office_Address   = TextEditingController ( ) ;
+  final Contact          = TextEditingController ( ) ;
+  final Desc             = TextEditingController ( ) ;
 
   @override
   void initState ( )
@@ -51,46 +53,17 @@ class _Signup extends State < Signup >
 
 
     super . initState ( ) ;
-    Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Name     . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Coll     . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Dept     . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Desc     . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Dgree    . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Offec    . addListener ( ( ) => setState ( ( ) { } ) ) ;
-    Contact  . addListener ( ( ) => setState ( ( ) { } ) ) ;
-
-    /*ErrorWidget . builder = ( FlutterErrorDetails details )
-    {
-
-      return Material
-      (
-
-        child : Container
-        (
-
-          decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
-
-          child : Column
-          (
-
-              mainAxisAlignment : MainAxisAlignment . center,
-
-              children :
-              [
-
-                Text ( details . exception . toString ( ) , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
-
-              ]
-
-          )
-
-        )
-
-      );
-
-    };*/
+    Email            . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Password         . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Name             . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Coll             . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Dept             . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Current_courses  . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Office_hours     . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Office_Address   . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Contact          . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Dgree            . addListener ( ( ) => setState ( ( ) { } ) ) ;
+    Desc             . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
   }
 
@@ -279,6 +252,18 @@ class _Signup extends State < Signup >
 
                     SizedBox ( height : 30 ),
 
+                  // Start of الدرجة الجامعية TextField
+                    x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 ),
+                    // End of الدرجة الجامعية TextField
+
+                    SizedBox ( height : 30 ),
+
+                  // Start of الدرجة الجامعية TextField
+                    x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                    // End of الدرجة الجامعية TextField
+
+                    SizedBox ( height : 30 ),
+
                     // Start of الدرجة الجامعية TextField
                     x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of الدرجة الجامعية TextField
@@ -286,7 +271,7 @@ class _Signup extends State < Signup >
                     SizedBox ( height : 30 ),
 
                     // Start of عنوان المكتب TextField
-                    x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Offec , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                    x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
                     // End of عنوان المكتب TextField
 
                     SizedBox ( height : 30 ),
@@ -338,27 +323,7 @@ class _Signup extends State < Signup >
                             if ( response != null )
                               {
 
-                                Navigator . pushReplacement
-                                (
-                                  context , MaterialPageRoute
-                                  (
-
-                                    builder : ( _ ) => Teachers
-                                    (
-
-                                      Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
-
-                                      Image1_text : "إضافة أو تعديل بيانات المدرس",
-
-                                      Image2_Url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU",
-
-                                      Image2text : "إضافة أو تعديل بيانات مادة"
-
-                                    )
-
-                                  )
-
-                                );
+                                Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Email : Email . text  ) ) );
 
                               }
 
@@ -407,7 +372,7 @@ class _Signup extends State < Signup >
         //لاضافة بيانات الدكتور الى الفاير بيس
         UserCredential userCredential = await FirebaseAuth . instance . createUserWithEmailAndPassword ( email : Email . text , password : Password . text ) ;
         final docUser = FirebaseFirestore . instance . collection ( "المدرسين/$Coll/$Dept" ) . doc ( Name . text ) ;
-        final user = User ( Name : Name . text , Id : ID . text , Coll : Coll , Contact : Contact . text , Dept : Dept , Desc : Desc . text , Dgree : Dgree . text , Offec : Offec . text ) ;
+        final user = User ( Email : Email . text , Name : Name . text , Id : ID . text , Coll : Coll , Dept : Dept , Current_courses : Current_courses . text , Office_hours : Office_hours . text , Dgree : Dgree . text , Office_Address : Office_Address . text , Contact : Contact . text , Desc : Desc . text ) ;
         final json = user . tojson ( );
         await docUser . set ( json ) ;
         //لاضافة بيانات الدكتور الى الفاير بيس
@@ -493,13 +458,12 @@ class _Signup extends State < Signup >
 class User
 {
 
-  final String Name , Id , Coll , Dept , Desc , Dgree , Offec , Contact ;
+  final String Email , Name , Id , Coll , Dept , Current_courses , Office_hours, Dgree  , Office_Address , Contact ,Desc ;
 
-  User ( { required this . Name  , required this . Id , required this . Coll , required this . Dept , required this . Desc , required this . Dgree , required this . Offec , required this . Contact } ) ;
+  User ( { required this . Email , required this . Name , required this . Id , required this . Coll , required this . Dept , required this . Current_courses , required this . Office_hours , required this . Dgree , required this . Office_Address , required this . Contact , required this . Desc } ) ;
 
-  Map < String , dynamic > tojson ( ) => { "Name" : Name , "Id" : Id , "Coll" : Coll , "Dept" : Dept , "Desc" : Desc , "Dgree" : Dgree , "Offec" : Offec , "Contact" : Contact  } ;
+  Map < String , dynamic > tojson ( ) => { "Email" : Email , "Name" : Name , "Id" : Id , "Coll" : Coll , "Dept" : Dept , "Current_courses" : Current_courses , "Office_hours" : Office_hours , "Dgree" : Dgree , "Office" : Office_Address , "Contact" : Contact , "Desc" : Desc } ;
 
-  static User fromjson ( Map < String , dynamic > json ) => User ( Name : json [ "Name" ] , Id : json [ "Id" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Desc : json [ "Desc" ] , Dgree : json [ "Dgree" ] , Offec : json [ "Offec" ] , Contact : json [ "Contact" ] ) ;
-
+  static User fromjson ( Map < String , dynamic > json ) => User ( Email : json [ "Email" ] , Name : json [ "Name" ] , Id : json [ "Id" ] , Coll : json [ "Coll" ] , Dept : json [ "Dept" ] , Current_courses  : json [ "Current_courses" ] , Office_hours : json [ "Office_hours" ] , Dgree : json [ "Dgree" ] , Office_Address : json [ "Office" ] , Contact : json [ "Contact" ] , Desc : json [ "Desc" ] ) ;
 
 }
