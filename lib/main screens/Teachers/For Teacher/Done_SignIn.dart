@@ -48,7 +48,6 @@ class _Signin extends State < Signin >
     Email    . addListener ( ( ) => setState ( ( ) { } ) ) ;
     Password . addListener ( ( ) => setState ( ( ) { } ) ) ;
 
-
   }
 
   // Start Of build Widget
