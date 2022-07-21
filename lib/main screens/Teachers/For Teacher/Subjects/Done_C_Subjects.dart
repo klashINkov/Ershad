@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
-import 'package:ershad/main%20screens/Teachers/Control/Subjects/Add_Subjects.dart';
+import 'package:ershad/main screens/Teachers/For Teacher/Subjects/Add_Subjects.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
 

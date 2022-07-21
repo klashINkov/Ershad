@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, deprecated_member_use, non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ershad/main%20screens/Done_Home%20Page.dart';
 import 'package:ershad/main%20screens/personal%20lost/personal%20lost.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,20 @@ class _ADD_Post extends State < ADD_Post >
       appBar : AppBar
       (
         title : Text ( "اضافة منشور" , style : TextStyle ( fontSize : 35 ) ),
-        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true
+        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
+        actions :
+        [
+
+          IconButton
+          (
+
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+
+            icon : Icon ( Icons . home , color : Colors . white , size : 40 )
+
+          )
+
+        ]
       ),
 
       body : Container

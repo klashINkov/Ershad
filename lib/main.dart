@@ -2,13 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/Teachers/Control/C_Doctor_data_view.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
-
-
 
 void main ( ) async
 {
@@ -30,11 +26,11 @@ class My extends StatelessWidget
     return MaterialApp
     (
 
-        debugShowCheckedModeBanner : false,
+      debugShowCheckedModeBanner : false,
 
-        title : "Ershad",
+      title : "Ershad",
 
-        home : Home ()
+      home : Home ()
 
     );
 

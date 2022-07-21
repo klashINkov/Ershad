@@ -2,12 +2,13 @@
 
 // ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, file_names, camel_case_types, unused_local_variable
 
-import 'package:ershad/main%20screens/Teachers/Control/Subjects/Done_C_Subjects.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subjects.dart';
+
+import 'package:ershad/main screens/Teachers/For Teacher/Subjects/Done_C_Subjects.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 

@@ -2,12 +2,13 @@
 
 // ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
-import 'package:ershad/main%20screens/Teachers/Control/C_Doctor_data_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
+
+import 'package:ershad/main%20screens/Teachers/C_Doctor_data_view.dart';
 
 import 'package:ershad/main screens/New/Done_temp.dart';
 
@@ -452,7 +453,7 @@ class S_Subjects extends StatelessWidget
       (
 
         builder : ( context ) => num == 2 ?
-        C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Desc : Varibel [ "Desc" ]  , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Offec : Varibel [ "Offec" ]  ):
+        C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Desc : Varibel [ "Desc" ]  , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Office : Varibel [ "Offec" ]  ):
 
         S_Subject
         (
