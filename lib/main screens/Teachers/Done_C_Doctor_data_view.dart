@@ -10,9 +10,9 @@ import 'package:ershad/main screens/New/Undone_temp.dart';
 class C_Doctor_data_view extends StatelessWidget
 {
 
-   String  Name  , Coll , Dept , Desc , Dgree , Office , Contact ;
+   String  Name , Coll , Dept , Current_courses , Office_hours, Dgree , Office_Address , Contact , Desc  ;
 
-   C_Doctor_data_view ( {  required this . Name , required this . Coll , required this . Dept ,  required this . Desc , required this . Dgree , required this . Office , required this . Contact  } ) ;
+   C_Doctor_data_view ( {required this . Name , required this . Coll , required this . Dept , required this . Current_courses , required this . Office_hours , required this . Dgree , required this . Office_Address , required this . Contact , required this . Desc } ) ;
 
   var x = temp ( ) ;
   GlobalKey < FormState > formstate = new GlobalKey < FormState > ( ) ;
@@ -86,20 +86,27 @@ class C_Doctor_data_view extends StatelessWidget
 
                   SizedBox ( height : 25 ),
 
+                  x . TexT ( text : Current_courses , label : "المساقات الحالية"  ),
+
+                  SizedBox ( height : 25 ),
+
+                  x . TexT ( text : Office_hours , label : "الساعات المكتبة"  ),
+
+                  SizedBox ( height : 25 ),
+
                   x . TexT ( text : Dgree , label : "الدرجة الجامعية"  ),
 
                   SizedBox ( height : 25 ),
 
-                  x . TexT ( text : Office , label : "عنوان المكتب"  ),
+                  x . TexT ( text : Office_Address , label : "عنوان المكتب"  ),
 
                   SizedBox ( height : 25 ),
 
                   x . TexT ( text : Contact , label : "وسيلة التواصل"  ),
 
                   SizedBox ( height : 25 ),
-                  x . TexT ( text : Desc , label : "النبذه"  ),
 
-                  SizedBox ( height : 25 ),
+                  x . TexT ( text : Desc , label : "النبذه"  ),
 
                 ]
 
