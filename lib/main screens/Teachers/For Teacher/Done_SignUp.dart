@@ -127,7 +127,7 @@ class _Signup extends State < Signup >
                 [
 
                   // Start of البريد الالكتروني TextField
-                  x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of البريد الالكتروني TextField
 
                   SizedBox ( height : 30 ),
@@ -226,61 +226,61 @@ class _Signup extends State < Signup >
                   SizedBox ( height : 30 ),
 
                   // Start of الاسم TextField
-                  x . Text_Field ( label : " الاسم" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Text_Field ( label : " الاسم" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of الاسم TextField
 
                   SizedBox ( height : 30 ),
 
                 // Start of  الرقم الجامعي TextField
-                x . Text_Field ( label : " الرقم الجامعي" , hint : "لن يعرض الرقم للطالب وانما سوف يستعمل من اجل غايات انشاء الحساب" , controller : ID , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                x . Text_Field ( label : " الرقم الجامعي" , hint : "لن يعرض الرقم للطالب وانما سوف يستعمل من اجل غايات انشاء الحساب" , controller : ID , keyboardType : TextInputType . text , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                 // End of  الرقم الجامعي TextField
 
                 SizedBox ( height : 30 ),
 
                   // Start of الكلية TextField
-                  x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of الكلية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of القسم TextField
-                  x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of القسم TextField
 
                   SizedBox ( height : 30 ),
 
                 // Start of المساقات الحالية TextField
-                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.6 ),
+                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline ,  opacity : 0.6 ),
                   // End of المساقات الحالية TextField
 
                   SizedBox ( height : 30 ),
 
                 // Start of الساعات المكتبة TextField
-                  x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 , opacity : 0.6 ),
+                  x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of الساعات المكتبة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of الدرجة الجامعية TextField
-                  x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of الدرجة الجامعية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of عنوان المكتب TextField
-                  x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
+                  x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done ,  opacity : 0.6 ),
                   // End of عنوان المكتب TextField
 
                   SizedBox ( height : 30 ),
 
                     // Start of وسيلة التواصل TextField
-                    x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.6 ),
+                    x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline ,  opacity : 0.6 ),
                     // End of وسيلة التواصل TextField
 
                   SizedBox ( height : 30 ),
 
                     // Start of نبذه عن المدرس TextField
-                    x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.6 ),
+                    x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline ,  opacity : 0.6 ),
                     // End of نبذه عن المدرس TextField
 
                   SizedBox ( height : 20 ),

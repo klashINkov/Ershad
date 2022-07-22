@@ -280,7 +280,7 @@ class temp
   // End Of Pic Widget ==> لقسم المدرسين
 
   // Start Of Text Field Widget ==> لمعلومات المواد و المدرسين
-  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines , required double opacity } ) =>
+  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required double opacity } ) =>
   Container
   (
 
@@ -308,7 +308,9 @@ class temp
               textAlign : TextAlign . center,
               cursorColor : Colors . white,
               cursorWidth : 5,
-              maxLines :  label == " وسيلة التواصل" || label == " الساعات المكتبة" ? 3 : label == " المساقات الحالية" ? 8 : label == " نبذه عن المدرس" || label == " نبذه عن المادة"  ? 12 : label == " الرقم الجامعي"? 2 : 1  ,
+              maxLines : label == " وسيلة التواصل"  || label == " الساعات المكتبة" ? 3 :
+                         label == " نبذه عن المدرس" || label == " نبذه عن المادة"  ? 12 :
+                         label == " المساقات الحالية" ? 8 : 1  ,
 
               decoration : InputDecoration
               (
@@ -392,7 +394,7 @@ class temp
   // End Of Text Field Widget ==> لمعلومات المواد و المدرسين
 
   // Start Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
-  Widget Type_Ahead ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines , required double opacity } ) =>
+  Widget Type_Ahead ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required double opacity } ) =>
   Opacity
   (
     opacity : opacity,
@@ -587,8 +589,6 @@ class temp
   Stack
   (
 
-    clipBehavior: Clip . none,
-
     children :
     [
 
@@ -597,7 +597,11 @@ class temp
 
         margin : EdgeInsets . only ( top : 15 ),
         padding : EdgeInsets . only ( top: 10 , bottom: 10 ),
-        height : label == "عنوان المكتب" || label == "وسيلة التواصل" || label == "القسم" ? 200 : label == "النبذه" ? 400 : label == "المساقات الحالية"? 300  : label == "الساعات المكتبية" ? 150 : 90,
+        height : label == "عنوان المكتب" || label == "وسيلة التواصل" ? 150 :
+                 label == "القسم" ? 120 :
+                 label == "المساقات الحالية"? 300  :
+                 label == "الساعات المكتبية" ? 150 :
+                 label == "النبذه" ? 400 : 90,
 
         decoration : BoxDecoration
         (
@@ -616,7 +620,7 @@ class temp
             (
 
               text,
-              maxLines : label == "الكلية" ||label == "عنوان المكتب" || label == "وسيلة التواصل" || label == "القسم" ? 10 : label == "الساعات المكتبية" || label == "المساقات الحالية" || label == "النبذه" ? 100 : 1 ,
+              maxLines : 100,
               textAlign : TextAlign . center,
               style : TextStyle
               (
@@ -638,16 +642,9 @@ class temp
       Center
       (
 
-        child : Positioned
-        (
+        child : Text ( label , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) )
 
-          top : -20,
-          child : Text ( label , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) )
-
-        )
-
-      ),
-
+      )
 
     ]
 
@@ -824,13 +821,22 @@ class temp
         return SizedBox ( ) ;
 
     else
-      {
+      return Padding
+      (
 
-        if ( txt == " وسيلة التواصل" || txt == " المساقات الحالية" )
-          return Padding
-          (
+            padding : EdgeInsets . only
+            (
 
-            padding : EdgeInsets . only ( left : 349 , top : 40 ),
+              left : 349,
+              top :
+                    txt == " نبذه عن المادة" || txt == " نبذه عن المدرس" ? 165 :
+                    txt == " الساعات المكتبة" ? 40 :
+                    txt == " المساقات الحالية" ? 110 :
+                    txt == " القسم" ? 20 :
+                    txt == " وسيلة التواصل" ? 30 :
+                    10
+
+            ),
 
             child : IconButton
             (
@@ -841,56 +847,6 @@ class temp
             )
 
           );
-
-        else if ( txt == " نبذه عن المادة" || txt == " نبذه عن المدرس" )
-          return Padding
-          (
-
-            padding : EdgeInsets . only ( left : 349 , top : 150 ),
-
-            child : IconButton
-              (
-
-                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
-                onPressed : ( ) => controller . clear ( )
-
-            )
-
-          );
-
-        else if ( txt == " الرقم الجامعي" )
-          return Padding
-          (
-
-            padding : EdgeInsets . only ( left : 349 , top : 35 ),
-
-            child : IconButton
-              (
-
-                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
-                onPressed : ( ) => controller . clear ( )
-
-            )
-
-          );
-
-        else
-          return Padding
-          (
-
-            padding : EdgeInsets . only ( left : 349 , top : 10 ),
-
-            child : IconButton
-            (
-
-              icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
-              onPressed : ( ) => controller . clear ( )
-
-            )
-
-          );
-
-      }
 
   }
 

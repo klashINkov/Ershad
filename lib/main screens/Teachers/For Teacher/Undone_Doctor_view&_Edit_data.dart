@@ -129,49 +129,49 @@ class _Doctor_data_view extends State < Doctor_data_view >
                 [
 
                   // Start of الكلية TextField
-                  x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1 , opacity : 0.9  ),
+                  x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , opacity : 0.9 ),
                   // End of الكلية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of القسم TextField
-                  x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done ,maxLines : 1 , opacity : 0.9  ),
+                  x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , opacity : 0.9 ),
                   // End of القسم TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of  المساقات الحالية TextField
-                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.9  ),
+                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of  المساقات الحالية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of  الساعات المكتبةة TextField
-                  x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 , opacity : 0.9  ),
+                  x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
                   // End of  الساعات المكتبة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of الدرجة الجامعية TextField
-                  x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.9  ),
+                  x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
                   // End of الدرجة الجامعية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of عنوان المكتب TextField
-                  x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.9  ),
+                  x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
                   // End of عنوان المكتب TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of وسيلة التواصل TextField
-                  x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.9  ),
+                  x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of وسيلة التواصل TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of نبذه عن المدرس TextField
-                  x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , maxLines : 3 , opacity : 0.9  ),
+                  x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of نبذه عن المدرس TextField
 
                   SizedBox ( height : 25 ),
@@ -200,7 +200,6 @@ class _Doctor_data_view extends State < Doctor_data_view >
                         Update_Data ( Coll : Coll . text , Dept : Dept . text ) ;
 
                         Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Name : widget . Name , Coll : Coll . text , Dept : Dept . text , Current_courses : Current_courses . text , Office_hours : Office_hours . text , Dgree : Dgree . text , Office_Address : Office_Address . text , Contact : Contact . text , Desc : Desc . text , What_Do_You_Wont : "View" ) ) ) ;
-
 
                       },
 
@@ -319,7 +318,7 @@ class _Doctor_data_view extends State < Doctor_data_view >
                   Container
                   (
 
-                    decoration: BoxDecoration
+                    decoration : BoxDecoration
                     (
                       border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
                       borderRadius : BorderRadius . circular ( 50 )
@@ -354,7 +353,7 @@ class _Doctor_data_view extends State < Doctor_data_view >
 
                       },
 
-                      title : Center(child: Text ( "تغيير كلمة المرور" , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) ))
+                      title : Center ( child : Text ( "تغيير كلمة المرور" , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) ) )
 
                     )
 
@@ -382,7 +381,7 @@ class _Doctor_data_view extends State < Doctor_data_view >
 
                       },
 
-                      title : Center(child: Text ( "تسجيل الخروج" , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) ))
+                      title : Center ( child : Text ( "تسجيل الخروج" , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) ) )
 
                     )
 
@@ -502,8 +501,6 @@ class _Doctor_data_view extends State < Doctor_data_view >
           )
 
         ) ;
-
-        print ( "============= Done" ) ;
 
 
   }
