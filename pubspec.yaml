@@ -30,7 +30,6 @@ dependencies :
 
 # }
 
-
   syncfusion_flutter_pdfviewer : ^20.1.56-beta
   draggable_scrollbar : ^0.1.0
   flutter_typeahead: ^4.0.0

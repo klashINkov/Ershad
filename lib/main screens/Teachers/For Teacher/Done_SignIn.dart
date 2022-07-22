@@ -115,7 +115,7 @@ class _Signin extends State < Signin >
                      SizedBox ( height : 60 ),
 
                       // Start of Email TextField
-                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , maxLines : 1 ),
+                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6  ),
                       // End of Email TextField
 
                       SizedBox ( height : 260 ),
@@ -237,7 +237,56 @@ class _Signin extends State < Signin >
                               if (user != null)
                               {
 
-                                Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Email : Email . text  ) ) );
+                                String path = "" , Doc = "" , Name , Coll , Dept , Current_courses , Office_hours , Dgree , Office_Address , Contact , Desc ;
+
+                                for ( int i = 0 ; i < x . College_Name . length ; i++ )
+                                {
+
+                                  for ( int k = 0 ; k < x . College_DeptS [ i ] . Colleges_Depts . length ; k++ )
+                                  {
+
+                                    final  varr =  FirebaseFirestore . instance . collection ( "المدرسين/${ x . College_Name [ i ] }/${ x . College_DeptS [ i ] . Colleges_Depts [ k ] }" ) ;
+
+                                    await varr . where( "Email" , isEqualTo : FirebaseAuth . instance . currentUser! . email . toString ( )  ) . get ( ) . then
+                                    (
+
+                                      (value)
+                                      {
+
+                                        value . docs . forEach
+                                        (
+
+                                          ( element )
+                                          {
+
+                                            Doc = element . id ;
+                                            path = varr . path ;
+
+                                          }
+
+                                        );
+
+                                      }
+
+                                    );
+
+                                  }
+
+                                }
+
+                                var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+
+                                Name = varibel [ "Name" ] ;
+                                Coll = varibel [ "Coll" ] ;
+                                Dept = varibel [ "Dept" ] ;
+                                Current_courses = varibel [ "Current_courses" ] ;
+                                Office_hours = varibel [ "Office_hours" ] ;
+                                Dgree = varibel [ "Dgree" ] ;
+                                Office_Address = varibel [ "Office_Address" ] ;
+                                Contact = varibel [ "Contact" ] ;
+                                Desc = varibel [ "Desc" ] ;
+
+                                Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Name : Name , Coll : Coll , Dept : Dept , Current_courses : Current_courses , Office_hours : Office_hours , Dgree : Dgree , Office_Address : Office_Address , Contact : Contact , Desc : Desc , What_Do_You_Wont : "View" ) ) ) ;
 
                               }
 
@@ -337,15 +386,16 @@ class _Signin extends State < Signin >
         {
 
           AwesomeDialog
-            (
+          (
 
-              padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 10 , right : 10 ),
-              autoHide : Duration ( seconds : 5 ),
-              dialogBackgroundColor : Colors . black,
-              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-              context : context,
+            padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 10 , right : 10 ),
+            autoHide : Duration ( seconds : 5 ),
+            dialogBackgroundColor : Colors . black54,
+            borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+            dialogBorderRadius : BorderRadius . circular ( 50 ),
+            context : context,
 
-              body : Text ( "لا يوجد حساب مسجل بهذا البريد الالكتروني" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+            body : Text ( "لا يوجد حساب مسجل بهذا البريد الالكتروني" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
           ) . show ( ) ;
 
@@ -355,15 +405,16 @@ class _Signin extends State < Signin >
         {
 
           AwesomeDialog
-            (
+          (
 
-              padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
-              autoHide : Duration ( seconds : 2 ),
-              dialogBackgroundColor : Colors . black,
-              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-              context : context,
+            padding : EdgeInsets . only ( top : 20 , bottom : 40 ),
+            autoHide : Duration ( seconds : 2 ),
+            dialogBackgroundColor : Colors . black54,
+            borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+            dialogBorderRadius : BorderRadius . circular ( 50 ),
+            context : context,
 
-              body : Text ( "كلمة المرور خاطئة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+            body : Text ( "كلمة المرور خاطئة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
           ) . show ( ) ;
 
@@ -380,15 +431,16 @@ class _Signin extends State < Signin >
     {
 
       AwesomeDialog
-        (
+      (
 
-          padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
-          autoHide : Duration ( seconds : 5 ),
-          dialogBackgroundColor : Colors . black,
-          borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
-          context : context,
+        padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
+        autoHide : Duration ( seconds : 5 ),
+        dialogBackgroundColor : Colors . black54,
+        borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+        dialogBorderRadius : BorderRadius . circular ( 50 ),
+        context : context,
 
-          body : Text ( "المعلومات التي قمت بادخالها غير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+        body : Text ( "المعلومات التي قمت بادخالها غير صالحة" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
       ) . show ( ) ;
 

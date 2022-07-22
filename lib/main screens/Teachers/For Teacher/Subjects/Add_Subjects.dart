@@ -97,7 +97,7 @@ class _Add_Subjects extends State < Add_Subjects >
         (
 
           image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ), fit : BoxFit . fill, repeat : ImageRepeat . noRepeat ) ),
-        padding : EdgeInsets . symmetric ( horizontal : 20 ),
+        padding : EdgeInsets . symmetric ( horizontal : 15 ),
 
         child : ListView
         (
@@ -117,49 +117,49 @@ class _Add_Subjects extends State < Add_Subjects >
                 [
 
                   // Start of اسم المادة TextField
-                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of اسم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of رقم المادة TextField
-                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of رقم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of رقم المادة TextField
-                  x . Type_Ahead ( label : " الكلية" , hint : "" , Tmpe : Tmpe ,  controller : Coll , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Type_Ahead ( label : " الكلية" , hint : "" ,  controller : Coll , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of رقم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of رقم المادة TextField
-                  x . Type_Ahead ( label : " التخصص" , hint : "التخصص الذي ترغب في اضافة المادة اليه" , Tmpe : Tmpe , controller : Dept , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Type_Ahead ( label : " التخصص" , hint : "التخصص الذي ترغب في اضافة المادة اليه" , controller : Dept , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of رقم المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of المتطلب السابق للمادة TextField
-                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of المتطلب السابق للمادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of نوع المادة TextField
-                  x . Text_Field ( label : " نوع المادة" , hint : "عملي ام نظري؟" , controller : Type , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Text_Field ( label : " نوع المادة" , hint : "عملي ام نظري؟" , controller : Type , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of نوع المادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of الساعات المعتمدة للمادة TextField
-                  x . Text_Field ( label : " الساعات المعتمدة للمادة" , hint : "" , controller : Credit_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 ),
+                  x . Text_Field ( label : " الساعات المعتمدة للمادة" , hint : "" , controller : Credit_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 1 , opacity : 0.6 ),
                   // End of الساعات المعتمدة للمادة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of نبذه عن المادة TextField
-                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 ),
+                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , maxLines : 3 , opacity : 0.6 ),
                   // End of نبذه عن المادة TextField
 
                   // Start Of Add Button

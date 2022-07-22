@@ -1,21 +1,24 @@
-//Done
-
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_unnecessary_containers, use_key_in_widget_constructors, must_be_immutable, constant_identifier_names, must_call_super, unnecessary_overrides
 
 
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// Width = 0.2429824561403509    => 10=2.44
-//Height = 0.1463636363636364
-import 'package:ershad/main%20screens/Teachers/Done_Teachers.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dart';
 
+import 'package:ershad/main screens/Teachers/Done_Teachers.dart';
+
+import 'package:ershad/main screens/Teachers/For Teacher/Done_SignIn.dart';
+
+import 'package:ershad/main screens/Teachers/For Teacher/Undone_Doctor_view&_Edit_data.dart';
+
 import 'package:ershad/main screens/Map/Done_Map.dart';
 
-import 'package:ershad/main%20screens/personal%20lost/personal%20lost.dart';
+import 'package:ershad/main screens/personal lost/Done_personal lost.dart';
 
-import 'package:ershad/main screens/Teachers/Done_SignIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
@@ -74,7 +77,8 @@ class temp
   ];
 
   // Start Of Item Widget ==> لعرض بيانات المادة
-  Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) => Container
+  Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) =>
+  Container
   (
 
     margin : EdgeInsets . only ( bottom : 5 , left : 10 , right : 10 ),
@@ -82,11 +86,9 @@ class temp
 
     decoration : BoxDecoration
     (
-
       color : Colors . black,
       borderRadius : BorderRadius . circular ( 200 ),
       image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat )
-
     ),
 
     child : Column
@@ -126,7 +128,8 @@ class temp
   // End Of Item Widget ==> لعرض بيانات المادة
 
   // Start Of Arrows Widget ==> اسهم القوائم
-  Widget Arrows ( { required double top , required double left , required IconData icon } ) => Padding
+  Widget Arrows ( { required double top , required double left , required IconData icon } ) =>
+  Padding
   (
 
     padding : EdgeInsets . only (  top  : top , left : left ),
@@ -136,7 +139,8 @@ class temp
   // End Of Arrows Widget ==> اسهم القوائم
 
   // Start Of Pic Widget ==> لقسم المدرسين
-  Widget Pic ( { required BuildContext context , required String image , required String txt , required bool flag } ) => Expanded
+  Widget Pic ( { required BuildContext context , required String image , required String txt ,required bool flag } ) =>
+  Expanded
   (
 
     flex : 5,
@@ -144,7 +148,7 @@ class temp
     child : InkWell
     (
 
-      onTap : ( )
+      onTap : ( ) async
       {
 
         if ( txt == "مُدرس")
@@ -156,27 +160,70 @@ class temp
           else
             {
 
-              Navigator . pushReplacement
+              String path = "" , Doc = "" , Name , Coll , Dept , Current_courses , Office_hours , Dgree , Office_Address , Contact , Desc ;
+              AwesomeDialog
               (
-                context , MaterialPageRoute
-                (
 
-                  builder : ( _ ) => Teachers
+                padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
+                autoHide : Duration ( seconds : 5 ),
+                dialogBackgroundColor : Colors . black54,
+                borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+                dialogBorderRadius : BorderRadius . circular ( 50 ),
+                context : context,
+
+                body : Text ( "الرجاء الانتظار لحين تجهيز بياناتك\n\nوقت الانتظار املؤه بالاستغفار\n\nإذكر الله" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+
+              ) . show ( ) ;
+
+              for ( int i = 0 ; i < College_Name . length ; i++ )
+              {
+
+                for ( int k = 0 ; k < College_DeptS [ i ] . Colleges_Depts . length ; k++ )
+                {
+
+                  final  varr =  FirebaseFirestore . instance . collection ( "المدرسين/${ College_Name [ i ] }/${ College_DeptS [ i ] . Colleges_Depts [ k ] }" ) ;
+
+                  await varr . where( "Email" , isEqualTo : FirebaseAuth . instance . currentUser! . email . toString ( )  ) . get ( ) . then
                   (
 
-                    Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
+                    (value)
+                    {
 
-                    Image1_text : "إضافة أو تعديل بيانات المدرس",
+                      value . docs . forEach
+                      (
 
-                    Image2_Url : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe5nhRn8KuW4FOuImeln5gyOe9wXOSuzYQEg&usqp=CAU",
+                        ( element )
+                        {
 
-                    Image2text : "إضافة أو تعديل بيانات مادة"
+                          Doc = element . id ;
+                          path = varr . path ;
 
-                  )
+                        }
 
-                )
+                      );
 
-              );
+                    }
+
+                  );
+
+                }
+
+              }
+
+              var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+
+              Name = varibel [ "Name" ] ;
+              Coll = varibel [ "Coll" ] ;
+              Dept = varibel [ "Dept" ] ;
+              Current_courses = varibel [ "Current_courses" ] ;
+              Office_hours = varibel [ "Office_hours" ] ;
+              Dgree = varibel [ "Dgree" ] ;
+              Office_Address = varibel [ "Office_Address" ] ;
+              Contact = varibel [ "Contact" ] ;
+              Desc = varibel [ "Desc" ] ;
+
+              Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Name : Name , Coll : Coll , Dept : Dept , Current_courses : Current_courses , Office_hours : Office_hours , Dgree : Dgree , Office_Address : Office_Address , Contact : Contact , Desc : Desc , What_Do_You_Wont : "View" ) ) ) ;
+
 
             }
 
@@ -233,14 +280,14 @@ class temp
   // End Of Pic Widget ==> لقسم المدرسين
 
   // Start Of Text Field Widget ==> لمعلومات المواد و المدرسين
-  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines } ) =>
+  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines , required double opacity } ) =>
   Container
   (
 
     child : Opacity
     (
 
-      opacity : 0.6,
+      opacity : opacity,
 
       child : Stack
       (
@@ -253,6 +300,7 @@ class temp
 
             child : TextFormField
             (
+
               textInputAction : textInputAction,
               controller : controller,
               keyboardType : keyboardType,
@@ -260,7 +308,7 @@ class temp
               textAlign : TextAlign . center,
               cursorColor : Colors . white,
               cursorWidth : 5,
-              maxLines : maxLines,
+              maxLines :  label == " وسيلة التواصل" || label == " الساعات المكتبة" ? 3 : label == " المساقات الحالية" ? 8 : label == " نبذه عن المدرس" || label == " نبذه عن المادة"  ? 12 : label == " الرقم الجامعي"? 2 : 1  ,
 
               decoration : InputDecoration
               (
@@ -270,39 +318,29 @@ class temp
 
                 enabledBorder : OutlineInputBorder
                 (
-
                   borderRadius : BorderRadius . circular ( 50 ),
                   borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-
                 ),
                 focusedBorder : OutlineInputBorder
                 (
-
                   borderRadius : BorderRadius . circular ( 50 ),
-
                   borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-
                 ),
 
                 errorBorder : OutlineInputBorder
                 (
-
                   borderRadius : BorderRadius . circular ( 50 ),
                   borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
                 ),
                 focusedErrorBorder : OutlineInputBorder
                 (
-
                   borderRadius : BorderRadius . circular ( 50 ),
-
                   borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
                 ),
                 errorStyle : TextStyle ( fontSize : 18 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
 
                 hintText : hint,
-                hintStyle : TextStyle ( color : Colors . white, fontSize : 20  ),
+                hintStyle : TextStyle ( color : Colors . white, fontSize : 20 ),
 
                 labelText :  label,
                 labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
@@ -316,17 +354,11 @@ class temp
 
                 if ( label == " البريد الالكتروني" )
                 {
-
                   if  ( !( val! . contains ( "@" , 0 ) ) || !( val . contains ( "." , 0 )  ) )
-                  {
-
-                    return "صيغة البريد الالكتروني خاطئة" ;
-
-                  }
-
+                      return "صيغة البريد الالكتروني خاطئة" ;
                 }
 
-                else if ( label == " رقم المادة" )
+                else if ( label == " رقم المادة" && controller . text != "" )
                 {
 
                   if ( val! . length < 7 )
@@ -338,11 +370,7 @@ class temp
                 }
 
                 else if ( val == "" )
-                {
-
                   return "لا يمكن ان يكون حقل$label فارغا" ;
-
-                }
 
                 return null ;
 
@@ -364,14 +392,19 @@ class temp
   // End Of Text Field Widget ==> لمعلومات المواد و المدرسين
 
   // Start Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
-  Widget Type_Ahead ( { required String label , required String hint , required String Tmpe , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines } ) =>
-  Container
+  Widget Type_Ahead ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required int maxLines , required double opacity } ) =>
+  Opacity
   (
+    opacity : opacity,
 
-    child : Opacity
+    child : Container
     (
 
-      opacity : 0.6,
+      decoration : BoxDecoration
+      (
+        color : Colors . black,
+        borderRadius : BorderRadius . circular ( 50 )
+      ),
 
       child : Stack
       (
@@ -383,14 +416,15 @@ class temp
           (
 
             suggestionsBoxDecoration : SuggestionsBoxDecoration ( color : Colors . transparent ),
+
             suggestionsCallback : label == " القسم" ?
 
             ( val ) => College_DeptS [ Index ] . Colleges_Depts . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ) :
 
             label == " التخصص" ?
 
-            ( val ) => College_SpecialtieS [ Index ] . Colleges_SpecialtieS . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) )
-            :
+            ( val ) => College_SpecialtieS [ Index ] . Colleges_SpecialtieS . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ) :
+
             ( val ) => College_Name . where ( ( element ) => element . toLowerCase ( ) . contains ( val . toLowerCase ( ) ) ),
 
             itemBuilder :  ( _ , String element ) => Opacity
@@ -405,11 +439,9 @@ class temp
 
                 decoration : BoxDecoration
                 (
-
                   color : Colors . black,
-                  border :  Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                    borderRadius : BorderRadius . circular ( 50 )
-
+                  border :  Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
+                  borderRadius : BorderRadius . circular ( 50 )
                 ),
 
                 child : ListTile
@@ -423,70 +455,62 @@ class temp
 
             ),
 
-            onSuggestionSelected : ( String val )  { controller . text = val ; Index = College_Name . indexOf ( val ) ; },
+            onSuggestionSelected : ( String val )  { controller . text = val ;
+              Index = val . contains( "كلية" ) ? College_Name . indexOf ( val ) : Index = Index ;
+              },
             getImmediateSuggestions : true,
             hideSuggestionsOnKeyboardHide : true,
             hideOnEmpty : true,
 
             textFieldConfiguration : TextFieldConfiguration
             (
-                textInputAction : textInputAction,
-                controller : controller,
-                keyboardType : keyboardType,
-                style : TextStyle ( fontSize : 25 , color : Colors . white ),
-                textAlign : TextAlign . center,
-                cursorColor : Colors . white,
-                cursorWidth : 5,
-                maxLines : maxLines,
 
-                decoration : InputDecoration
-                (
+              textInputAction : textInputAction,
+              controller : controller,
+              keyboardType : keyboardType,
+              style : TextStyle ( fontSize : 25 , color : Colors . white ),
+              textAlign : TextAlign . center,
+              cursorColor : Colors . white,
+              cursorWidth : 5,
+              maxLines :  label == " التخصص" || label == " القسم" ? 2 : 1,
 
-                    filled : true,
-                    fillColor : Colors . black,
+              decoration : InputDecoration
+              (
 
-                    enabledBorder : OutlineInputBorder
-                    (
+                  fillColor : Colors . black,
 
-                      borderRadius : BorderRadius . circular ( 50 ),
-                      borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  enabledBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  ),
+                  focusedBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  ),
 
-                    ),
-                    focusedBorder : OutlineInputBorder
-                    (
+                  errorBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+                  ),
+                  focusedErrorBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
+                  ),
+                  errorStyle : TextStyle ( fontSize : 18 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
 
-                      borderRadius : BorderRadius . circular ( 50 ),
+                  hintText : hint,
+                  hintStyle : TextStyle ( color : Colors . white, fontSize : 20 ),
 
-                      borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  labelText :  label,
+                  labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
+                  floatingLabelStyle : TextStyle ( fontSize : 30 , backgroundColor : Colors . transparent , color : Colors . white ),
+                  floatingLabelAlignment : FloatingLabelAlignment . center
 
-                    ),
-
-                    errorBorder : OutlineInputBorder
-                    (
-
-                      borderRadius : BorderRadius . circular ( 50 ),
-                      borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
-                    ),
-                    focusedErrorBorder : OutlineInputBorder
-                    (
-
-                      borderRadius : BorderRadius . circular ( 50 ),
-
-                      borderSide : BorderSide ( color : Colors . red . shade900 , width : 5 )
-
-                    ),
-                    errorStyle : TextStyle ( fontSize : 18 , fontWeight : FontWeight . bold , color : Colors . yellow , backgroundColor : Colors . black ),
-
-                    hintText : hint,
-                    hintStyle : TextStyle ( color : Colors . white, fontSize : 20  ),
-
-                    labelText :  label,
-                    labelStyle : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ),
-                    floatingLabelStyle : TextStyle ( fontSize : 30 , backgroundColor : Colors . transparent , color : Colors . white ),
-                    floatingLabelAlignment : FloatingLabelAlignment . center
-
-                ),
+              ),
 
             ),
 
@@ -537,11 +561,9 @@ class temp
 
         decoration : BoxDecoration
         (
-
-            color : Colors . black,
-            border : Border . all ( color : Colors . white , width : 5 ),
-            borderRadius : BorderRadius . circular ( 50 )
-
+          color : Colors . black,
+          border : Border . all ( color : Colors . white , width : 5 ),
+          borderRadius : BorderRadius . circular ( 50 )
         ),
 
         child : InkWell
@@ -564,7 +586,9 @@ class temp
   Widget TexT ( { required String text , required String label } ) =>
   Stack
   (
-    // clipBehavior: Clip . none,
+
+    clipBehavior: Clip . none,
+
     children :
     [
 
@@ -573,15 +597,13 @@ class temp
 
         margin : EdgeInsets . only ( top : 15 ),
         padding : EdgeInsets . only ( top: 10 , bottom: 10 ),
-        height : label == "عنوان المكتب" || label == "وسيلة التواصل" ? 200 : label == "النبذه" ? 400 : label == "الكلية" ? 150 : 90,
+        height : label == "عنوان المكتب" || label == "وسيلة التواصل" || label == "القسم" ? 200 : label == "النبذه" ? 400 : label == "المساقات الحالية"? 300  : label == "الساعات المكتبية" ? 150 : 90,
 
         decoration : BoxDecoration
         (
-
           color : Colors . black,
-          border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+          border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
           borderRadius : BorderRadius . circular ( 50 )
-
         ),
 
         child : Center
@@ -594,7 +616,7 @@ class temp
             (
 
               text,
-              maxLines : label == "الكلية" ||label == "عنوان المكتب" || label == "وسيلة التواصل" ? 3 : 1 ,
+              maxLines : label == "الكلية" ||label == "عنوان المكتب" || label == "وسيلة التواصل" || label == "القسم" ? 10 : label == "الساعات المكتبية" || label == "المساقات الحالية" || label == "النبذه" ? 100 : 1 ,
               textAlign : TextAlign . center,
               style : TextStyle
               (
@@ -613,43 +635,19 @@ class temp
 
       ),
 
-      Center(
-        child: Positioned
-        (
-          // left: 330,
-          top : -20 ,
-          child: Text
-            (
-
-            label,
-            textAlign : TextAlign . center,
-            style : TextStyle
-              (
-
-                color : Colors . white,
-                fontSize : 25,
-                fontWeight : FontWeight . bold
-
-            ),
-
-          ),
-        ),
-      ),
-
-      /*Padding
+      Center
       (
 
-        padding : EdgeInsets . only ( left : 345 , top : 10 ),
-
-        child : IconButton
+        child : Positioned
         (
 
-            onPressed : ( ) { },
+          top : -20,
+          child : Text ( label , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 25 , fontWeight : FontWeight . bold ) )
 
-            icon : Icon ( CupertinoIcons . pen , color : Colors . white , size : 40 )
+        )
 
-        ),
-      )*/
+      ),
+
 
     ]
 
@@ -677,7 +675,6 @@ class temp
           onTap :  ( )
           {
 
-
             if ( text ==  "المدرسين" )
               Navigator . push
               (
@@ -686,15 +683,10 @@ class temp
 
                   builder : ( _ ) => Teachers
                   (
-
                     Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
-
                     Image1_text : "مُدرس",
-
                     Image2_Url : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513",
-
                     Image2text : "طالب"
-
                   )
 
                 )
@@ -702,16 +694,7 @@ class temp
               );
 
             else
-              Navigator . push
-              ( context , MaterialPageRoute
-
-                (
-
-                    builder : ( context ) => Personal_Lost ( )
-
-                )
-
-              ) ;
+              Navigator . push ( context , MaterialPageRoute ( builder : ( context ) => Personal_Lost ( ) ) ) ;
 
           },
 
@@ -720,10 +703,8 @@ class temp
 
             decoration : BoxDecoration
             (
-
               border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
               borderRadius : BorderRadius . only ( topLeft : Radius . circular ( 500 ) , bottomRight : Radius . circular ( 500 ) )
-
             ),
 
             child : Material
@@ -795,10 +776,8 @@ class temp
 
             decoration : BoxDecoration
             (
-
               border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
               borderRadius : BorderRadius . only ( topRight : Radius . circular ( 500 ) , bottomLeft : Radius . circular ( 500 ) )
-
             ),
 
             child : Material
@@ -847,11 +826,11 @@ class temp
     else
       {
 
-        if ( txt == "نبذه عن المادة " || txt == " نبذه عن المدرس" || txt == " وسيلة التواصل" )
+        if ( txt == " وسيلة التواصل" || txt == " المساقات الحالية" )
           return Padding
           (
 
-            padding : EdgeInsets . only ( left : 342 , top : 35 ),
+            padding : EdgeInsets . only ( left : 349 , top : 40 ),
 
             child : IconButton
             (
@@ -863,11 +842,27 @@ class temp
 
           );
 
+        else if ( txt == " نبذه عن المادة" || txt == " نبذه عن المدرس" )
+          return Padding
+          (
+
+            padding : EdgeInsets . only ( left : 349 , top : 150 ),
+
+            child : IconButton
+              (
+
+                icon : Icon ( Icons . close , color : Colors . white , size : 30 ),
+                onPressed : ( ) => controller . clear ( )
+
+            )
+
+          );
+
         else if ( txt == " الرقم الجامعي" )
           return Padding
           (
 
-            padding : EdgeInsets . only ( left : 342 , top : 35 ),
+            padding : EdgeInsets . only ( left : 349 , top : 35 ),
 
             child : IconButton
               (
@@ -883,7 +878,7 @@ class temp
           return Padding
           (
 
-            padding : EdgeInsets . only ( left : 340 , top : 10 ),
+            padding : EdgeInsets . only ( left : 349 , top : 10 ),
 
             child : IconButton
             (
@@ -899,29 +894,6 @@ class temp
 
   }
 
-  Widget Lost ( { required String text } ) =>
-  Container
-  (
-
-    height : 250,
-    padding : EdgeInsets . only ( top : 10 , bottom : 10 , left : 5 , right : 5  ),
-      margin : EdgeInsets . only ( bottom: 20 ) ,
-    decoration : BoxDecoration
-    (
-
-      color : Colors . black,
-      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-      borderRadius : BorderRadius . circular ( 30 )
-
-    ),
-
-    child : Center ( child : Text ( text , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : 18 ) ) )
-
-  );
-
-
-
-
 }
 
 class sts
@@ -936,8 +908,10 @@ class sts
 
 class College_Depts
 {
+
   List < String > Colleges_Depts ;
   College_Depts ( { required this . Colleges_Depts } ) ;
+
 }
 
 class College_Specialties

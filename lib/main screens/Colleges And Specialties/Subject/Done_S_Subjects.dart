@@ -8,7 +8,7 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
 
-import 'package:ershad/main%20screens/Teachers/C_Doctor_data_view.dart';
+import 'package:ershad/main%20screens/Teachers/Done_C_Doctor_data_view.dart';
 
 import 'package:ershad/main screens/New/Undone_temp.dart';
 
@@ -442,7 +442,7 @@ class S_Subjects extends StatelessWidget
   void List_View_On_Tap ( String Subject_Name_Or_Doctor_Name , BuildContext context ) async
   {
 
-    var Varibel = await FirebaseFirestore . instance . collection ( "/المدرسين/$College_Name/$Specialty_Name_Or_Dept_Name"  ) . doc ( Subject_Name_Or_Doctor_Name ) . get ( ) ;
+    var Varibel = await FirebaseFirestore . instance . collection ( "/المدرسين/$College_Name/$Specialty_Name_Or_Dept_Name" ) . doc ( Subject_Name_Or_Doctor_Name ) . get ( ) ;
 
     var varibel = await FirebaseFirestore . instance . collection ( "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name/وصف التخصص و اسماء المواد و بياناتها/بيانات المواد" ) . doc ( Subject_Name_Or_Doctor_Name ) . get ( ) ;
 
@@ -453,7 +453,7 @@ class S_Subjects extends StatelessWidget
       (
 
         builder : ( context ) => num == 2 ?
-        C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Desc : Varibel [ "Desc" ]  , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Office : Varibel [ "Offec" ]  ):
+        C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Current_courses : Varibel [ "Current_courses" ] , Office_hours : Varibel [ "Office_hours" ] , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Office_Address : Varibel [ "Office_Address" ] , Desc : Varibel [ "Desc" ] ):
 
         S_Subject
         (

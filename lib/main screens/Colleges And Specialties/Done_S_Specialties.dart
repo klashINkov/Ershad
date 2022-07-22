@@ -211,7 +211,7 @@ class S_Specialties extends StatelessWidget
 
       width : 150,
 
-      decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill ) ),
+      decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill  ) ),
 
       child : Center
       (
@@ -390,8 +390,8 @@ class S_Specialties extends StatelessWidget
 
     else
     {
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name";
-      Doc = "وصف التخصص و اسماء المواد و بياناتها"  ;
+      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" ;
+      Doc = "وصف التخصص و اسماء المواد و بياناتها" ;
       array = "مواد التخصص" ;
 
 
@@ -414,8 +414,6 @@ class S_Specialties extends StatelessWidget
           :
 
       S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
-
-      print ( "============ \npath = $path\nDoc = $Doc\narray = $array" );
 
   }
   // End of List View On Tap Function
