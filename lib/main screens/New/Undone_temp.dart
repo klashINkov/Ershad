@@ -652,162 +652,77 @@ class temp
   // End Of TexT Function ==> لعرض بيانات المدرس للطالب
 
   // Start Of sdfa Widget ==> للصفحة الرئيسية
-  Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) => text == "المدرسين" || text == "المفقودات" ?
+  Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) =>
   Opacity
   (
 
     opacity : 0.7,
 
-    child : Row
+    child : InkWell
     (
 
-      mainAxisAlignment : MainAxisAlignment . center,
+      onTap :  ( )
+      {
 
-      children :
-      [
-
-        InkWell
-        (
-
-          onTap :  ( )
-          {
-
-            if ( text ==  "المدرسين" )
-              Navigator . push
-              (
-                context , MaterialPageRoute
-                (
-
-                  builder : ( _ ) => Teachers
-                  (
-                    Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
-                    Image1_text : "مُدرس",
-                    Image2_Url : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513",
-                    Image2text : "طالب"
-                  )
-
-                )
-
-              );
-
-            else
-              Navigator . push ( context , MaterialPageRoute ( builder : ( context ) => Personal_Lost ( ) ) ) ;
-
-          },
-
-          child : Container
+        if ( text ==  "المدرسين" )
+          Navigator . push
           (
-
-            decoration : BoxDecoration
-            (
-              border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
-              borderRadius : BorderRadius . only ( topLeft : Radius . circular ( 500 ) , bottomRight : Radius . circular ( 500 ) )
-            ),
-
-            child : Material
+            context , MaterialPageRoute
             (
 
-              color : Colors . black,
-              borderRadius : BorderRadius . only ( topLeft : Radius . circular ( 500 ) , bottomRight : Radius . circular ( 500 ) ),
-
-              child : Ink . image
+              builder : ( _ ) => Teachers
               (
-
-                image : AssetImage ( "pic/pic1.png" ),
-                height : 110,
-                width : 300,
-                fit : BoxFit . contain,
-
-                child : Padding
-                (
-
-                  padding : EdgeInsets . only ( top : top , left : left ),
-
-                  child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-                )
-
+                Image1_url : "https://cdn.mosoah.com/wp-content/uploads/2019/07/20134500/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A.jpg",
+                Image1_text : "مُدرس",
+                Image2_Url : "https://www.aljazeera.net/wp-content/uploads/2020/07/%D8%B5%D9%88%D8%B1%D8%A9-%D9%85%D9%8A%D8%AF%D8%A7%D9%86-2020-07-28T025900.778.png?resize=770%2C513",
+                Image2text : "طالب"
               )
 
             )
 
+          );
+
+        else if ( text == "الكليات و التخصصات" )
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 0 ) ) ) ;
+
+        else if ( text == "الخارطة" )
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;
+
+        else
+          Navigator . push ( context , MaterialPageRoute ( builder : ( context ) => Personal_Lost ( ) ) ) ;
+
+      },
+
+      child : Container
+      (
+        height : 158,
+          width: 350,
+
+        decoration : BoxDecoration
+        (
+          border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
+          borderRadius : text == "المدرسين" || text == "المفقودات" ?
+          BorderRadius . only ( topLeft : Radius . circular ( 500 ) , bottomRight : Radius . circular ( 500 ) ) :
+          BorderRadius . only ( topRight : Radius . circular ( 500 ) , bottomLeft : Radius . circular ( 500 ) ),
+          color : Colors . black ,
+          image : DecorationImage
+          (
+            image : AssetImage ( "pic/pic1.png" ),
+            fit : BoxFit . contain,
           )
 
-        )
+        ),
 
-      ]
-
-    )
-
-  )
-  :
-  Opacity
-  (
-
-    opacity : 0.7,
-
-    child : Row
-    (
-
-      mainAxisAlignment : MainAxisAlignment . center,
-
-      children :
-      [
-
-        InkWell
+        child : Padding
         (
 
-          onTap :  ( )
-          {
+          padding : EdgeInsets . only ( top : top , left : left ),
 
-            if ( text == "الكليات و التخصصات" )
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 0 ) ) ) ;
-
-            else
-              Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;
-
-          },
-
-          child : Container
-          (
-
-            decoration : BoxDecoration
-            (
-              border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
-              borderRadius : BorderRadius . only ( topRight : Radius . circular ( 500 ) , bottomLeft : Radius . circular ( 500 ) )
-            ),
-
-            child : Material
-            (
-
-              color : Colors . black,
-              borderRadius : BorderRadius . only ( topRight : Radius . circular ( 500 ) , bottomLeft : Radius . circular ( 500 ) ),
-
-              child : Ink . image
-              (
-                image : AssetImage ( "pic/pic1.png" ),
-                height : 110,
-                width : 300,
-                fit : BoxFit . contain,
-
-                child : Padding
-                (
-
-                  padding : EdgeInsets . only ( top : top , left : left ),
-
-                  child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-                )
-
-              )
-
-            )
-
-          )
+          child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         )
 
-      ]
+      )
 
     )
 
