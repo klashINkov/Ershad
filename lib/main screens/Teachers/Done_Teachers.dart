@@ -58,8 +58,6 @@ class _Teachers extends State < Teachers >
       body : Container
       (
 
-        color : Colors . green . shade900,
-
         child : Column
         (
 

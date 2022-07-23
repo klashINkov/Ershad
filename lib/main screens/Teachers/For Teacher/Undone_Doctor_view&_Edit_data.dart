@@ -349,7 +349,20 @@ class _Doctor_data_view extends State < Doctor_data_view >
                       onTap : ( ) async
                       {
 
-                        // Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
+                        FirebaseAuth . instance . sendPasswordResetEmail( email : FirebaseAuth . instance . currentUser! . email . toString ( ) ) ;
+                        AwesomeDialog
+                        (
+
+                          padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
+                          autoHide : Duration ( seconds : 7 ),
+                          dialogBackgroundColor : Colors . black54,
+                          borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+                          dialogBorderRadius : BorderRadius . circular ( 50 ),
+                          context : context,
+
+                          body : Text ( "تم ارسال بريد الى بريد الالكتروني يرجى الذهاب الى بريدك الالكتروني لغيير كلمة المرور" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+
+                        ) . show ( ) ;
 
                       },
 

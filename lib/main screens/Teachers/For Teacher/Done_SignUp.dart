@@ -250,7 +250,7 @@ class _Signup extends State < Signup >
                   SizedBox ( height : 30 ),
 
                 // Start of المساقات الحالية TextField
-                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline ,  opacity : 0.6 ),
+                  x . Text_Field ( label : " المساقات الحالية" , hint : "\n\nالمساقات التي تعطيها خلال الفصل الحالي\n\nاسم المساق - القاعه التي يعطى فيها المساق\n\nالموعد الذي يعطى فيه المساق-" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline ,  opacity : 0.6 ),
                   // End of المساقات الحالية TextField
 
                   SizedBox ( height : 30 ),

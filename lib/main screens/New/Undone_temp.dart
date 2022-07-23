@@ -229,9 +229,6 @@ class temp
 
         }
 
-        else if ( txt == "إضافة أو تعديل بيانات مادة" )
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 1 ) ) ) ;
-
         else
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 2 ) ) ) ;
 
@@ -310,6 +307,7 @@ class temp
               cursorWidth : 5,
               maxLines : label == " وسيلة التواصل"  || label == " الساعات المكتبة" ? 3 :
                          label == " نبذه عن المدرس" || label == " نبذه عن المادة"  ? 12 :
+                         label == " الرقم الجامعي"  ? 2 :
                          label == " المساقات الحالية" ? 8 : 1  ,
 
               decoration : InputDecoration
@@ -696,7 +694,9 @@ class temp
       child : Container
       (
         height : 158,
-          width: 350,
+        width : 350,
+
+        padding : EdgeInsets . only ( top : top , left : left ),
 
         decoration : BoxDecoration
         (
@@ -713,14 +713,7 @@ class temp
 
         ),
 
-        child : Padding
-        (
-
-          padding : EdgeInsets . only ( top : top , left : left ),
-
-          child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-        )
+        child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
 
       )
 
