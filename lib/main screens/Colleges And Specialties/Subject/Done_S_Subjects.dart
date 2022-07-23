@@ -2,6 +2,7 @@
 
 // ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
+import 'package:ershad/main%20screens/Teachers/For%20Teacher/Subjects/Add_Subjects.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ershad/main screens/Done_Home Page.dart';
@@ -67,136 +68,42 @@ class S_Subjects extends StatelessWidget
 
     ),
 
-      body : num == 2 ?
-      Container
-      (
-
-        height : 684,
-
-        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
-
-        child : Padding
-        (
-
-          padding : EdgeInsets . only ( top : 70 ),
-
-          child : num == 2 && is_empty ?
-          Center
-          (
-
-            child : Padding
-            (
-
-              padding : EdgeInsets . symmetric ( horizontal : 20 ),
-
-              child : Text
-              (
-
-                "لم يقم احد مدرسين هذا التخصص باضافة بياناته بعد",
-                textAlign : TextAlign . center,
-                style : TextStyle
-                (
-
-                  fontWeight : FontWeight . bold ,
-                  color : Colors . white,
-                  fontSize : 25
-
-                )
-
-              )
-
-            )
-
-          ):
-          Column
-          (
-
-            children:
-            [
-
-              Stack
-              (
-
-                children :
-                [
-
-                  // Start Of مواد التخصص الاجبارية
-                  Padding
-                  (
-
-                    padding : EdgeInsets . only ( top : 40 ),
-
-                    child : Center
-                    (
-
-                      child : Text ( "مدرسين القسم" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
-
-                    )
-
-                  ),
-                  // End Of مواد التخصص الاجبارية
-
-                  // STart Of List View
-                  Container
-                  (
-
-                    height : 580,
-                    width : 400 ,
-
-                    margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
-
-                    decoration : BoxDecoration
-                    (
-
-                      border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                      borderRadius : BorderRadius . circular ( 50 ),
-
-                    ),
-
-                    child : Column
-                    (
-
-                      mainAxisAlignment : MainAxisAlignment . center,
-
-                      children :
-                      [
-
-                        list_view ( )
-
-                      ]
-
-                    )
-
-                  ),
-                  // End Of List View
-
-                  // Start Of Arrow Up
-                  is_empty ? SizedBox( ) : x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
-                  // End Of Arrow Up
-
-                  // Start Of Arrow down
-                  is_empty ? SizedBox( ) : x . Arrows (top : 510 , left : 341 , icon : Icons . keyboard_arrow_down )
-                  // End Of Arrow down
-
-                ]
-
-              )
-
-            ]
-
-          )
-
-        )
-
-      ) :
-      Container
+      body : Container
       (
 
         height : 683,
 
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
-        child : ListView
+        child : num == 2 && is_empty ?
+        Center
+        (
+
+          child : Padding
+          (
+
+            padding : EdgeInsets . symmetric ( horizontal : 20 ),
+
+            child : Text
+            (
+
+              "لم يقم احد مدرسين هذا التخصص باضافة بياناته بعد",
+              textAlign : TextAlign . center,
+              style : TextStyle
+              (
+
+                fontWeight : FontWeight . bold ,
+                color : Colors . white,
+                fontSize : 25
+
+              )
+
+            )
+
+          )
+
+        ):
+        ListView
         (
 
           children :
@@ -209,6 +116,7 @@ class S_Subjects extends StatelessWidget
               [
 
                 // Start Of Description
+                num == 0 ?
                 Stack
                 (
 
@@ -273,7 +181,8 @@ class S_Subjects extends StatelessWidget
 
                   ]
 
-                ),
+                ) :
+                SizedBox ( ) ,
                 // End Of Description
 
                 // STart Of List View
@@ -283,30 +192,30 @@ class S_Subjects extends StatelessWidget
                   children :
                   [
 
-                    // Start Of مواد التخصص الاجبارية
+                    // Start Of مواد التخصص او مدرسين القسم
                     Padding
                     (
 
-                      padding : EdgeInsets . only ( top : 50 ),
+                      padding : EdgeInsets . only ( top : num == 1 ? 30 : num == 2 ? 40 : 50 ),
 
                       child : Center
                       (
 
-                        child : Text ( "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                        child : Text ( num == 2 ? "مدرسين القسم" : "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                       )
 
                     ),
-                    // End Of مواد التخصص الاجبارية
+                    // End Of مواد التخصص او مدرسين القسم
 
                     // STart Of List View
                     Container
                     (
 
-                      height : is_empty ? 200 : 580,
+                      height : is_empty && num == 0  ? 200 : 580,
                       width : 400 ,
 
-                      margin : EdgeInsets . only ( top : 25 , left : 15 , right : 25 ),
+                      margin : EdgeInsets . only ( top : num == 0 ? 25 : 15 , left : 15 , right : 25 ),
 
                       decoration : BoxDecoration
                       (
@@ -319,22 +228,28 @@ class S_Subjects extends StatelessWidget
                       child : Padding
                       (
 
-                        padding : EdgeInsets . only ( top : 65 , bottom : 10 ),
+                        padding : EdgeInsets . only ( top : num == 1 ? 50 : 65 , bottom : 10 ),
 
-                        child :  is_empty ?
+                        child :  is_empty && num == 0 ?
                         Center
                         (
 
-                          child : Text
+                          child : Padding
                           (
-                            "لم يتم اضافة مواد من قبل مدرسين هذا التخصص بعد",
-                            textAlign : TextAlign . center,
-                            style : TextStyle
-                            (
 
-                              fontWeight : FontWeight . bold,
-                              color : Colors . white,
-                              fontSize : 25
+                            padding : EdgeInsets . symmetric ( horizontal : num == 1 ? 20 : 0 ),
+                            child : Text
+                            (
+                              "لم يقم احد مدرسين هذا التخصص باضافة اي بيانات لاي مادة بعد",
+                              textAlign : TextAlign . center,
+                              style : TextStyle
+                              (
+
+                                fontWeight : FontWeight . bold,
+                                color : Colors . white,
+                                fontSize : 25
+
+                              )
 
                             )
 
@@ -362,12 +277,32 @@ class S_Subjects extends StatelessWidget
                     // End Of List View
 
                     // Start Of Arrow Up
-                    is_empty ? SizedBox( ) : x . Arrows (top : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                    is_empty ? SizedBox ( ) : x . Arrows ( top : num == 1 ? 50 : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
                     // End Of Arrow Up
 
                     // Start Of Arrow down
-                    is_empty ? SizedBox( ) : x . Arrows (top : 530 , left : 341 , icon : Icons . keyboard_arrow_down )
+                    is_empty ? SizedBox ( ) : x . Arrows ( top : num == 1 ? 490 : num == 2 ? 510 : 530 , left : 341 , icon : Icons . keyboard_arrow_down ),
                     // End Of Arrow down
+
+                  // Start Of Add subject Button
+                  num == 1 ?
+                  Padding
+                  (
+
+                    padding : EdgeInsets . only ( top : 540 , left : 15 ),
+
+                    child : FloatingActionButton
+                    (
+                      backgroundColor : Colors . blueAccent . shade700,
+                      onPressed : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Add_Subjects ( ) ) ) ; },
+
+                      child : Icon ( Icons . add )
+
+                    )
+
+                  ) :
+                  SizedBox ( )
+                  // End Of Add subject Button
 
                   ]
 

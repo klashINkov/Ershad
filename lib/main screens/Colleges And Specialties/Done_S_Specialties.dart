@@ -8,8 +8,6 @@ import 'package:ershad/main screens/Done_Home Page.dart';
 
 import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subjects.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Subjects/Done_C_Subjects.dart';
-
 import 'package:ershad/main screens/New/Undone_temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -407,11 +405,6 @@ class S_Specialties extends StatelessWidget
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => _num == 0 ?
 
       S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) :
-
-      _num == 1 ?
-
-      C_Subjects ( Specialty_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , subjects : varibel [ array ] , is_empty : isempty , num : _num )
-          :
 
       S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
 
