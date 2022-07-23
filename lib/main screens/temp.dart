@@ -4,19 +4,21 @@
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ershad/main%20screens/Teachers/SignIn.dart';
+import 'package:ershad/main%20screens/personal%20lost.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Colleges And Specialties/Done_S_Colleges.dart';
+import 'package:ershad/main screens/Colleges And Specialties/S_Colleges.dart';
 
-import 'package:ershad/main screens/Teachers/Done_Teachers.dart';
+import 'package:ershad/main screens/Teachers/Teachers.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Done_SignIn.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Undone_Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/Map/Done_Map.dart';
+import 'package:ershad/main%20screens/Teachers/Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/personal lost/Done_personal lost.dart';
+import 'package:ershad/main%20screens/Map.dart';
+
+
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -542,7 +544,7 @@ class temp
   // End Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
 
   // Start Of TXT Function ==> للخارطه
-  Widget TXT ( { required String txt , required double size , required int quarterTurns , required double bottom , required double top , required double left  } ) =>
+  Widget TXT ( { required String txt , required double size , required int quarterTurns , required double bottom , required double top , required double left , required BuildContext context } ) =>
   Opacity
   (
 
@@ -567,9 +569,10 @@ class temp
         ),
 
         child : InkWell
+
         (
 
-          onTap : ( ) { },
+          onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => image ( ) ) ),
 
           child : Text ( txt , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : size ) )
 
@@ -741,7 +744,7 @@ class temp
                     txt == " الساعات المكتبة" ? 40 :
                     txt == " المساقات الحالية" ? 110 :
                     txt == " القسم" ? 20 :
-                    txt == " وسيلة التواصل" ? 30 :
+                    txt == " وسيلة التواصل" ? 35 :
                     10
 
             ),

@@ -5,9 +5,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
-import 'package:ershad/main screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/temp.dart';
 
 // Start Of Add_Subjects Class
 class Add_Subjects extends StatefulWidget

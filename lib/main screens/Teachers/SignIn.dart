@@ -2,15 +2,16 @@
 
 // ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, unused_import, unnecessary_new, prefer_typing_uninitialized_variables, duplicate_import, non_constant_identifier_nam, unnecessary_thises, unnecessary_this, non_constant_identifier_names, file_names, unused_local_variable, avoid_single_cascade_in_expression_statements, unnecessary_null_comparison, prefer_const_literals_to_create_immutables, avoid_function_literals_in_foreach_calls, unnecessary_string_interpolations
 
+import 'package:ershad/main%20screens/Teachers/SignUp.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Done_SignUp.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Undone_Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/Teachers/Doctor_view&_Edit_data.dart';
+
+import 'package:ershad/main%20screens/temp.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -236,7 +237,19 @@ class _Signin extends State < Signin >
 
                               if (user != null)
                               {
+                                AwesomeDialog
+                                (
 
+                                  padding : EdgeInsets . only ( top : 20 , bottom : 40 , left : 15 , right : 15 ),
+                                  autoHide : Duration ( seconds : 5 ),
+                                  dialogBackgroundColor : Colors . black54,
+                                  borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 ),
+                                  dialogBorderRadius : BorderRadius . circular ( 50 ),
+                                  context : context,
+
+                                  body : Text ( "الرجاء الانتظار لحين تجهيز بياناتك\n\nهل صليت على الحبيب اليوم؟" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
+
+                                ) . show ( ) ;
                                 String path = "" , Doc = "" , Name , Coll , Dept , Current_courses , Office_hours , Dgree , Office_Address , Contact , Desc ;
 
                                 for ( int i = 0 ; i < x . College_Name . length ; i++ )
@@ -350,17 +363,6 @@ class _Signin extends State < Signin >
   }
   // End Of build Widget
 
- /* Stream < List < User > > Read_Users ( ) => FirebaseFirestore . instance . collection ( "Doctors" ) . snapshots ( ) . map
-  (
-    ( snapshot ) => snapshot . docs . map ( ( doc ) => User . fromjson ( doc . data ( ) ) ) . toList ( ),
-  ) ;
-
-  Widget Build_User ( User user ) => ListTile
-  (
-    title : Text ("Name : ${ user . Name } --- Coll : ${ user . Coll } ---- Dept : ${ user . Dept }"  )
-  );*/
-
-
   signIn ( ) async
   {
 
@@ -447,8 +449,6 @@ class _Signin extends State < Signin >
     }
 
   }
-
-
 
 }
 // End Of _Signin Class

@@ -2,16 +2,16 @@
 
 // ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
-import 'package:ershad/main%20screens/Teachers/For%20Teacher/Subjects/Add_Subjects.dart';
+import 'package:ershad/main%20screens/Teachers/Add_Subjects.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
-import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_S_Subject.dart';
+import 'package:ershad/main screens/Colleges And Specialties/Subject/S_Subject.dart';
 
-import 'package:ershad/main%20screens/Teachers/Done_C_Doctor_data_view.dart';
+import 'package:ershad/main%20screens/Teachers/C_Doctor_data_view.dart';
 
-import 'package:ershad/main screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 

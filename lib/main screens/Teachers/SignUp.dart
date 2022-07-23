@@ -4,11 +4,11 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
-import 'package:ershad/main%20screens/Teachers/For%20Teacher/Undone_Doctor_view&_Edit_data.dart';
+import 'package:ershad/main%20screens/Teachers/Doctor_view&_Edit_data.dart';
 
-import 'package:ershad/main screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 

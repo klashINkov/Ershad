@@ -4,11 +4,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main%20screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/temp.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
-
-import 'package:ershad/main screens/Colleges And Specialties/Subject/Done_Subject Syllabus.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
 // ٍStart Of Subject Class
 class S_Subject extends StatelessWidget
@@ -147,29 +145,6 @@ class S_Subject extends StatelessWidget
 
                   ),
                   // End Text of نص وصف المساق
-
-                  // Start OF Link خطة المادة
-                  Container
-                  (
-
-                    padding : EdgeInsets . only ( top : 280 ),
-
-                    child : FlatButton
-                    (
-
-                      onPressed : ( ) { Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Syllabus ( ) ) ) ; },
-
-                      child : Center
-                      (
-
-                        child : Text ( "خطة المادة" ,  style : TextStyle ( color : Colors . blue , fontSize : 25 , fontWeight : FontWeight . bold , decoration : TextDecoration . underline ) )
-
-                      )
-
-                    )
-
-                  ),
-                  // End OF Link خطة المادة
 
                   // Start Of Arrow Up
                   x . Arrows ( top : 30 , left : 346 , icon : Icons . keyboard_arrow_up ),

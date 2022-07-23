@@ -39,6 +39,7 @@ dependencies :
     sdk : flutter
   cupertino_icons : ^1.0.5
   iconfont: ^2.0.0
+  photo_view: ^0.14.0
 
 dev_dependencies :
   flutter_test :
@@ -56,7 +57,7 @@ flutter :
     - pic/pic1.png
     - pic/pic2.jpg
     - pic/pic3.png
-    - pic/4.png
+    - pic/4.jpg
     - pic/engineering college.png
     - pic/business  college.png
     - pic/educational sciences college.png

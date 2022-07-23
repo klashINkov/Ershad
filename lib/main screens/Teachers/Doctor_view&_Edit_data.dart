@@ -1,14 +1,13 @@
 // ignore_for_file: camel_case_types, must_be_immutable, unused_field, unused_local_variable, non_constant_identifier_names, unused_import, deprecated_member_use
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:ershad/main%20screens/Colleges%20And%20Specialties/Done_S_Colleges.dart';
+import 'package:ershad/main%20screens/Colleges%20And%20Specialties/S_Colleges.dart';
+import 'package:ershad/main%20screens/Teachers/SignIn.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ershad/main screens/Done_Home Page.dart';
+import 'package:ershad/main screens/Home Page.dart';
 
-import 'package:ershad/main screens/Teachers/For Teacher/Done_SignIn.dart';
-
-import 'package:ershad/main screens/New/Undone_temp.dart';
+import 'package:ershad/main%20screens/temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
