@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -572,7 +570,7 @@ class temp
 
         (
 
-          onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => image ( ) ) ),
+          onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( What_Do_You_Wont : "building floors" ) ) ),
 
           child : Text ( txt , textAlign : TextAlign . center , style : TextStyle ( color : Colors . white , fontSize : size ) )
 
@@ -687,7 +685,7 @@ class temp
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 0 ) ) ) ;
 
         else if ( text == "الخارطة" )
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( What_Do_You_Wont : "Map" ) ) ) ;
 
         else
           Navigator . push ( context , MaterialPageRoute ( builder : ( context ) => Personal_Lost ( ) ) ) ;

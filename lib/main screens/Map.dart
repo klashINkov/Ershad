@@ -10,7 +10,14 @@ import 'package:ershad/main%20screens/temp.dart';
 class Map extends StatelessWidget
 {
 
+  String What_Do_You_Wont ;
+  Map ( { required this . What_Do_You_Wont } ) ;
+
   var x = temp ( ) ;
+  final double maxScale = 4 ;
+  final double minScale = 1 ;
+
+  List < String >  Floor = [ "الطابق الاول" , "الطابق الثاني" , "الطابق الثالث" , "الطابق الرابع" ] ;
 
   // Start Of build Widget
   @override
@@ -22,9 +29,21 @@ class Map extends StatelessWidget
 
       extendBodyBehindAppBar : true,
 
-      appBar : AppBar ( backgroundColor : Colors . transparent , elevation : 0 ),
+      appBar : AppBar
+      (
+          title : Text
+          (
+            What_Do_You_Wont == "floor image" ?
+            "مجمع القاعات الطابق الرابع" :
+            What_Do_You_Wont == "building floors" ?
+            "مجمع القاعات" : "",
+            style : TextStyle ( fontSize : 25 )
+          ),
+          backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true
+      ),
 
-      body : Container
+      body : What_Do_You_Wont == "Map" ?
+      Container
       (
 
         height : 684,
@@ -90,6 +109,93 @@ class Map extends StatelessWidget
 
         )
 
+      ) : What_Do_You_Wont == "building floors" ?
+      Container
+      (
+
+        height : 683,
+        width : 411,
+        padding : EdgeInsets . only ( top : 70 , left : 10 , right : 10 , bottom: 10 ),
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+        child : Column
+        (
+
+          mainAxisAlignment : MainAxisAlignment . center,
+
+          children :
+          [
+
+            Flexible
+            (
+
+              child : ListView . builder
+              (
+
+                shrinkWrap : true,
+                padding : EdgeInsets . only ( top : 0 ),
+                itemCount : Floor . length,
+
+                itemBuilder : ( context , index )
+                {
+
+                  String floor = Floor [ index ] ;
+
+                  return ListTile
+                  (
+
+                    onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) =>  Map ( What_Do_You_Wont : "floor image"  ) ) ) ,
+
+                    title : Container
+                    (
+
+                      decoration : BoxDecoration
+                      (
+                        color : Colors . black,
+                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                        borderRadius : BorderRadius . circular ( 40 )
+                      ),
+
+                      margin : EdgeInsets . only ( bottom : 7 ),
+                      padding : EdgeInsets . only ( top : 15 , bottom : 15 ),
+
+                      child : Text ( floor , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
+
+                    )
+
+                  );
+
+                }
+
+              )
+
+            )
+
+          ]
+
+        )
+
+      ) :
+      Container
+      (
+
+        height: 683,
+        width : 411,
+
+        padding : EdgeInsets . only ( top : 70 , left : 10 , right : 10 , bottom : 10 ),
+
+        decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+        child : InteractiveViewer
+        (
+
+        minScale : minScale,
+        maxScale : maxScale,
+
+        child : Image ( image: AssetImage ( "pic/4.jpg" ) , fit: BoxFit . fill )
+
+        )
+
       )
 
     );
@@ -99,173 +205,3 @@ class Map extends StatelessWidget
 
 }
 // End Of Map Class
-
-class image extends StatefulWidget
-{
-
-  @override
-  State < image > createState ( ) => _image ( ) ;
-
-}
-// End Of ADD_Post Class
-
-// Start Of _ADD_Post Class
-class _image extends State < image >
-{
-
-  List < String >  Floor = [ "الطابق الاول" , "الطابق الثاني" , "الطابق الثالث" , "الطابق الرابع" ] ;
-
-  final double maxScale = 4 ;
-  final double minScale = 1 ;
-
-  @override
-  Widget build(BuildContext context)
-  {
-
-    return Scaffold
-      (
-
-        extendBodyBehindAppBar : true,
-        appBar : AppBar
-        (
-          title : Text ( "مجمع القاعات الطابق الرابع" , style : TextStyle ( fontSize : 20 ) ),
-          backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
-        ),
-
-        body : Container
-        (
-
-          height: 683,
-          width : 411,
-
-          padding : EdgeInsets . only ( top : 70 , left : 10 , right : 10 , bottom: 10 ),
-
-          decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
-
-          child : Column
-          (
-
-            mainAxisAlignment: MainAxisAlignment.center,
-            children :
-          [
-
-
-              Flexible
-              (
-
-                child : ListView . builder
-                (
-
-                  shrinkWrap : true,
-                  padding : EdgeInsets . only ( top : 0 ),
-                  itemCount : Floor . length,
-
-                  itemBuilder : ( context , index )
-                  {
-
-                    String floor = Floor [ index ] ;
-
-                    return ListTile
-                    (
-
-                      onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => ia ( ) ) ) ,
-
-                      title : Container
-                      (
-
-                        decoration : BoxDecoration
-                        (
-
-                          color : Colors . black,
-                          border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                          borderRadius : BorderRadius . circular ( 40 )
-
-                        ),
-
-                        margin : EdgeInsets . only ( bottom : 7 ),
-                        padding : EdgeInsets . only ( top : 15 , bottom : 15 ),
-
-                        child : Text ( floor , textAlign : TextAlign . center , style : TextStyle ( fontSize : 16 , color : Colors . white , fontWeight : FontWeight . bold ) )
-
-                      )
-
-                    );
-
-                  }
-
-                )
-
-              ),
-            ],
-          )
-
-        )
-
-    );
-
-  }
-
-
-}
-
-
-class ia extends StatefulWidget
-{
-
-  @override
-  State < ia > createState ( ) => _ia ( ) ;
-
-}
-// End Of ADD_Post Class
-
-// Start Of _ADD_Post Class
-class _ia extends State < ia >
-{
-
-
-  final double maxScale = 4 ;
-  final double minScale = 1 ;
-
-  @override
-  Widget build(BuildContext context)
-  {
-
-    return Scaffold
-      (
-
-        extendBodyBehindAppBar : true,
-        appBar : AppBar
-          (
-          title : Text ( "مجمع القاعات الطابق الرابع" , style : TextStyle ( fontSize : 20 ) ),
-          backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
-        ),
-
-        body : Container
-          (
-
-            height: 683,
-            width : 411,
-
-            padding : EdgeInsets . only ( top : 70 , left : 10 , right : 10 , bottom: 10 ),
-
-            decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
-
-            child : InteractiveViewer
-              (
-
-              minScale: minScale ,
-              maxScale: maxScale ,
-
-              child: Image ( image: AssetImage ( "pic/4.jpg" ) , fit: BoxFit . fill , ) ,
-
-            )
-
-        )
-
-    );
-
-  }
-
-
-
-}
