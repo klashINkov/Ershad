@@ -41,6 +41,7 @@ class Home extends StatelessWidget
             children :
             [
 
+
               // Start Of الكليات و التخصصات
               x . sdfa ( text : "الكليات و التخصصات" , size : 25 , top : 80 , left : 80 , context : context ),
               // End Of  الكليات و التخصصات

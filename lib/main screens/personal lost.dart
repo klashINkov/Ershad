@@ -1,12 +1,12 @@
 // ignore_for_file: camel_case_types, must_be_immutable, deprecated_member_use, non_constant_identifier_names
 
-
-import 'package:ershad/main%20screens/Home%20Page.dart';
 import 'package:flutter/material.dart';
+
+import 'package:ershad/main screens/Home Page.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:ershad/main%20screens/temp.dart';
+import 'package:ershad/main screens/temp.dart';
 
 // Start Of Personal_Lost Class
 class Personal_Lost extends StatelessWidget
@@ -26,33 +26,14 @@ class Personal_Lost extends StatelessWidget
 
       appBar : AppBar
       (
-
-        title  : Text
-        (
-
-          "المفقودات",
-
-          style : TextStyle
-          (
-
-              fontSize : 42,
-              color : Colors . white,
-              fontWeight : FontWeight . bold
-
-          )
-
-        ),
-
-        backgroundColor : Colors . transparent,
-        elevation : 0,
-        centerTitle : true,
-
+        title  : Text ( "المفقودات" , style : TextStyle ( fontSize : 42 , color : Colors . white , fontWeight : FontWeight . bold ) ),
+        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true
       ),
 
       body : Container
       (
 
-        decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
+        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
         padding : EdgeInsets . only ( top : 20 , left : 15 , right : 15 ),
 
@@ -64,49 +45,33 @@ class Personal_Lost extends StatelessWidget
 
             StreamBuilder < List < Post > >
             (
-
               stream : get_post ( ),
-
               builder : ( context , snapshot )
               {
-
                 if ( snapshot . hasData )
                   {
-
                     final post = snapshot . data! ;
-
                     return Flexible
                     (
-
                       child : ListView
                       (
-
                         shrinkWrap : true,
-                        children : post . map ( Post_Text ) . toList( )
-
+                        children : post . map ( Post_Text ) . toList ( )
                       )
-
                     );
-
                   }
 
                 else
                     return SizedBox ( ) ;
-
-
               }
-
             ),
 
             // Start Of Add subject Button
             Padding
             (
-
               padding : EdgeInsets . only ( top : 590 ),
-
               child : Center
               (
-
                 child : FloatingActionButton
                 (
                   backgroundColor : Colors . blueAccent . shade700,
@@ -114,25 +79,18 @@ class Personal_Lost extends StatelessWidget
                   child : Icon ( Icons . add )
 
                 )
-
               )
-
             )
             // End Of Add subject Button
-
           ]
-
         )
-
       )
-
     );
 
   }
   // End Of Build Widget
 
-  Stream < List < Post > > get_post ( ) => FirebaseFirestore . instance . collection ( "المفقودات" ) .
-  snapshots ( ) . map ( ( event ) => event . docs . map ( ( e ) => Post . fromjson ( e . data ( ) ) ) . toList ( ) );
+  Stream < List < Post > > get_post ( ) => FirebaseFirestore . instance . collection ( "المفقودات" ) .snapshots ( ) . map ( ( event ) => event . docs . map ( ( e ) => Post . fromjson ( e . data ( ) ) ) . toList ( ) ) ;
 
   Widget Post_Text ( Post post ) => Container
   (
@@ -153,26 +111,7 @@ class Personal_Lost extends StatelessWidget
     child : Center
     (
 
-      child : SingleChildScrollView
-      (
-
-        child : Text
-        (
-
-          post . Post_Text,
-          textAlign : TextAlign . center,
-          style : TextStyle
-          (
-
-            fontSize : 20,
-            color : Colors . white,
-            fontWeight : FontWeight . bold
-
-          )
-
-        )
-
-      )
+      child : SingleChildScrollView ( child : Text ( post . Post_Text , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ) )
 
     )
 
@@ -182,16 +121,9 @@ class Personal_Lost extends StatelessWidget
 }
 // End Of Personal_Lost Class
 
-class ADD_Post extends StatefulWidget
-{
+class ADD_Post extends StatefulWidget { @override State < ADD_Post > createState ( ) => _ADD_Post ( ) ; }
 
-  @override
-  State < ADD_Post > createState ( ) => _ADD_Post ( ) ;
-
-}
-// End Of ADD_Post Class
-
-// Start Of _ADD_Post Class
+// Start Of _ADD_Post Cl
 class _ADD_Post extends State < ADD_Post >
 {
 
@@ -200,10 +132,8 @@ class _ADD_Post extends State < ADD_Post >
   @override
   void initState ( )
   {
-
     super . initState ( ) ;
-    text    . addListener ( ( ) => setState ( ( ) { } ) ) ;
-
+    text  . addListener ( ( ) => setState ( ( ) { } ) ) ;
   }
 
   @override
@@ -214,126 +144,125 @@ class _ADD_Post extends State < ADD_Post >
       (
 
         extendBodyBehindAppBar : true,
+
         appBar : AppBar
+        (
+
+          title : Text ( "اضافة منشور" , style : TextStyle ( fontSize : 35 ) ),
+          backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
+          actions :
+          [
+
+            IconButton
+            (
+
+              onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+
+              icon : Icon ( Icons . home , color : Colors . white , size : 40 )
+
+            )
+
+          ]
+
+        ),
+
+        body : Container
+        (
+
+          height: 683,
+
+          padding : EdgeInsets . only ( top : 5 , left : 15 , right : 15 ),
+
+          decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+
+          child : ListView
           (
-            title : Text ( "اضافة منشور" , style : TextStyle ( fontSize : 35 ) ),
-            backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
-            actions :
+
+            children :
             [
 
-              IconButton
+              TextFormField
+              (
+
+                controller : text,
+                keyboardType : TextInputType . text,
+                textInputAction : TextInputAction . newline ,
+                style : TextStyle ( fontSize : 25 , color : Colors . white ),
+                textAlign : TextAlign . center,
+                cursorColor : Colors . white,
+                cursorWidth : 5,
+                maxLines : 15,
+
+                decoration : InputDecoration
                 (
 
-                  onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+                  filled : true,
+                  fillColor : Colors . black,
+                  enabledBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  ),
+                  focusedBorder : OutlineInputBorder
+                  (
+                    borderRadius : BorderRadius . circular ( 50 ),
+                    borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
+                  )
 
-                  icon : Icon ( Icons . home , color : Colors . white , size : 40 )
+                )
+
+              ),
+
+              SizedBox ( height : 5 ) ,
+
+              Container
+              (
+
+                height : 80,
+                width : 300,
+                margin : EdgeInsets . only ( top : 20 ),
+
+                decoration : BoxDecoration
+                (
+                  color : Colors . black,
+                  border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
+                  borderRadius : BorderRadius . circular ( 50 )
+                ),
+
+                child : FlatButton
+                (
+
+                  onPressed : ( )
+                  {
+                    if ( text . text != "" )
+                    {
+                      Add_post ( text . text );
+                      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( ) ) ) ;
+                    }
+                  },
+
+                  child : Text ( "نشر" , style : TextStyle ( color : Colors . white , fontSize : 35 ) )
+
+                )
 
               )
 
             ]
-        ),
 
-        body : Container
-          (
-
-            height: 683,
-
-            padding : EdgeInsets . only ( top : 5 , left : 15 , right : 15 ),
-
-            decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
-
-            child : ListView
-              (
-
-                children :
-                [
-
-                  TextFormField
-                    (
-                      controller : text,
-                      keyboardType : TextInputType . text,
-                      textInputAction : TextInputAction . newline ,
-                      style : TextStyle ( fontSize : 25 , color : Colors . white ),
-                      textAlign : TextAlign . center,
-                      cursorColor : Colors . white,
-                      cursorWidth : 5,
-                      maxLines : 15,
-
-                      decoration : InputDecoration
-                        (
-
-                          filled : true,
-                          fillColor : Colors . black,
-                          enabledBorder : OutlineInputBorder
-                            (
-                              borderRadius : BorderRadius . circular ( 50 ),
-                              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-                          ),
-                          focusedBorder : OutlineInputBorder
-                            (
-                              borderRadius : BorderRadius . circular ( 50 ),
-                              borderSide : BorderSide ( color : Colors . blueAccent . shade700 , width : 5 )
-                          )
-
-                      )
-
-                  ),
-
-                  SizedBox ( height : 5 ) ,
-
-                  Container
-                    (
-
-                      height : 80,
-                      width : 300,
-                      margin : EdgeInsets . only ( top : 20 ),
-
-                      decoration : BoxDecoration
-                        (
-                          color : Colors . black,
-                          border : Border . all ( color : Colors . blueAccent . shade700 , width : 5 ),
-                          borderRadius : BorderRadius . circular ( 50 )
-                      ),
-
-                      child : FlatButton
-                        (
-
-                          onPressed : ( )
-                          {
-
-                            if ( text . text != "" )
-                            {
-
-                              Add_post ( text . text );
-                              Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( )  ) ) ;
-
-                            }
-
-                          },
-
-                          child : Text ( "نشر" , style : TextStyle ( color : Colors . white , fontSize : 35 ) )
-
-                      )
-
-                  )
-
-                ]
-
-            )
+          )
 
         )
 
     );
 
   }
+
   Add_post ( String Post_Text  ) async
   {
-
     final docUser = FirebaseFirestore . instance . collection ( "المفقودات" ) . doc (  ) ;
     final post = Post ( Post_Text : Post_Text ) ;
     final json = post . tojson ( );
     await docUser . set ( json ) ;
-
   }
 
 }
