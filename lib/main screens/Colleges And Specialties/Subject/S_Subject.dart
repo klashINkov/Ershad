@@ -1,6 +1,6 @@
-// Done
 
-// ignore_for_file: deprecated_member_use, must_be_immutable, file_names, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutabl, camel_case_typeses, camel_case_types, prefer_const_literals_to_create_immutables
+
+// ignore_for_file: camel_case_types, must_be_immutable, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
@@ -36,26 +36,19 @@ class S_Subject extends StatelessWidget
         (
 
           padding : EdgeInsets . only ( top : 10 ),
-          child : Text ( Name , maxLines : 3 , textAlign : TextAlign . center ,  style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) )
+          child : Text ( Name , maxLines : 3 , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) )
 
         ),
 
-        backgroundColor : Colors . transparent,
-        elevation : 0,
-        centerTitle : true,
+        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
 
         actions :
         [
-
           IconButton
           (
-
-            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
-
+            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
-
           )
-
         ]
 
       ),
@@ -66,7 +59,7 @@ class S_Subject extends StatelessWidget
         child : Container
         (
 
-          decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color (0xff780206) , Color(0xFF061161) ] ) ),
+          decoration : BoxDecoration ( gradient :  LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
           padding : EdgeInsets . only ( top : 100 ),
 
           child : Column
@@ -107,10 +100,8 @@ class S_Subject extends StatelessWidget
 
                     decoration : BoxDecoration
                     (
-
                       border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
                       borderRadius : BorderRadius . circular ( 50 ),
-
                     ),
 
                     child : Padding
@@ -126,7 +117,6 @@ class S_Subject extends StatelessWidget
 
                           children :
                           [
-
                             // Start Of وصف المساق
                             Text ( "نبذه عن المساق" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) ),
                             // End Of وصف المساق
@@ -134,7 +124,6 @@ class S_Subject extends StatelessWidget
                             // Start Of Description Text
                             Text ( DESC , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , fontWeight : FontWeight . bold , color : Colors . white ) )
                             // End Of Description Text
-
                           ]
 
                         )
