@@ -273,11 +273,11 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
+          College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 0 ] .Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ;
+          College_Specialties_Or_College_Depts = x . College_DeptS [ 0 ] . Colleges_Depts ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 
@@ -287,11 +287,11 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = [ "قسم الرياضيات" , "قسم العلوم الحياتية" , "قسم الفيزياء التطبيقية" , "قسم الكيمياء وتكنولوجيا الكيمياء" ] ;
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 1 ] . Colleges_Depts ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 
@@ -301,11 +301,12 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
-      else
-        College_Specialties_Or_College_Depts = [ "قسم علم الحاسوب" , "قسم نظم المعلومات الحاسوبية" ] ;
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 2 ].Colleges_SpecialtieS ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+      else
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 2 ] . Colleges_Depts ;
+
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 
@@ -315,11 +316,12 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = [ "قسم ادارة الاعمال" , "قسم اقتصاد الأعمال" , "قسم اقتصاد الأعمال" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 3 ] . Colleges_Depts ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 
@@ -329,11 +331,11 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = [ "قسم اللغة الإنجليزية وآدابها" , "قسم اللغة العربية وآدابها" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 4 ] . Colleges_Depts ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 
@@ -343,11 +345,11 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "تربية خاصة" , "معلم صف" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 5 ] . Colleges_Depts ;
 
-      Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
 

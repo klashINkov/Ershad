@@ -2,7 +2,6 @@
 
 // ignore_for_file: must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables, camel_case_types, prefer_typing_uninitialized_variables
 
-
 import 'package:ershad/main%20screens/Home%20Page.dart';
 import 'package:flutter/material.dart';
 
