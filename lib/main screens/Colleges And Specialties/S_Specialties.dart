@@ -1,6 +1,4 @@
-// Done
-
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, file_names, camel_case_types, unused_local_variable
+// ignore_for_file: camel_case_types, must_be_immutable, unused_local_variable, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
@@ -19,6 +17,7 @@ class S_Specialties extends StatelessWidget
   var x = temp ( ) ;
   int num , _num = 0 ;
   bool isempty = false ;
+
   final String College_Name ;
   final List < String > College_Specialties_Or_College_Depts ;
 
@@ -41,20 +40,16 @@ class S_Specialties extends StatelessWidget
 
         title : Text ( College_Name , style : TextStyle ( fontSize : 18 , color : Colors . white , fontWeight : FontWeight . bold ) ),
 
-        backgroundColor : Colors . transparent,
-        elevation : 0,
-        centerTitle : true,
+        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
 
         actions :
         [
 
           IconButton
           (
-
             onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
 
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
-
           )
 
         ]
@@ -88,12 +83,10 @@ class S_Specialties extends StatelessWidget
 
                   child : ListView . separated
                   (
-
                     scrollDirection : Axis . horizontal,
                     separatorBuilder : ( context , _ ) => SizedBox ( ),
                     itemCount : x . Items . length,
                     itemBuilder : ( context , index ) => Horizontal_List_View ( College_Name : x . Items [ index ] . College_Name , image : x . Items [ index ] . image , context : context )
-
                   )
 
                 ),
@@ -144,10 +137,8 @@ class S_Specialties extends StatelessWidget
 
                   decoration : BoxDecoration
                   (
-
                     border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
                     borderRadius : BorderRadius . circular ( 50 ),
-
                   ),
 
                   child : Padding
@@ -157,16 +148,11 @@ class S_Specialties extends StatelessWidget
 
                     child : Column
                     (
-
                       mainAxisAlignment : MainAxisAlignment . center,
-
                       children :
                       [
-
                         List_View ( )
-
                       ]
-
                     )
 
                   )
@@ -256,11 +242,9 @@ class S_Specialties extends StatelessWidget
 
             decoration : BoxDecoration
             (
-
               color : Colors . black,
               border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
               borderRadius : BorderRadius . circular ( 40 )
-
             ),
 
             margin : EdgeInsets . only ( bottom : 7 ),
@@ -286,7 +270,7 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية الهندسة" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
         College_Specialties_Or_College_Depts = [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ;
@@ -300,7 +284,7 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية العلوم" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
         College_Specialties_Or_College_Depts = [ "الكيمياء" , "تكنولوجيا الكيمياء" , "الفيزياء التطبيقية" , "الرياضيات" , "العلوم الحياتية التطبيقية" ] ;
@@ -314,7 +298,7 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
         College_Specialties_Or_College_Depts = [ "نظم المعلومات الحاسوبية" , "حوسبة الاجهزة الذكية" , "علم الحاسوب : الذكاء الاصطناعي وعلم البيانات" ] ;
@@ -328,7 +312,7 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية الأعمال" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
         College_Specialties_Or_College_Depts = [ "علوم مالية ومصرفية" , "إقتصاد الأعمال" , "إدارة الأعمال" , "المحاسبة" ] ;
@@ -342,7 +326,7 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية الآداب" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
         College_Specialties_Or_College_Depts = [ "اللغة العربية وآدابها" , "اللغة الإنجليزية وآدابها" ] ;
@@ -356,10 +340,10 @@ class S_Specialties extends StatelessWidget
     if ( College_Name ==  "كلية العلوم التربوية" )
     {
 
-      List < String > College_Specialties_Or_College_Depts = [ ];
+      List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = [ "تربية خاصة" , "معلم صف" ];
+        College_Specialties_Or_College_Depts = [ "تربية خاصة" , "معلم صف" ] ;
       else
         College_Specialties_Or_College_Depts = [ "قسم المناهج والتدريس" , "قسم علم النفس التربوي" ] ;
 
@@ -376,25 +360,9 @@ class S_Specialties extends StatelessWidget
 
     String path = "" , array = "" , Doc = ""  ;
 
+    if ( _num == 2 ) { path = "المدرسين" ; Doc = College_Name ; array = "مدرسين $Specialty_Name_Or_Dept_Name" ; }
 
-    if ( _num == 2 )
-    {
-
-      path = "المدرسين" ;
-      Doc = College_Name ;
-      array = "مدرسين $Specialty_Name_Or_Dept_Name" ;
-
-    }
-
-    else
-    {
-      path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" ;
-      Doc = "وصف التخصص و اسماء المواد و بياناتها" ;
-      array = "مواد التخصص" ;
-
-
-    }
-
+    else { path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" ; Doc = "وصف التخصص و اسماء المواد و بياناتها" ; array = "مواد التخصص" ; }
 
       final  varr = await FirebaseFirestore . instance . collection ( path ) .
       doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( )! [ array ] . length == 0 ) ?
