@@ -373,9 +373,9 @@ class S_Specialties extends StatelessWidget
 
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => _num == 0 ?
 
-      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) :
+      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name , Desc : varibel [ "وصف التخصص" ] , Subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) :
 
-      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
+      S_Subjects ( Specialty_Name_Or_Dept_Name : Specialty_Name_Or_Dept_Name , College_Name : College_Name  , Desc : "" , Subjects_Or_Doctors_Names : varibel [ array ] , is_empty : isempty , num : _num ) ) ) ;
 
   }
   // End of List View On Tap Function
