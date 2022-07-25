@@ -153,7 +153,6 @@ class S_Colleges extends StatelessWidget
       else
         College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 3 ] . Colleges_Depts ;
 
-
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
 
     }
