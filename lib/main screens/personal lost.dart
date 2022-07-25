@@ -236,7 +236,7 @@ class _ADD_Post extends State < ADD_Post >
                   {
                     if ( text . text != "" )
                     {
-                      Add_post ( text . text );
+                      Add_post ( text . text ) ;
                       Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Personal_Lost ( ) ) ) ;
                     }
                   },
