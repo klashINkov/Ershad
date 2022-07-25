@@ -39,7 +39,7 @@ class S_Colleges extends StatelessWidget
         [
           IconButton
           (
-            onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+            onPressed : ( ) => Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ),
             icon : Icon ( Icons . home , color : Colors . white , size : 40 )
           )
         ]

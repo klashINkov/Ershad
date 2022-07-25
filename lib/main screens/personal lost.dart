@@ -156,7 +156,7 @@ class _ADD_Post extends State < ADD_Post >
             IconButton
             (
 
-              onPressed : ( ) { Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ) ; },
+              onPressed : ( ) => Navigator . of ( context ) . pushAndRemoveUntil ( MaterialPageRoute ( builder : ( context ) => Home ( ) ) , ( route ) => false ),
 
               icon : Icon ( Icons . home , color : Colors . white , size : 40 )
 
